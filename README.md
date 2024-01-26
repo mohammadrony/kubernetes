@@ -2,7 +2,17 @@
 
 ## Cluster Setup
 
+### New Cluster
+
 - [Kind](./new-cluster/kind/)
+
+### Monitoring
+
+- [Prometheus and Grafana](./monitoring/prometheus-grafana/)
+
+## Configuration
+
+- [Kustomize](./configuration/kustomize/)
 
 ## Documentation
 
