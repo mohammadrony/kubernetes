@@ -1,4 +1,4 @@
-# RabbitMQ Configuration
+# RabbitMQ
 
 ## Helm chart installation
 

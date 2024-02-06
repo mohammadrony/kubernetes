@@ -1,4 +1,4 @@
-# kubectx and kubens
+# Kubectx and Kubens
 
 ```bash
 sudo snap install kubectx --classic

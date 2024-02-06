@@ -12,7 +12,3 @@ Install from Go source. Requires [Go](https://go.dev/doc/install) to be installe
 ```bash
 GOBIN=$(pwd)/ GO111MODULE=on go install sigs.k8s.io/kustomize/kustomize/v5@latest
 ```
-
-## Other applications setup
-
-- [cadvisor](./cadvisor.md)

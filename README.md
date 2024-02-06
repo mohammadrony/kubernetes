@@ -6,15 +6,15 @@
 
 - [Kind](./new-cluster/kind/)
 
-### Monitoring
-
-- [Prometheus and Grafana](./monitoring/prometheus-grafana/)
-
 ## Configuration
 
-- [Kubectx and Kubens](./configuration/kubectx/)
-- [Kustomize](./configuration/kustomize/)
-- [RabbitMQ](./configuration/rabbitmq/)
+- [Kubectl commands](./configuration/1-kubectl/)
+- [Helm](./configuration/2-helm/)
+- [Kubectx and Kubens](./configuration/3-kubectx/)
+- [Kustomize](./configuration/4-kustomize/)
+- [Prometheus and Grafana](./configuration/5-prometheus-grafana/)
+- [Elasticsearch Fluentd and Kibana Stack](./configuration/6-elasticsearch-fluentd-kibana/)
+- [RabbitMQ](./configuration/7-rabbitmq/)
 
 ## Documentation
 

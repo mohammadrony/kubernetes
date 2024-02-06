@@ -1,27 +1,25 @@
-# Prometheus and Grafana Installation
+# Prometheus and Grafana
 
-## Helm setup
+## Setup Matrics server
 
-Install Helm
+Install metrics server
 
 ```bash
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+helm repo update
 ```
 
-Or
-
 ```bash
-curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt install -y apt-transport-https
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-sudo apt update -y
-sudo apt install -y helm
+helm install metrics-server metrics-server/metrics-server -n kube-system
+
+# For kind cluster
+# helm install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server -n kube-system
 ```
 
-Add Helm repo
+Uninstall metrics server
 
 ```bash
-helm repo add stable https://charts.helm.sh/stable
+helm uninstall metrics-server 
 ```
 
 ## Install Prometheus stack
@@ -43,7 +41,11 @@ kubectl create namespace prometheus
 ```
 
 ```bash
-helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack
+helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n prometheus
+```
+
+```bash
+kubectl -n prometheus get pods -l "release=kube-prometheus-stack"
 ```
 
 ## Setup Grafana
@@ -51,13 +53,14 @@ helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack
 Expose grafana service
 
 ```bash
-kubectl expose svc/kube-prometheus-stack-grafana --target-port=3000 --type=NodePort --name=grafana-ui
+kubectl expose svc/kube-prometheus-stack-grafana -n prometheus --target-port=3000 --type=NodePort --name=grafana-ui
 ```
 
 For kind cluster
 
 ```bash
-kubectl port-forward svc/grafana-ui 30000:80
+kubectl port-forward svc/kube-prometheus-stack-grafana 30000:80
+kubectl port-forward svc/kube-prometheus-stack-prometheus 30001:9090
 ```
 
 ### Grafana admin password
