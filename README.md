@@ -12,7 +12,9 @@
 
 ## Configuration
 
+- [Kubectx and Kubens](./configuration/kubectx/)
 - [Kustomize](./configuration/kustomize/)
+- [RabbitMQ](./configuration/rabbitmq/)
 
 ## Documentation
 
