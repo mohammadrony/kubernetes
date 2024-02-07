@@ -53,7 +53,7 @@ kubectl -n prometheus get pods -l "release=kube-prometheus-stack"
 Expose grafana service
 
 ```bash
-kubectl expose svc/kube-prometheus-stack-grafana -n prometheus --target-port=3000 --type=NodePort --name=grafana-ui
+kubectl expose svc/kube-prometheus-stack-grafana -n prometheus --target-port=3000 --type=NodePort --name=grafana-nodeport
 ```
 
 For kind cluster

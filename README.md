@@ -8,7 +8,7 @@
 
 ## Configuration
 
-- [Kubectl commands](./configuration/1-kubectl/)
+- [Kubectl Commands](./configuration/1-kubectl/)
 - [Helm](./configuration/2-helm/)
 - [Kubectx and Kubens](./configuration/3-kubectx/)
 - [Kustomize](./configuration/4-kustomize/)
