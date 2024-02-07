@@ -2,30 +2,34 @@
 
 ## Helm chart installation
 
-Default Installation
+Install with parameter value
 
 ```bash
-kubectl create namespace rabbit
+kubectl create namespace rabbits
 ```
 
 ```bash
-helm install rabbits oci://registry-1.docker.io/bitnamicharts/rabbitmq
+helm install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq -n rabbits \
+  --set persistence.enabled=true \
+  --set persistence.storageClass="standard" \
+  --set persistence.size=100Mi
+  --set replicaCount=2
 ```
 
 ```bash
-helm uninstall rabbits
+helm uninstall rabbitmq -n rabbits
 ```
 
-Install with custom values
+Install with values file
 
 ```bash
-kubectl create namespace rabbit
-```
-
-```bash
-helm install rabbits oci://registry-1.docker.io/bitnamicharts/rabbitmq -n rabbit --values values.yaml
+kubectl create namespace rabbits
 ```
 
 ```bash
-helm uninstall rabbits -n rabbit
+helm install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq -n rabbit --values values.yaml
+```
+
+```bash
+helm uninstall rabbitmq -n rabbits
 ```
