@@ -14,8 +14,9 @@
 - [Cert Manager](./configuration/4-cert-manager/)
 - [Prometheus and Grafana](./configuration/5-prometheus-grafana/)
 - [Elasticsearch Fluentd and Kibana Stack](./configuration/6-elasticsearch-fluentd-kibana/)
-- [Kustomize](./configuration/7-kustomize/)
+- [Keycloak](./configuration/7-keycloak/)
 - [RabbitMQ](./configuration/8-rabbitmq/)
+- [Kustomize](./configuration/9-kustomize/)
 
 ## Documentation
 
