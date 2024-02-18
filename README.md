@@ -11,10 +11,11 @@
 - [Kubectl Commands](./configuration/1-kubectl/)
 - [Helm](./configuration/2-helm/)
 - [Kubectx and Kubens](./configuration/3-kubectx/)
-- [Kustomize](./configuration/4-kustomize/)
+- [Cert Manager](./configuration/4-cert-manager/)
 - [Prometheus and Grafana](./configuration/5-prometheus-grafana/)
 - [Elasticsearch Fluentd and Kibana Stack](./configuration/6-elasticsearch-fluentd-kibana/)
-- [RabbitMQ](./configuration/7-rabbitmq/)
+- [Kustomize](./configuration/7-kustomize/)
+- [RabbitMQ](./configuration/8-rabbitmq/)
 
 ## Documentation
 
