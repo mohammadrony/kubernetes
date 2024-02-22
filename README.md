@@ -12,11 +12,12 @@
 - [Helm](./configuration/2-helm/)
 - [Kubectx and Kubens](./configuration/3-kubectx/)
 - [Cert Manager](./configuration/4-cert-manager/)
-- [Prometheus and Grafana](./configuration/5-prometheus-grafana/)
-- [Elasticsearch Fluentd and Kibana Stack](./configuration/6-elasticsearch-fluentd-kibana/)
-- [Keycloak](./configuration/7-keycloak/)
-- [RabbitMQ](./configuration/8-rabbitmq/)
-- [Kustomize](./configuration/9-kustomize/)
+- [Longhorn](./configuration/5-longhorn/)
+- [Prometheus and Grafana](./configuration/6-prometheus-grafana/)
+- [Elasticsearch Fluentd and Kibana Stack](./configuration/7-elasticsearch-fluentd-kibana/)
+- [Keycloak](./configuration/8-keycloak/)
+- [RabbitMQ](./configuration/9-rabbitmq/)
+- [Kustomize](./configuration/10-kustomize/)
 
 ## Documentation
 
