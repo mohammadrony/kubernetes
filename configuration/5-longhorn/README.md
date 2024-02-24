@@ -2,7 +2,7 @@
 
 ## Pre-requisites
 
-CentOS
+### CentOS
 
 ```bash
 sudo dnf install -y iscsi-initiator-utils
@@ -10,12 +10,27 @@ sudo systemctl enable --now iscsid
 ```
 
 ```bash
-sudo dnf install -y targetcli
-sudo targetcli ls
-sudo systemctl enable --now target
+sudo dnf install -y nfs-utils
+sudo dnf install -y epel-release jq
+sudo dnf install -y curl util-linux findutils gawk
 ```
 
-Ubuntu
+Check NFSv4 support is enabled in kernel
+
+```bash
+cat /boot/config-`uname -r`| grep CONFIG_NFS_V4_1
+cat /boot/config-`uname -r`| grep CONFIG_NFS_V4_2
+```
+
+Optional
+
+```bash
+sudo dnf install -y targetcli
+sudo targetcli ls
+# sudo systemctl enable --now target
+```
+
+### Ubuntu
 
 ```bash
 sudo apt install -y open-iscsi
@@ -23,9 +38,31 @@ sudo systemctl enable --now iscsid
 ```
 
 ```bash
+sudo apt install -y nfs-common
+sudo dnf install -y jq
+```
+
+Check NFSv4 support is enabled in kernel
+
+```bash
+cat /boot/config-`uname -r`| grep CONFIG_NFS_V4_1
+cat /boot/config-`uname -r`| grep CONFIG_NFS_V4_2
+```
+
+Optional
+
+```bash
 sudo apt install -y targetcli-fb
 sudo targetcli ls
-sudo systemctl enable --now target
+# sudo systemctl enable --now target
+```
+
+### Validate Environment (Master Node)
+
+[Longhorn repository](https://github.com/longhorn/longhorn)
+
+```bash
+curl -sSfL https://raw.githubusercontent.com/longhorn/longhorn/v1.6.0/scripts/environment_check.sh | bash
 ```
 
 ## Installation
@@ -38,6 +75,5 @@ helm repo update
 ```
 
 ```bash
-kubectl create namespace longhorn-system
-helm install longhorn longhorn/longhorn --namespace longhorn-system
+helm install longhorn longhorn/longhorn --create-namespace --namespace longhorn-system
 ```
