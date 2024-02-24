@@ -11,13 +11,14 @@
 - [Kubectl Commands](./configuration/1-kubectl/)
 - [Helm](./configuration/2-helm/)
 - [Kubectx and Kubens](./configuration/3-kubectx/)
-- [Cert Manager](./configuration/4-cert-manager/)
+- [Nginx Ingress and Load Balancer](./configuration/4-ingress-loadbalancer/)
 - [Longhorn](./configuration/5-longhorn/)
-- [Prometheus and Grafana](./configuration/6-prometheus-grafana/)
-- [Elasticsearch Fluentd and Kibana Stack](./configuration/7-elasticsearch-fluentd-kibana/)
-- [Keycloak](./configuration/8-keycloak/)
-- [RabbitMQ](./configuration/9-rabbitmq/)
-- [Kustomize](./configuration/10-kustomize/)
+- [Cert Manager](./configuration/6-cert-manager/)
+- [Prometheus and Grafana](./configuration/7-prometheus-grafana/)
+- [Elasticsearch Fluentd and Kibana Stack](./configuration/8-elasticsearch-fluentd-kibana/)
+- [Keycloak](./configuration/9-keycloak/)
+- [RabbitMQ](./configuration/10-rabbitmq/)
+- [Kustomize](./configuration/11-kustomize/)
 
 ## Documentation
 
