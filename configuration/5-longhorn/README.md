@@ -57,9 +57,11 @@ sudo targetcli ls
 # sudo systemctl enable --now target
 ```
 
-### Validate Environment (Master Node)
+### Validate Environment
 
 [Longhorn repository](https://github.com/longhorn/longhorn)
+
+Master Node
 
 ```bash
 curl -sSfL https://raw.githubusercontent.com/longhorn/longhorn/v1.6.0/scripts/environment_check.sh | bash
@@ -76,4 +78,16 @@ helm repo update
 
 ```bash
 helm install longhorn longhorn/longhorn --create-namespace --namespace longhorn-system
+```
+
+```bash
+kubectl edit service longhorn-frontend -n longhorn-system
+```
+
+```yaml
+spec:
+  ports:
+  - name: http
+    nodePort: 30001
+    type: NodePort
 ```
