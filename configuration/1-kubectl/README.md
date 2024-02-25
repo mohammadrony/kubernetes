@@ -89,6 +89,7 @@ Run commands
 
 ```bash
 kubectl run -it busybox --image=busybox --rm
+kubectl run -it shell --image giantswarm/tiny-tools --restart Never --rm
 ```
 
 ```bash
