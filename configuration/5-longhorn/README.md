@@ -77,7 +77,7 @@ helm repo update
 ```
 
 ```bash
-helm install longhorn longhorn/longhorn --create-namespace --namespace longhorn-system
+helm upgrade --install longhorn longhorn/longhorn --create-namespace --namespace longhorn-system
 ```
 
 ```bash

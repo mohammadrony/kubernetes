@@ -7,7 +7,7 @@ kubectl create namespace efk
 ```
 
 ```bash
-helm install elasticsearch elastic/elasticsearch -n efk
+helm upgrade --install elasticsearch elastic/elasticsearch -n efk
 ```
 
 ```bash

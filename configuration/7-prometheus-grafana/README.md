@@ -10,10 +10,10 @@ helm repo update
 ```
 
 ```bash
-helm install metrics-server metrics-server/metrics-server -n kube-system
+helm upgrade --install metrics-server metrics-server/metrics-server -n kube-system
 
 # For kind cluster
-# helm install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server -n kube-system
+# helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server -n kube-system
 ```
 
 Uninstall metrics server
@@ -41,7 +41,7 @@ kubectl create namespace prometheus
 ```
 
 ```bash
-helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n prometheus
+helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n prometheus
 ```
 
 ```bash

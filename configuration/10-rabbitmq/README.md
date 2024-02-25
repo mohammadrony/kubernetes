@@ -9,7 +9,7 @@ kubectl create namespace global
 ```
 
 ```bash
-helm install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq --create-namespace --namespace rabbitmq \
+helm upgrade --install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq --create-namespace --namespace rabbitmq \
   --set plugins="rabbitmq_federation rabbitmq_management rabbitmq_peer_discovery_k8s rabbitmq_management_agent rabbitmq_auth_backend_ldap" \
   --set replicaCount=2
 ```
@@ -41,7 +41,12 @@ Hardware requirements
 
 ```bash
 helm upgrade --install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq \
-  --create-namespace --namespace rabbitmq --values values.yaml
+  --set persistence.enabled=true \
+  --set persistence.storageClass="longhorn" \
+  --set persistence.size=500Mi \
+  --set plugins="rabbitmq_federation rabbitmq_management rabbitmq_peer_discovery_k8s rabbitmq_management_agent rabbitmq_auth_backend_ldap" \
+  --set replicaCount=3 \
+  --create-namespace --namespace rabbitmq
 ```
 
 ### Install with values file

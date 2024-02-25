@@ -43,6 +43,10 @@ helm install <NAME> <CHART>
 ```
 
 ```bash
+helm upgrade --install <NAME> <CHART>
+```
+
+```bash
 helm test <NAME>
 ```
 

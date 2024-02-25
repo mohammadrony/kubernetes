@@ -3,7 +3,7 @@
 ## MetalLB load balancer
 
 ```bash
-helm upgrade --install metallb oci://registry-1.docker.io/bitnamicharts/metallb --values metallb.values.yaml --create-namespace --namespace metallb-system
+helm upgrade --install metallb oci://registry-1.docker.io/bitnamicharts/metallb --create-namespace --namespace metallb-system
 ```
 
 IP pool
