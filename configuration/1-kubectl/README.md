@@ -1,5 +1,15 @@
 # Kubectl Commands
 
+## Kubeadm initial commands
+
+```bash
+sudo kubeadm init --pod-network-cidr=nnn.nnn.nnn.nnn/nn --apiserver-advertise-address=nnn.nnn.nnn.nnn
+```
+
+```bash
+kubeadm token create --print-join-command
+```
+
 ## Cluster details
 
 Cluster info
