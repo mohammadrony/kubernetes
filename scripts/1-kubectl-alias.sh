@@ -1,3 +1,4 @@
+#!/bin/bash
 alias kshell='kubectl run -it shell --image giantswarm/tiny-tools --restart Never --rm -- sh'
 
 kx () {

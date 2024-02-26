@@ -20,6 +20,10 @@
 - [RabbitMQ](./configuration/10-rabbitmq/)
 - [Kustomize](./configuration/11-kustomize/)
 
+## Scripts
+
+- [Kubectl alias](./scripts/1-kubectl-alias.sh)
+
 ## Documentation
 
 ### Articles
