@@ -11,6 +11,11 @@ curl -O https://raw.githubusercontent.com/metallb/metallb/v0.14.3/config/manifes
 kubectl apply -f metallb-native.yaml
 ```
 
+```bash
+# If memberlist secret not found
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+```
+
 IP pool
 
 ```bash

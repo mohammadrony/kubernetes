@@ -1,6 +1,6 @@
 # Kubectl Commands
 
-## Collect Info
+## Cluster details
 
 Cluster info
 
@@ -88,8 +88,8 @@ kubectl run PODNAME --image=IMAGE:TAG --port=PORT
 Run commands
 
 ```bash
-kubectl run -it busybox --image=busybox --rm
-kubectl run -it shell --image giantswarm/tiny-tools --restart Never --rm
+kubectl run -it busybox --image=busybox --rm -- sh
+kubectl run -it shell --image giantswarm/tiny-tools --restart Never --rm -- sh
 ```
 
 ```bash
