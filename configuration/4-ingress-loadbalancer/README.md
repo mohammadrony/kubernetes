@@ -25,15 +25,15 @@ kubectl apply -f metallb.ip-pool.yaml
 ## Nginx Ingress
 
 ```bash
-# helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-# helm repo update
-# helm show values ingress-nginx/ingress-nginx > ingress-nginx.values.yaml
-# helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+helm show values ingress-nginx/ingress-nginx > ingress-nginx.values.yaml
+helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace
 ```
 
 ```bash
-curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.9.6/deploy/static/provider/baremetal/deploy.yaml
-kubectl apply -f deploy.yaml
+# curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.9.6/deploy/static/provider/baremetal/deploy.yaml
+# kubectl apply -f deploy.yaml
 ```
 
 ```bash
