@@ -10,16 +10,15 @@ helm repo update
 ```
 
 ```bash
-helm upgrade --install metrics-server metrics-server/metrics-server -n kube-system
-
-# For kind cluster
-# helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server -n kube-system
+helm show values metrics-server/metrics-server > values.metrics-server.yml
+# helm upgrade --install metrics-server metrics-server/metrics-server -n kube-system
+helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server -n kube-system
 ```
 
 Uninstall metrics server
 
 ```bash
-helm uninstall metrics-server 
+helm uninstall metrics-server -n kube-system
 ```
 
 ## Install Prometheus stack
@@ -28,6 +27,7 @@ Add Prometheus repo
 
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
 ```
 
 Install Prometheus
@@ -37,15 +37,36 @@ helm search repo prometheus-community
 ```
 
 ```bash
-kubectl create namespace prometheus
+kubectl create namespace monitoring
 ```
 
 ```bash
-helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n prometheus
+helm show values prometheus-community/kube-prometheus-stack > values.prometheus-stack.yml
+```
+
+Custom configuration
+
+```bash
+vi values.prometheus-stack.yml
+```
+
+Update
+
+```yml
+grafana:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+    - grafana.example.com
 ```
 
 ```bash
-kubectl -n prometheus get pods -l "release=kube-prometheus-stack"
+helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack --namespace monitoring --values 
+```
+
+```bash
+kubectl get pods -l "release=kube-prometheus-stack" --namespace monitoring
 ```
 
 ## Setup Grafana
@@ -53,10 +74,25 @@ kubectl -n prometheus get pods -l "release=kube-prometheus-stack"
 Expose grafana service
 
 ```bash
-kubectl expose svc/kube-prometheus-stack-grafana -n prometheus --target-port=3000 --type=NodePort --name=grafana-nodeport
+kubectl edit svc kube-prometheus-stack-grafana --namespace monitoring
 ```
 
-For kind cluster
+Update default service
+
+```yml
+spec:
+  ports:
+    nodePort: 30001
+  type: NodePort
+```
+
+Create expose service
+
+```bash
+kubectl expose svc/kube-prometheus-stack-grafana --namespace monitoring --target-port=3000 --type=NodePort --name=grafana-nodeport
+```
+
+Port forwarding
 
 ```bash
 kubectl port-forward svc/kube-prometheus-stack-grafana 30000:80
@@ -68,7 +104,7 @@ kubectl port-forward svc/kube-prometheus-stack-prometheus 30001:9090
 Find default password
 
 ```bash
-kubectl get secret kube-prometheus-stack-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echo
+kubectl get secrets kube-prometheus-stack-grafana -o json | jq '.data | map_values(@base64d)'
 ```
 
 Reset password
@@ -101,5 +137,5 @@ Select dashboard ID > Load > Data source > Prometheus > Import
 ## Clear resources
 
 ```bash
-helm uninstall kube-prometheus-stack
+helm uninstall kube-prometheus-stack --namespace monitoring
 ```

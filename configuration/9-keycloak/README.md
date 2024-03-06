@@ -12,11 +12,11 @@ helm repo update
 ```
 
 ```bash
-helm show values codecentric/keycloakx > values.codecentric.yml
+helm show values codecentric/keycloakx > values.keycloakx.yml
 ```
 
 ```bash
-helm install keycloakx codecentric/keycloakx --namespace keycloak --create-namespace --values values.codecentric.yml
+helm install keycloakx codecentric/keycloakx --namespace keycloak --create-namespace --values values.keycloakx.yml
 ```
 
 Method 2
@@ -24,9 +24,9 @@ Method 2
 [Bitnami | Keycloak](https://artifacthub.io/packages/helm/bitnami/keycloak)
 
 ```bash
-helm show values oci://registry-1.docker.io/bitnamicharts/keycloak > values.bitnami.yml
+helm show values oci://registry-1.docker.io/bitnamicharts/keycloak > values.keycloak.yml
 ```
 
 ```bash
-helm install keycloak oci://registry-1.docker.io/bitnamicharts/keycloak --namespace keycloak --create-namespace --values values.bitnami.yml
+helm install keycloak oci://registry-1.docker.io/bitnamicharts/keycloak --namespace keycloak --create-namespace --values values.keycloak.yml
 ```
