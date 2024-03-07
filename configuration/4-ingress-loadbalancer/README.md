@@ -2,18 +2,27 @@
 
 ## MetalLB load balancer
 
+Install with Helm
+
 ```bash
-# helm upgrade --install metallb oci://registry-1.docker.io/bitnamicharts/metallb --create-namespace --namespace metallb-system
+helm show values oci://registry-1.docker.io/bitnamicharts/metallb > values.metallb.yaml
+```
+
+Custom configuration
+
+```bash
+vi values.metallb.yaml
 ```
 
 ```bash
-curl -O https://raw.githubusercontent.com/metallb/metallb/v0.14.3/config/manifests/metallb-native.yaml
-kubectl apply -f metallb-native.yaml
+helm upgrade --install metallb oci://registry-1.docker.io/bitnamicharts/metallb --values values.metallb.yaml --create-namespace --namespace metallb-system
 ```
 
 ```bash
-# If memberlist secret not found
-kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+# curl -O https://raw.githubusercontent.com/metallb/metallb/v0.14.3/config/manifests/metallb-native.yaml
+# kubectl apply -f metallb-native.yaml
+# # If memberlist secret not found
+# kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 ```
 
 IP pool
@@ -27,8 +36,20 @@ kubectl apply -f metallb.ip-pool.yaml
 ```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
-helm show values ingress-nginx/ingress-nginx > ingress-nginx.values.yaml
-helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace
+```
+
+```bash
+helm show values ingress-nginx/ingress-nginx > values.ingress-nginx.yaml
+```
+
+Custom configuration
+
+```bash
+vi values.ingress-nginx.yaml
+```
+
+```bash
+helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --values values.ingress-nginx.yaml --namespace ingress-nginx --create-namespace
 ```
 
 ```bash
