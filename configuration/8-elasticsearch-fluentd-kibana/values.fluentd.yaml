@@ -1,15 +1,16 @@
 image:
   repository: gcr.io/google-containers/fluentd-elasticsearch
-## Specify an imagePullPolicy (Required)
-## It's recommended to change this to 'Always' if the image tag is 'latest'
-## ref: http://kubernetes.io/docs/user-guide/images/#updating-images
+  ## Specify an imagePullPolicy (Required)
+  ## It's recommended to change this to 'Always' if the image tag is 'latest'
+  ## ref: http://kubernetes.io/docs/user-guide/images/#updating-images
   tag: v2.3.2
   pullPolicy: IfNotPresent
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
-resources: {}
+resources:
+  {}
   # limits:
   #   cpu: 100m
   #   memory: 500Mi
@@ -18,13 +19,13 @@ resources: {}
   #   memory: 200Mi
 
 elasticsearch:
-  host: 'elasticsearch-client'
+  host: "elasticsearch-client"
   port: 9200
-  scheme: 'http'
+  scheme: "http"
   ssl_version: TLSv1_2
   buffer_chunk_limit: 2M
   buffer_queue_limit: 8
-  logstash_prefix: 'logstash'
+  logstash_prefix: "logstash"
 
 # If you want to add custom environment variables, use the env dict
 # You can then reference these in your config file e.g.:
@@ -53,7 +54,8 @@ serviceAccount:
 ##
 podSecurityPolicy:
   enabled: false
-  annotations: {}
+  annotations:
+    {}
     ## Specify pod annotations
     ## Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#apparmor
     ## Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#seccomp
@@ -68,7 +70,8 @@ livenessProbe:
 
 annotations: {}
 
-podAnnotations: {}
+podAnnotations:
+  {}
   # prometheus.io/scrape: "true"
   # prometheus.io/port: "24231"
 
@@ -77,14 +80,16 @@ podAnnotations: {}
 updateStrategy:
   type: RollingUpdate
 
-tolerations: {}
+tolerations:
+  {}
   # - key: node-role.kubernetes.io/master
   #   operator: Exists
   #   effect: NoSchedule
 
 nodeSelector: {}
 
-service: {}
+service:
+  {}
   # type: ClusterIP
   # ports:
   #   - name: "monitor-agent"
@@ -97,7 +102,7 @@ configMaps:
     </system>
   containers.input.conf: |-
     # This configuration file for Fluentd / td-agent is used
-    # to watch changes to Docker log files. The kubelet creates symlinks that
+    # to watch changes to Docker log files. The kubelet creates syamlinks that
     # capture the pod name, namespace, container name & Docker container ID
     # to the docker logs for pods in the /var/log/containers directory on the host.
     # If running this fluentd configuration in a Docker container, the /var/log

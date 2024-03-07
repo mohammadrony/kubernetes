@@ -76,7 +76,7 @@ kind --version
 ## Create Cluster
 
 ```bash
-kind create cluster --config=config.yml
+kind create cluster --config=config.yaml
 ```
 
 ```bash

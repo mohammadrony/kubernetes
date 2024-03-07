@@ -16,25 +16,25 @@ kubectl create namespace logging
 ### Install Elasticsearch
 
 ```bash
-helm show values stable/elasticsearch > values.elasticsearch.yml
+helm show values stable/elasticsearch > values.elasticsearch.yaml
 ```
 
 Custom configuration
 
 ```bash
-vi values.elasticsearch.yml
+vi values.elasticsearch.yaml
 ```
 
 Update
 
-```yml
+```yaml
 data:
   persistence:
     size: "10Gi"
 ```
 
 ```bash
-helm upgrade --install elasticsearch stable/elasticsearch --namespace=logging --values values.elasticsearch.yml
+helm upgrade --install elasticsearch stable/elasticsearch --namespace=logging --values values.elasticsearch.yaml
 ```
 
 ```bash
@@ -43,7 +43,7 @@ kubectl edit svc kibana --namespace logging
 
 Update kibana service
 
-```yml
+```yaml
 spec:
   ports:
     nodePort: 30011
@@ -69,20 +69,20 @@ curl -X DELETE "http://172.29.58.32:30011/logstash-XXXX.*.*"
 ### Install Kibana
 
 ```bash
-helm show values stable/kibana > values.kibana.yml
+helm show values stable/kibana > values.kibana.yaml
 ```
 
 Custom configuration
 
 ```bash
-vi values.kibana.yml
+vi values.kibana.yaml
 ```
 
 Update
 
-```yml
+```yaml
 files:
-  kibana.yml:
+  kibana.yaml:
     elasticsearch.hosts: http://elasticsearch-client:9200
 
 ingress:
@@ -94,12 +94,12 @@ ingress:
 ```
 
 ```bash
-helm upgrade --install kibana stable/kibana --namespace=logging --values values.kibana.yml
+helm upgrade --install kibana stable/kibana --namespace=logging --values values.kibana.yaml
 ```
 
 Update kibana service
 
-```yml
+```yaml
 spec:
   ports:
     nodePort: 30010
@@ -109,7 +109,7 @@ spec:
 ### Install Fluentd
 
 ```bash
-helm show values stable/fluentd-elasticsearch > values.fluentd.yml
+helm show values stable/fluentd-elasticsearch > values.fluentd.yaml
 helm upgrade --install fluentd stable/fluentd-elasticsearch --namespace=logging
 ```
 

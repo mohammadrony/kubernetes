@@ -35,7 +35,7 @@ envFromSecrets:
   #     key: ELASTICSEARCH_PASSWORD
 
 files:
-  kibana.yml:
+  kibana.yaml:
     ## Default Kibana configuration from kibana-docker.
     server.name: kibana
     server.host: "0"

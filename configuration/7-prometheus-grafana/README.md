@@ -10,7 +10,7 @@ helm repo update
 ```
 
 ```bash
-helm show values metrics-server/metrics-server > values.metrics-server.yml
+helm show values metrics-server/metrics-server > values.metrics-server.yaml
 # helm upgrade --install metrics-server metrics-server/metrics-server -n kube-system
 helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server -n kube-system
 ```
@@ -41,18 +41,18 @@ kubectl create namespace monitoring
 ```
 
 ```bash
-helm show values prometheus-community/kube-prometheus-stack > values.prometheus-stack.yml
+helm show values prometheus-community/kube-prometheus-stack > values.prometheus-stack.yaml
 ```
 
 Custom configuration
 
 ```bash
-vi values.prometheus-stack.yml
+vi values.prometheus-stack.yaml
 ```
 
 Update
 
-```yml
+```yaml
 grafana:
   ingress:
     enabled: true
@@ -79,7 +79,7 @@ kubectl edit svc kube-prometheus-stack-grafana --namespace monitoring
 
 Update default service
 
-```yml
+```yaml
 spec:
   ports:
     nodePort: 30001

@@ -56,7 +56,7 @@ kubectl create namespace global
 ```
 
 ```bash
-helm install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq -n rabbit --values values.yaml
+helm upgrade --install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq -n rabbit --values values.yaml
 ```
 
 ```bash
