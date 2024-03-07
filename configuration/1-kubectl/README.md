@@ -67,7 +67,7 @@ Secrets
 kubectl get secrets
 ```
 
-Config map
+Configmap
 
 ```bash
 kubectl get cm

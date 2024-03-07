@@ -33,8 +33,15 @@ Source
 curl -sS https://webi.sh/k9s | bash
 ```
 
+Usage
+
 ```bash
 k9s
+```
+
+```bash
+k9s -n namespace
+k9s --context cluster
 ```
 
 ```bash
