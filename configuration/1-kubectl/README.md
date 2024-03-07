@@ -18,6 +18,8 @@ Cluster info
 kubectl cluster-info
 ```
 
+### kubectl get
+
 Namespace
 
 ```bash
@@ -52,6 +54,39 @@ kubectl get sts
 kubectl get statefulset
 ```
 
+Service account
+
+```bash
+kubectl get sa
+kubectl get serviceaccount
+```
+
+Secrets
+
+```bash
+kubectl get secrets
+```
+
+Config map
+
+```bash
+kubectl get cm
+kubectl get configmap
+```
+
+Role
+
+```bash
+kubectl get role
+```
+
+Role binding
+
+```bash
+kubectl get rb
+kubectl get rolebinding
+```
+
 Options
 
 ```bash
@@ -60,22 +95,32 @@ kubectl get ... -n NAMESPACE
 kubectl get ... -l KEY=VALUE
 ```
 
-Logs
+### kubectl logs
 
 ```bash
 kubectl logs pod/PODNAME
 kubectl logs svc/SERVICE
 kubectl logs deploy/DEPLOYMENT
 kubectl logs sts/STATEFULSET
+kubectl logs cm/CONFIGMAP
+kubectl logs secret/SECRET
+kubectl logs sa/SERVICEACCOUNT
+kubectl logs role/ROLE
+kubectl logs rb/ROLEBINDING
 ```
 
-Describe
+### kubectl describe
 
 ```bash
 kubectl describe pod PODNAME
 kubectl describe svc SERVICE
 kubectl describe deploy DEPLOYMENT
 kubectl describe sts STATEFULSET
+kubectl describe cm/CONFIGMAP
+kubectl describe secret/SECRET
+kubectl describe sa/SERVICEACCOUNT
+kubectl describe role/ROLE
+kubectl describe rb/ROLEBINDING
 ```
 
 ## Create and Update
