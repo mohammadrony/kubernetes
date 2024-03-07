@@ -10,7 +10,7 @@
 
 - [Kubectl Commands](./configuration/1-kubectl/)
 - [Helm](./configuration/2-helm/)
-- [Kubectx and Kubens](./configuration/3-kubectx/)
+- [Kubectx Kubens and K9s](./configuration/3-kubectx-k9s/)
 - [Nginx Ingress and Load Balancer](./configuration/4-ingress-loadbalancer/)
 - [Longhorn](./configuration/5-longhorn/)
 - [Cert Manager](./configuration/6-cert-manager/)
