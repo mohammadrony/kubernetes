@@ -16,3 +16,19 @@ kl () {
   echo kubectl logs -f $attr --namespace $pod[1] $pod[2]
   kubectl logs -f $attr --namespace $pod[1] $pod[2]
 }
+
+kd () {
+    local pod=($(kubectl get pods --all-namespaces -owide | fzf | awk '{print $1, $2}'))
+    local attr=${@:-""}
+
+    echo kubectl describe pod $attr --namespace $pod[1] $pod[2]
+    kubectl describe pod $attr --namespace $pod[1] $pod[2] | most
+}
+
+kinfo() {
+    if [ -z "$RPROMPT" ]; then
+        RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+    else
+        RPROMPT=''
+    fi
+}
