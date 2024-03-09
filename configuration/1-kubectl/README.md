@@ -10,6 +10,11 @@ sudo kubeadm init --pod-network-cidr=nnn.nnn.nnn.nnn/nn --apiserver-advertise-ad
 kubeadm token create --print-join-command
 ```
 
+## Manifests
+
+- [Applications](./manifest/applications/)
+- [Templates](./manifest/templates/)
+
 ## Cluster details
 
 Cluster info
