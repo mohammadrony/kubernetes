@@ -24,11 +24,3 @@ kd () {
     echo kubectl describe pod $attr --namespace $pod[1] $pod[2]
     kubectl describe pod $attr --namespace $pod[1] $pod[2] | most
 }
-
-kinfo() {
-    if [ -z "$RPROMPT" ]; then
-        RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
-    else
-        RPROMPT=''
-    fi
-}
