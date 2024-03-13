@@ -156,6 +156,10 @@ kubectl run -it shell --image giantswarm/tiny-tools --restart Never --rm -- sh
 kubectl exec -it PODNAME -- COMMAND
 ```
 
+```bash
+kubectl exec PODNAME -- env
+```
+
 Update
 
 ```bash
