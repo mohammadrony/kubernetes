@@ -134,8 +134,6 @@ grafana-cli admin reset-admin-password admin yourPassword
 
 ### Dashboard Setup
 
-#### Health monitoring
-
 Dashboards > New > New Dashboard > Import dashboard
 
 Some popular dashboards
@@ -150,17 +148,8 @@ Some popular dashboards
 
 Select dashboard ID > Load > Data source > Prometheus > Import
 
-#### Log monitoring
-
-Home > Connections > Data sources > Add new source > Search Loki.
-
-- Name: `Loki`
-- URL: `http://loki.monitoring.svc:3100`
-- Save and test
-
 ## Clear resources
 
 ```bash
-helm uninstall loki --namespace monitoring
 helm uninstall kube-prometheus-stack --namespace monitoring
 ```
