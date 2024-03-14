@@ -62,7 +62,7 @@ grafana:
 ```
 
 ```bash
-helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack --namespace monitoring --values 
+helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack --namespace monitoring --values values.prometheus-stack.yaml
 ```
 
 ```bash
@@ -92,16 +92,30 @@ Create expose service
 kubectl expose svc/kube-prometheus-stack-grafana --namespace monitoring --target-port=3000 --type=NodePort --name=grafana-nodeport
 ```
 
-Port forwarding
+## Install Loki stack
 
 ```bash
-kubectl port-forward svc/kube-prometheus-stack-grafana 30000:80
-kubectl port-forward svc/kube-prometheus-stack-prometheus 30001:9090
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
 ```
 
-### Grafana admin password
+```bash
+helm show values grafana/loki-stack > values.loki-stack.yaml
+```
 
-Find default password
+```bash
+helm upgrade --install loki grafana/loki-stack --namespace=monitoring --values values.loki-stack.yaml
+```
+
+## Grafana Management setup
+
+### Expose service
+
+```bash
+kubectl port-forward svc/kube-prometheus-stack-grafana 30001:80
+```
+
+Find admin password
 
 ```bash
 kubectl get secrets kube-prometheus-stack-grafana -o json | jq '.data | map_values(@base64d)'
@@ -120,6 +134,8 @@ grafana-cli admin reset-admin-password admin yourPassword
 
 ### Dashboard Setup
 
+#### Health monitoring
+
 Dashboards > New > New Dashboard > Import dashboard
 
 Some popular dashboards
@@ -134,8 +150,17 @@ Some popular dashboards
 
 Select dashboard ID > Load > Data source > Prometheus > Import
 
+#### Log monitoring
+
+Home > Connections > Data sources > Add new source > Search Loki.
+
+- Name: `Loki`
+- URL: `http://loki.monitoring.svc:3100`
+- Save and test
+
 ## Clear resources
 
 ```bash
+helm uninstall loki --namespace monitoring
 helm uninstall kube-prometheus-stack --namespace monitoring
 ```
