@@ -21,7 +21,7 @@ kl () {
 
 # kubectl describe
 kd () {
-  api_resources=$(kubectl api-resources --namespaced | sed -E 's/(.{40}).*/\1/;s/[A-Z ]+/\n/g' | sort | uniq)
+  api_resources=$(kubectl api-resources --namespaced | sed -E 's/(.{40}).*/\1/;s/[A-Z ]+/\n/g' | sort -u)
   [ $# -eq 0 ] && x=$(echo ${api_resources} | fzf) || echo ${api_resources} | grep -xq $1
 
   if [ $? -eq 0 ]; then
@@ -35,7 +35,7 @@ kd () {
 
 # kubectl edit
 ked () {
-  api_resources=$(kubectl api-resources --namespaced | sed -E 's/(.{40}).*/\1/;s/[A-Z ]+/\n/g' | sort | uniq)
+  api_resources=$(kubectl api-resources --namespaced | sed -E 's/(.{40}).*/\1/;s/[A-Z ]+/\n/g' | sort -u)
   [ $# -eq 0 ] && x=$(echo ${api_resources} | fzf) || echo ${api_resources} | grep -xq $1
 
   if [ $? -eq 0 ]; then
