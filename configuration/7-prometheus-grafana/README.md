@@ -21,6 +21,27 @@ Uninstall metrics server
 helm uninstall metrics-server -n kube-system
 ```
 
+## Install Loki stack
+
+```bash
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+```
+
+```bash
+helm show values grafana/loki-stack > values.loki-stack.yaml
+```
+
+```bash
+helm upgrade --install loki grafana/loki-stack --namespace loki-stack --values values.loki-stack-custom.yaml
+```
+
+Add Ingress for Grafana
+
+```bash
+kubectl apply --namespace loki-stack -f grafana-ingress.yaml
+```
+
 ## Install Prometheus stack
 
 Add Prometheus repo
@@ -69,9 +90,9 @@ helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheu
 kubectl get pods -l "release=kube-prometheus-stack" --namespace monitoring
 ```
 
-## Setup Grafana
+## Expose Grafana service NodePort
 
-Expose grafana service
+### Expose grafana service
 
 ```bash
 kubectl edit svc kube-prometheus-stack-grafana --namespace monitoring
@@ -92,28 +113,13 @@ Create expose service
 kubectl expose svc/kube-prometheus-stack-grafana --namespace monitoring --target-port=3000 --type=NodePort --name=grafana-nodeport
 ```
 
-## Install Loki stack
-
-```bash
-helm repo add grafana https://grafana.github.io/helm-charts
-helm repo update
-```
-
-```bash
-helm show values grafana/loki-stack > values.loki-stack.yaml
-```
-
-```bash
-helm upgrade --install loki grafana/loki-stack --namespace=monitoring --values values.loki-stack.yaml
-```
-
-## Grafana Management setup
-
-### Expose service
+Service port forwarding
 
 ```bash
 kubectl port-forward svc/kube-prometheus-stack-grafana 30001:80
 ```
+
+### Admin password setup
 
 Find admin password
 
@@ -136,7 +142,7 @@ grafana-cli admin reset-admin-password admin yourPassword
 
 Dashboards > New > New Dashboard > Import dashboard
 
-Some popular dashboards
+Metrics monitoring dashboard
 
 | ID    | Title                            |
 |-------|----------------------------------|
@@ -148,8 +154,20 @@ Some popular dashboards
 
 Select dashboard ID > Load > Data source > Prometheus > Import
 
+Log monitoring dashboard
+
+| ID    | Title                            |
+|-------|----------------------------------|
+| 13639 | Logs / App                       |
+| 15141 | Loki Kubernetes Logs             |
+| 14055 | Loki stack monitoring            |
+
+Select dashboard ID > Load > Data source > Loki > Import
+
 ## Clear resources
 
 ```bash
 helm uninstall kube-prometheus-stack --namespace monitoring
+helm uninstall loki --namespace loki-stack
+kubectl delete -f --namespace loki-stack -f grafana-ingress.yaml
 ```
