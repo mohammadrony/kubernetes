@@ -34,7 +34,7 @@ data:
 ```
 
 ```bash
-helm upgrade --install elasticsearch stable/elasticsearch --namespace=logging --values values.elasticsearch.yaml
+helm upgrade --install elasticsearch stable/elasticsearch --namespace logging --values values.elasticsearch.yaml
 ```
 
 ```bash
@@ -94,7 +94,7 @@ ingress:
 ```
 
 ```bash
-helm upgrade --install kibana stable/kibana --namespace=logging --values values.kibana.yaml
+helm upgrade --install kibana stable/kibana --namespace logging --values values.kibana.yaml
 ```
 
 Update kibana service
@@ -110,19 +110,19 @@ spec:
 
 ```bash
 helm show values stable/fluentd-elasticsearch > values.fluentd.yaml
-helm upgrade --install fluentd stable/fluentd-elasticsearch --namespace=logging
+helm upgrade --install fluentd stable/fluentd-elasticsearch --namespace logging
 ```
 
 ## Uninstall Charts
 
 ```bash
-helm uninstall elasticsearch --namespace=logging
+helm uninstall elasticsearch --namespace logging
 ```
 
 ```bash
-helm uninstall kibana --namespace=logging
+helm uninstall kibana --namespace logging
 ```
 
 ```bash
-helm uninstall fluentd --namespace=logging
+helm uninstall fluentd --namespace logging
 ```
