@@ -8,17 +8,17 @@
 
 ## Configuration
 
-- [Kubectl Commands](./configuration/1-kubectl/)
-- [Helm](./configuration/2-helm/)
-- [Kubectx Kubens and K9s](./configuration/3-kubectx-k9s/)
-- [Nginx Ingress and Load Balancer](./configuration/4-ingress-loadbalancer/)
-- [Longhorn](./configuration/5-longhorn/)
-- [Cert Manager](./configuration/6-cert-manager/)
-- [Prometheus and Grafana](./configuration/7-prometheus-grafana/)
-- [Elasticsearch Fluentd and Kibana Stack](./configuration/8-elasticsearch-fluentd-kibana/)
-- [Keycloak](./configuration/9-keycloak/)
-- [RabbitMQ](./configuration/10-rabbitmq/)
-- [Kustomize](./configuration/11-kustomize/)
+- [Kubectl Commands](./configuration/kubectl/)
+- [Helm](./configuration/helm/)
+- [Kubectx Kubens and K9s](./configuration/kubectx-k9s/)
+- [Nginx Ingress and Load Balancer](./configuration/ingress-loadbalancer/)
+- [Longhorn](./configuration/longhorn/)
+- [Cert Manager](./configuration/cert-manager/)
+- [Prometheus and Grafana](./configuration/prometheus-grafana/)
+- [Elasticsearch Fluentd and Kibana Stack](./configuration/elasticsearch-fluentd-kibana/)
+- [Keycloak](./configuration/keycloak/)
+- [RabbitMQ](./configuration/rabbitmq/)
+- [Kustomize](./configuration/kustomize/)
 
 ## Scripts
 
