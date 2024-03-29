@@ -5,11 +5,11 @@
 ### Install without storage class
 
 ```bash
-kubectl create namespace global
+NS=rabbits
 ```
 
 ```bash
-helm upgrade --install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq --create-namespace --namespace rabbitmq \
+helm upgrade --install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq --create-namespace --namespace $NS \
   --set plugins="rabbitmq_federation rabbitmq_management rabbitmq_peer_discovery_k8s rabbitmq_management_agent rabbitmq_auth_backend_ldap" \
   --set replicaCount=2
 ```
@@ -17,18 +17,18 @@ helm upgrade --install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitm
 Access configuration
 
 ```bash
-kubectl port-forward --namespace global svc/rabbitmq 5672:5672
-kubectl port-forward --namespace global svc/rabbitmq 15672:15672
+kubectl port-forward --namespace $NS svc/rabbitmq 5672:5672
+kubectl port-forward --namespace $NS svc/rabbitmq 15672:15672
 ```
 
 ```bash
-kubectl get secret --namespace global rabbitmq -o jsonpath="{.data.rabbitmq-password}" | base64 -d
+kubectl get secret --namespace $NS rabbitmq -o jsonpath="{.data.rabbitmq-password}" | base64 -d
 ```
 
 ### Install with storage class
 
 ```bash
-helm uninstall rabbitmq -n global
+helm uninstall rabbitmq -n $NS
 ```
 
 Hardware requirements
@@ -45,20 +45,20 @@ helm upgrade --install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitm
   --set persistence.storageClass="longhorn" \
   --set persistence.size=500Mi \
   --set plugins="rabbitmq_federation rabbitmq_management rabbitmq_peer_discovery_k8s rabbitmq_management_agent rabbitmq_auth_backend_ldap" \
-  --set replicaCount=3 \
-  --create-namespace --namespace rabbitmq
+  --set replicaCount=2 \
+  --create-namespace --namespace $NS
 ```
 
 ### Install with values file
 
 ```bash
-kubectl create namespace global
+kubectl create namespace $NS
 ```
 
 ```bash
-helm upgrade --install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq -n rabbit --values values.yaml
+helm upgrade --install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq -n $NS --values values.yaml
 ```
 
 ```bash
-helm uninstall rabbitmq -n global
+helm uninstall rabbitmq -n $NS
 ```

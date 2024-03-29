@@ -10,7 +10,7 @@ plugins:
   - rabbitmq_management_agent
   - rabbitmq_auth_backend_ldap
 
-replicaCount: 3
+replicaCount: 2
 
 resources:
   requests:
