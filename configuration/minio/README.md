@@ -1,51 +1,78 @@
 # Minio
 
-## Helm Installation
+## Helm Chart
 
-Add Helm repo
+## Source Release
+
+### Prepare Nodes for Label selector
 
 ```bash
-helm repo add minio https://charts.min.io/
+kubectl get nodes --show-labels
+kubectl label nodes NODE-NAME storage-type=persistent
+```
+
+Setup repository from [Github](https://github.com/minio/operator)
+
+```bash
+helm repo add minio-operator
 helm repo update
 ```
 
 ```bash
-helm show values minio/minio values.minio.yaml
+version=5.0.9
+wget https://raw.githubusercontent.com/minio/operator/master/helm-releases/operator-$version.tgz -O operator.tgz
+wget https://raw.githubusercontent.com/minio/operator/master/helm-releases/tenant-$version.tgz -O tenant.tgz
 ```
 
-Custom configuration
+Extract archive
 
 ```bash
-vi values.minio.yaml
+gunzip operator.tgz
+tar -xvf operator.tar
 ```
 
-Update
+Update values
 
 ```yaml
-additionalLabels:
-  app: minio
-
-existingSecret: "minio-secret"
-
-replicas: 2
-
 persistence:
   storageClass: "longhorn"
-  size: 30Gi
+  size: 50Gi
 
 ingress:
   enabled: true
   ingressClassName: nginx
   hosts:
     - minio.example.com
+
+# nodeSelector:
+#   storage-type: persistent
+
+affinity:
+  nodeAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        preference:
+          matchExpressions:
+            - key: storage-type
+              operator: In
+              values:
+                - persistent
+
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 500m
+  limits:
+    memory: 1Gi
+    cpu: 1000m
 ```
 
-Create secret
-
 ```bash
-kubectl create secret generic minio-secret --from-literal=rootUser=Admin --from-literal=rootPassword=7XxV00jMQ8A9Xi5
+helm install minio-operator operator --namespace minio --create-namespace --values minio/values.operator.yaml
 ```
 
+### Post Installation
+
 ```bash
-helm install minio/minio --namespace minio --create-namespace --values values.minio.yaml
+kubectl get secret/console-sa-secret -n minio -o json | jq -r ".data.token" | base64 -d
 ```

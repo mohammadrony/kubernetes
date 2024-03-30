@@ -12,82 +12,86 @@ kubeadm token create --print-join-command
 
 ## Cluster details
 
-Cluster info
-
 ```bash
 kubectl cluster-info
 ```
 
-### kubectl get
-
-Namespace
+### Nodes
 
 ```bash
+kubectl get no
+kubectl get nodes
+```
+
+### Namespace
+
+```bash
+kubectl get ns
 kubectl get namespace
 ```
 
-Pods
+### Pods
 
 ```bash
 kubectl get pod
 kubectl get pods
 ```
 
-Deploy
+### Deployment
 
 ```bash
 kubectl get deploy
 kubectl get deployment
 ```
 
-Service
+### Service
 
 ```bash
 kubectl get svc
 kubectl get service
 ```
 
-Stateful sets
+### Stateful sets
 
 ```bash
 kubectl get sts
 kubectl get statefulset
 ```
 
-Service account
+### Service account
 
 ```bash
 kubectl get sa
 kubectl get serviceaccount
 ```
 
-Secrets
+### Secrets
 
 ```bash
 kubectl get secrets
 ```
 
-Configmap
+### Config map
 
 ```bash
 kubectl get cm
 kubectl get configmap
 ```
 
-Role
+### Role
 
 ```bash
 kubectl get role
 ```
 
-Role binding
+### Role binding
 
 ```bash
 kubectl get rb
 kubectl get rolebinding
 ```
 
-Options
+### Get options
 
 ```bash
 kubectl get ... -o OUTPUT
@@ -95,7 +99,7 @@ kubectl get ... -n NAMESPACE
 kubectl get ... -l KEY=VALUE
 ```
 
-### kubectl logs
+### Logs
 
 ```bash
 kubectl logs pod/PODNAME
@@ -109,7 +113,7 @@ kubectl logs role/ROLE
 kubectl logs rb/ROLEBINDING
 ```
 
-### kubectl describe
+### Describe
 
 ```bash
 kubectl describe pod PODNAME
@@ -125,7 +129,7 @@ kubectl describe rb/ROLEBINDING
 
 ## Create and Update
 
-Deploy objects
+### Deploy
 
 ```bash
 kubectl create -f FILE.yaml
@@ -140,7 +144,7 @@ kubectl run PODNAME --image=IMAGE:TAG
 kubectl run PODNAME --image=IMAGE:TAG --port=PORT
 ```
 
-Run commands
+### Run
 
 ```bash
 kubectl run -it busybox --image=busybox --rm -- sh
@@ -155,7 +159,7 @@ kubectl exec -it PODNAME -- COMMAND
 kubectl exec PODNAME -- env
 ```
 
-Update
+### Update
 
 ```bash
 kubectl edit pod PODNAME
@@ -164,7 +168,7 @@ kubectl edit deploy DEPLOYMENT
 kubectl edit sts STATEFULSET
 ```
 
-Scale
+### Scale
 
 ```bash
 kubectl scale --replicas=N PODNAME
@@ -172,7 +176,7 @@ kubectl scale --replicas=N DEPLOYMENT
 kubectl scale --replicas=N STATEFULSET
 ```
 
-Delete
+### Delete
 
 ```bash
 kubectl delete pod PODNAME
@@ -181,14 +185,14 @@ kubectl delete deploy DEPLOYMENT
 kubectl delete sts STATEFULSET
 ```
 
-Copy files
+### Copy files
 
 ```bash
 kubectl cp PODNAME:/foo ./
 kubectl cp ./ PODNAME:/foo
 ```
 
-Open access
+### Enable access
 
 ```bash
 kubectl port-forward svc/SERVICE HOST_PORT:CONTAINER_PORT
@@ -198,7 +202,7 @@ kubectl port-forward svc/SERVICE HOST_PORT:CONTAINER_PORT
 kubectl expose svc/SERVICE --type=NodePort --target-port=CONTAINER_PORT --name=SERVICE_2
 ```
 
-Restart
+### Restart
 
 ```bash
 kubectl rollout restart pod PODNAME
@@ -206,6 +210,8 @@ kubectl rollout restart deploy DEPLOYMENT
 kubectl rollout restart svc SERVICE
 kubectl rollout restart sts STATEFULSET
 ```
+
+### Schedule
 
 Disable scheduling for node
 
@@ -217,4 +223,30 @@ Enable scheduling for node
 
 ```bash
 kubectl uncordon NODE
+```
+
+### Label
+
+Get node labels
+
+```bash
+kubectl get nodes --show-labels
+```
+
+Add label in a node
+
+```bash
+kubectl label nodes NODE KEY=VALUE
+```
+
+Update label value
+
+```bash
+kubectl label nodes NODE KEY=VALUE --overwrite
+```
+
+Remove label from node
+
+```bash
+kubectl label nodes NODE KEY-
 ```
