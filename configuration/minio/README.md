@@ -1,6 +1,65 @@
 # Minio
 
-## Helm Chart
+## Helm Install
+
+### Operator and Tenant
+
+[Project](https://github.com/minio/operator)
+
+```bash
+kubectl create namespace minio-tenant-1
+```
+
+```bash
+helm repo add minio-operator https://operator.min.io
+helm repo update
+```
+
+```bash
+helm show values minio-operator/operator > values.minio-operator.yaml
+```
+
+```bash
+helm install \
+  --namespace minio-operator \
+  --create-namespace \
+  operator minio-operator/operator
+```
+
+Create token
+
+```bash
+echo 'apiVersion: v1                                                                                                  (board/global)
+kind: Secret
+metadata:
+  name: console-sa-secret
+  namespace: minio-operator
+  annotations:
+    kubernetes.io/service-account.name: console-sa
+type: kubernetes.io/service-account-token' | k apply -f -
+```
+
+Get token
+
+```bash
+kubectl -n minio-operator get secret console-sa-secret -o jsonpath="{.data.token}" | base64 --decode
+```
+
+Update NodePort
+
+```bash
+kubectl edit svc console
+```
+
+```yaml
+spec:
+  ports:
+  - name: http
+    nodePort: 30000
+  type: NodePort
+```
+
+### Bitnami Chart
 
 ```bash
 helm show values oci://registry-1.docker.io/bitnamicharts/minio > values.minio-bitnami.yaml
