@@ -29,7 +29,7 @@ helm install \
 Create token
 
 ```bash
-echo 'apiVersion: v1                                                                                                  (board/global)
+echo 'apiVersion: v1
 kind: Secret
 metadata:
   name: console-sa-secret
