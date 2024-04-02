@@ -239,7 +239,10 @@ provisioning:
   podLabels: {}
   ## @param provisioning.podAnnotations Provisioning Pod annotations.
   ##
-  podAnnotations: {}
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/minio/v2/metrics/cluster"
+    prometheus.io/port: "9000"
   ## @param provisioning.command Default provisioning container command (useful when using custom images). Use array form
   ##
   command: []
