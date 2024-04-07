@@ -1,4 +1,9 @@
-# Prometheus and Grafana
+# Grafana with Loki Stack and Prometheus
+
+## Documentation
+
+- [Log Management and Distributed Tracing using Grafana Loki and Tempo](https://blog.cloudtechner.com/log-management-and-distributed-tracing-using-grafana-loki-and-tempo-b9c56392bae7)
+- [Kubernetes Observability Using Loki, Cortex, Tempo and Grafana](https://invisibl.io/kubernetes-observability-loki-cortex-tempo-prometheus-grafana/?amp=1)
 
 ## Setup Matrics server
 
@@ -116,7 +121,7 @@ kubectl expose svc/kube-prometheus-stack-grafana --namespace monitoring --target
 Service port forwarding
 
 ```bash
-kubectl port-forward svc/kube-prometheus-stack-grafana 30001:80
+kubectl port-forward svc/kube-prometheus-stack-grafana 8080:80
 ```
 
 ### Admin password setup

@@ -1,3 +1,49 @@
+loki:
+  config:
+    compactor:
+      compaction_interval: 10m
+      retention_delete_delay: 2h
+      retention_delete_worker_count: 150
+      retention_enabled: true
+      working_directory: /data/retention
+    limits_config:
+      retention_period: 168h
+  enabled: true
+  isDefault: true
+  persistence:
+    enabled: true
+    size: 50Gi
+    storageClassName: longhorn
+  #nodeSelector:
+  #role: nodes-dev-general
+
+fluent-bit:
+  enabled: false
+
+grafana:
+  enabled: true
+  image:
+    tag: 9.0.2
+  persistence:
+    enabled: true
+    size: 5Gi
+    storageClassName: longhorn
+  sidecar:
+    datasources:
+      enabled: true
+  #nodeSelector:
+  #role: nodes-dev-general
+
+prometheus:
+  enabled: false
+  isDefault: false
+promtail:
+  config:
+    lokiAddress: http://{{ .Release.Name }}:3100/loki/api/v1/push
+  enabled: true
+  #nodeSelector:
+  #role: nodes-dev-general
+
 filebeat:
   enabled: false
   filebeatConfig:
@@ -15,23 +61,11 @@ filebeat:
                 logs_path: "/var/log/containers/"
       output.logstash:
         hosts: ["logstash-loki:5044"]
-fluent-bit:
-  enabled: false
-grafana:
-  enabled: true
-  image:
-    tag: 9.0.2
-  persistence:
-    enabled: true
-    size: 3Gi
-    storageClassName: longhorn
-  sidecar:
-    datasources:
-      enabled: true
-  #nodeSelector:
-  #role: nodes-dev-general
+
 logstash:
   enabled: false
+  image: grafana/logstash-output-loki
+  imageTag: 1.0.1
   filters:
     main: |-
       filter {
@@ -49,8 +83,6 @@ logstash:
           remove_field => ["tags"]
         }
       }
-  image: grafana/logstash-output-loki
-  imageTag: 1.0.1
   outputs:
     main: |-
       output {
@@ -61,30 +93,3 @@ logstash:
         }
         # stdout { codec => rubydebug }
       }
-loki:
-  config:
-    compactor:
-      compaction_interval: 10m
-      retention_delete_delay: 2h
-      retention_delete_worker_count: 150
-      retention_enabled: true
-      working_directory: /data/retention
-    limits_config:
-      retention_period: 72h
-  enabled: true
-  isDefault: true
-  persistence:
-    enabled: true
-    size: 30Gi
-    storageClassName: longhorn
-  #nodeSelector:
-  #role: nodes-dev-general
-prometheus:
-  enabled: false
-  isDefault: false
-promtail:
-  config:
-    lokiAddress: http://{{ .Release.Name }}:3100/loki/api/v1/push
-  enabled: true
-  #nodeSelector:
-  #role: nodes-dev-general
