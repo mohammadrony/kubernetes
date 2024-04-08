@@ -77,6 +77,10 @@ helm repo update
 ```
 
 ```bash
+helm show values longhorn/longhorn > values.longhorn.yaml
+```
+
+```bash
 helm upgrade --install longhorn longhorn/longhorn --create-namespace --namespace longhorn-system
 ```
 

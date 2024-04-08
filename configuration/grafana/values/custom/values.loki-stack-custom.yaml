@@ -7,15 +7,15 @@ loki:
       retention_enabled: true
       working_directory: /data/retention
     limits_config:
-      retention_period: 168h
+      retention_period: 12h
   enabled: true
   isDefault: true
   persistence:
     enabled: true
-    size: 50Gi
+    size: 8Gi
     storageClassName: longhorn
-  #nodeSelector:
-  #role: nodes-dev-general
+  nodeSelector:
+    kubernetes.io/hostname: worker-1
 
 fluent-bit:
   enabled: false
@@ -26,13 +26,13 @@ grafana:
     tag: 9.0.2
   persistence:
     enabled: true
-    size: 5Gi
+    size: 1Gi
     storageClassName: longhorn
   sidecar:
     datasources:
       enabled: true
-  #nodeSelector:
-  #role: nodes-dev-general
+  nodeSelector:
+    kubernetes.io/hostname: worker-1
 
 prometheus:
   enabled: false
@@ -41,8 +41,8 @@ promtail:
   config:
     lokiAddress: http://{{ .Release.Name }}:3100/loki/api/v1/push
   enabled: true
-  #nodeSelector:
-  #role: nodes-dev-general
+  nodeSelector:
+    kubernetes.io/hostname: worker-1
 
 filebeat:
   enabled: false

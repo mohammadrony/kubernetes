@@ -34,3 +34,11 @@ helm install opentelemetry-operator open-telemetry/opentelemetry-operator
 ```bash
 helm install promtail grafana/promtail --set "loki.serviceName=loki.observability.svc.cluster.local"
 ```
+
+```bash
+helm dependency build
+```
+
+```bash
+helm depencencies update
+```
