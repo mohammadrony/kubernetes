@@ -5,6 +5,7 @@
 ### New Cluster
 
 - [Kind](./new-cluster/kind/)
+- [K3s](./new-cluster/k3s/)
 
 ## Configuration
 
