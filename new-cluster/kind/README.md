@@ -80,11 +80,11 @@ kind create cluster --config=config.yaml
 ```
 
 ```bash
-kind create cluster --name cluster-2
+kind create cluster --name dev
 ```
 
 ```bash
-kind create cluster --image kindest/node:<version@sha256> --name cluster-3
+kind create cluster --image kindest/node:<version@sha256> --name dev
 ```
 
 Cluster info
@@ -95,8 +95,7 @@ kind get clusters
 
 ```bash
 kubectl cluster-info
-kubectl cluster-info --context kind-kind
-kubectl cluster-info --context kind-kind-2
+kubectl cluster-info --context kind-dev
 ```
 
 ```bash

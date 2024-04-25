@@ -23,7 +23,7 @@ helm repo add stable https://charts.helm.sh/stable
 ```
 
 ```bash
-helm repo add <NAME> <URL>
+helm repo add <NAME> <REPOSITORY>
 ```
 
 Update Helm repository
@@ -32,14 +32,30 @@ Update Helm repository
 helm repo update
 ```
 
-## Install Helm chart
+## Install Chart
 
 ```bash
 helm search repo <CHART>
 ```
 
 ```bash
-helm install <NAME> <CHART>
+helm install <NAME> <CHART> --wait
+```
+
+```bash
+helm install <NAME> <CHART> --namespace <NAMESPACE> --create-namespace
+```
+
+```bash
+helm install <NAME> --repo <REPOSITORY> <CHART>
+```
+
+```bash
+helm install <NAME> --set <VARIABLE>=<VALUE>
+```
+
+```bash
+helm install <NAME> --values <VALUES.YAML>
 ```
 
 ```bash
@@ -50,7 +66,7 @@ helm upgrade --install <NAME> <CHART>
 helm test <NAME>
 ```
 
-Remove installed chart
+## Uninstall Chart
 
 ```bash
 helm uninstall <NAME>

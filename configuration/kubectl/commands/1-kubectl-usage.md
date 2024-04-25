@@ -37,6 +37,10 @@ kubectl get pod
 kubectl get pods
 ```
 
+```bash
+kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node>
+```
+
 ### Deployment
 
 ```bash
