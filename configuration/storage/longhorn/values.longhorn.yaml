@@ -10,10 +10,10 @@ global:
       enabled: false
       # -- Toleration for Linux nodes that can run user-deployed Longhorn components.
       tolerations:
-      - key: "cattle.io/os"
-        value: "linux"
-        effect: "NoSchedule"
-        operator: "Equal"
+        - key: "cattle.io/os"
+          value: "linux"
+          effect: "NoSchedule"
+          operator: "Equal"
       # -- Node selector for Linux nodes that can run user-deployed Longhorn components.
       nodeSelector:
         kubernetes.io/os: "linux"
@@ -481,4 +481,3 @@ openshift:
 
 # -- Setting that allows Longhorn to generate code coverage profiles.
 enableGoCoverDir: false
-

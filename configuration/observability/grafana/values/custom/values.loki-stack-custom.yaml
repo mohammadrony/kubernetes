@@ -14,8 +14,8 @@ loki:
     enabled: true
     size: 8Gi
     storageClassName: longhorn
-  nodeSelector:
-    kubernetes.io/hostname: worker-1
+  # nodeSelector:
+  #   kubernetes.io/hostname: worker-1
 
 fluent-bit:
   enabled: false
@@ -26,13 +26,13 @@ grafana:
     tag: 9.0.2
   persistence:
     enabled: true
-    size: 1Gi
+    size: 2Gi
     storageClassName: longhorn
   sidecar:
     datasources:
       enabled: true
-  nodeSelector:
-    kubernetes.io/hostname: worker-1
+  # nodeSelector:
+  #   kubernetes.io/hostname: worker-1
 
 prometheus:
   enabled: false
@@ -41,8 +41,8 @@ promtail:
   config:
     lokiAddress: http://{{ .Release.Name }}:3100/loki/api/v1/push
   enabled: true
-  nodeSelector:
-    kubernetes.io/hostname: worker-1
+  # nodeSelector:
+  #   kubernetes.io/hostname: worker-1
 
 filebeat:
   enabled: false

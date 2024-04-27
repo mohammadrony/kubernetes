@@ -1,0 +1,20 @@
+loki:
+  config:
+    compactor:
+      compaction_interval: 10m
+      retention_delete_delay: 2h
+      retention_delete_worker_count: 150
+      retention_enabled: true
+      working_directory: /data/retention
+    limits_config:
+      retention_period: 72h
+  isDefault: false
+  persistence:
+    enabled: true
+    size: 30Gi
+    storageClassName: longhorn
+  # nodeSelector:
+  #   kubernetes.io/hostname: worker-1
+
+promtail:
+  enabled: false

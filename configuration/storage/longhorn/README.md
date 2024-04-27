@@ -81,7 +81,7 @@ helm show values longhorn/longhorn > values.longhorn.yaml
 ```
 
 ```bash
-helm upgrade --install longhorn longhorn/longhorn --create-namespace --namespace longhorn-system
+helm upgrade --install longhorn longhorn/longhorn --create-namespace --namespace longhorn-system --values values.longhorn.yaml
 ```
 
 ```bash

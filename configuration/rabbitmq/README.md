@@ -56,6 +56,7 @@ kubectl create namespace $NS
 ```
 
 ```bash
+NS=test
 helm upgrade --install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq -n $NS --values values.yaml
 ```
 

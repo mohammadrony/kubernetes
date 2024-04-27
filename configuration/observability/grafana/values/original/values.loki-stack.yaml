@@ -21,7 +21,6 @@ loki:
     jsonData: "{}"
     uid: ""
 
-
 promtail:
   enabled: true
   config:
@@ -109,4 +108,3 @@ proxy:
   http_proxy: ""
   https_proxy: ""
   no_proxy: ""
-

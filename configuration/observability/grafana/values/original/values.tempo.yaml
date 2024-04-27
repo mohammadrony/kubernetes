@@ -97,7 +97,8 @@ tempo:
           endpoint: "0.0.0.0:4317"
         http:
           endpoint: "0.0.0.0:4318"
-  securityContext: {}
+  securityContext:
+    {}
     # allowPrivilegeEscalation: false
     #  capabilities:
     #    drop:
@@ -119,37 +120,37 @@ tempo:
 # -- Tempo configuration file contents
 # @default -- Dynamically generated tempo configmap
 config: |
-    multitenancy_enabled: {{ .Values.tempo.multitenancyEnabled }}
-    usage_report:
-      reporting_enabled: {{ .Values.tempo.reportingEnabled }}
-    compactor:
-      compaction:
-        block_retention: {{ .Values.tempo.retention }}
-    distributor:
-      receivers:
-        {{- toYaml .Values.tempo.receivers | nindent 8 }}
-    ingester:
-      {{- toYaml .Values.tempo.ingester | nindent 6 }}
-    server:
-      {{- toYaml .Values.tempo.server | nindent 6 }}
-    storage:
-      {{- toYaml .Values.tempo.storage | nindent 6 }}
-    querier:
-      {{- toYaml .Values.tempo.querier | nindent 6 }}
-    query_frontend:
-      {{- toYaml .Values.tempo.queryFrontend | nindent 6 }}
-    overrides:
-      {{- toYaml .Values.tempo.global_overrides | nindent 6 }}
-      {{- if .Values.tempo.metricsGenerator.enabled }}
-          metrics_generator_processors:
-          - 'service-graphs'
-          - 'span-metrics'
-    metrics_generator:
-          storage:
-            path: "/tmp/tempo"
-            remote_write:
-              - url: {{ .Values.tempo.metricsGenerator.remoteWriteUrl }}
-      {{- end }}
+  multitenancy_enabled: {{ .Values.tempo.multitenancyEnabled }}
+  usage_report:
+    reporting_enabled: {{ .Values.tempo.reportingEnabled }}
+  compactor:
+    compaction:
+      block_retention: {{ .Values.tempo.retention }}
+  distributor:
+    receivers:
+      {{- toYaml .Values.tempo.receivers | nindent 8 }}
+  ingester:
+    {{- toYaml .Values.tempo.ingester | nindent 6 }}
+  server:
+    {{- toYaml .Values.tempo.server | nindent 6 }}
+  storage:
+    {{- toYaml .Values.tempo.storage | nindent 6 }}
+  querier:
+    {{- toYaml .Values.tempo.querier | nindent 6 }}
+  query_frontend:
+    {{- toYaml .Values.tempo.queryFrontend | nindent 6 }}
+  overrides:
+    {{- toYaml .Values.tempo.global_overrides | nindent 6 }}
+    {{- if .Values.tempo.metricsGenerator.enabled }}
+        metrics_generator_processors:
+        - 'service-graphs'
+        - 'span-metrics'
+  metrics_generator:
+        storage:
+          path: "/tmp/tempo"
+          remote_write:
+            - url: {{ .Values.tempo.metricsGenerator.remoteWriteUrl }}
+    {{- end }}
 
 tempoQuery:
   repository: grafana/tempo-query
@@ -200,7 +201,6 @@ tempoQuery:
     #       port:
     #         name: use-annotation
 
-
     tls: []
     #  - secretName: tempo-query-tls
     #    hosts:
@@ -224,7 +224,8 @@ tempoQuery:
   #   mountPath: /mnt/volume
   #   readOnly: true
   #   existingClaim: volume-claim
-  securityContext: {}
+  securityContext:
+    {}
     # allowPrivilegeEscalation: false
     #  capabilities:
     #    drop:
@@ -232,7 +233,8 @@ tempoQuery:
     # readOnlyRootFilesystem: false # fails if true, do not enable
 
 # -- securityContext for container
-securityContext: {}
+securityContext:
+  {}
   # runAsUser: 65532
   # runAsGroup: 65532
   # fsGroup: 65532
@@ -294,4 +296,3 @@ affinity: {}
 
 # -- The name of the PriorityClass
 priorityClassName: null
-
