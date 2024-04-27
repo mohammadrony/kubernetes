@@ -9,21 +9,24 @@
 
 ## Configuration
 
-- [Kubectl Commands](./configuration/kubectl/)
+- [Add-ons](./configuration/addons/)
 - [Helm](./configuration/helm/)
-- [Kubectx Kubens and K9s](./configuration/kubectx-k9s/)
-- [Nginx Ingress and Load Balancer](./configuration/ingress-loadbalancer/)
-- [Longhorn](./configuration/longhorn/)
+- [Kubectl](./configuration/kubectl/)
+- [Kustomize](./configuration/kustomize/)
+- [Nginx Ingress](./configuration/ingress/)
 - [Cert Manager](./configuration/cert-manager/)
-- [Prometheus and Grafana](./configuration/prometheus-grafana/)
-- [Elasticsearch Fluentd and Kibana Stack](./configuration/elasticsearch-fluentd-kibana/)
+- [Monitoring](./configuration/monitoring/)
+- [Load Balancer](./configuration/loadbalancer/)
+- [Minio](./configuration/minio/)
 - [Keycloak](./configuration/keycloak/)
 - [RabbitMQ](./configuration/rabbitmq/)
-- [Kustomize](./configuration/kustomize/)
+- [Storage](./configuration/storage/)
 
 ## Scripts
 
+- [Reset k8s node](./scripts/reset-node.sh)
 - [Kubectl alias](./scripts/1-kubectl-alias.sh)
+- [Zsh prompt](./scripts/2-zsh-prompt.sh)
 
 ## Documentation
 

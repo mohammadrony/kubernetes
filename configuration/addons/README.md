@@ -1,4 +1,8 @@
-# Kubectx Kubens and K9s
+# Add-ons
+
+## Kubectl Plugins
+
+- [Krew](./plugins/krew.md)
 
 ## Kubectx and Kubens
 
