@@ -1,10 +1,10 @@
 mode: daemonset
 
 image:
-  repository: "otel/opentelemetry-collector-k8s"
+  repository: "otel/opentelemetry-collector-contrib"
 
 command:
-  name: "otelcol-k8s"
+  name: "otelcol-contrib"
 
 config:
   receivers:
@@ -140,7 +140,7 @@ config:
       endpoint: tempo.monitoring:4317
       tls:
         insecure: true
-    otlphttp:
+    loki:
       endpoint: "http://loki.monitoring:3100/loki/api/v1/push"
       tls:
         insecure: true
@@ -149,24 +149,27 @@ config:
     pipelines:
       traces:
         receivers: [otlp]
-        processors: [
+        processors:
+          [
             memory_limiter,
-            # resourcedetection,
-            # transform/drop_unneeded_resource_attributes,
+            resourcedetection,
+            transform/drop_unneeded_resource_attributes,
             batch,
           ]
         exporters: [debug, otlp]
       logs:
         receivers: [filelog]
-        processors: [
+        processors:
+          [
             memory_limiter,
-            # resourcedetection,
-            # transform/drop_unneeded_resource_attributes,
+            resourcedetection,
+            transform/drop_unneeded_resource_attributes,
             attributes,
             batch,
           ]
-        exporters: [debug, otlphttp]
-# resources:
-#   limits:
-#     cpu: 1
-#     memory: 1Gi
+        exporters: [debug, loki]
+
+resources:
+  limits:
+    cpu: 1
+    memory: 1Gi

@@ -17,6 +17,7 @@ helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack \
 Install Loki
 
 ```bash
+# helm install loki grafana/loki-stack --namespace monitoring --create-namespace --set promtail.enabled=false
 helm install loki grafana/loki-stack --namespace monitoring --create-namespace \
   --set loki.config.limits_config.retention_period=24h --set loki.persistence.enabled=false \
   -f values.loki-stack.yaml
@@ -28,8 +29,6 @@ Install Tempo
 helm install tempo grafana/tempo --namespace monitoring --create-namespace \
   --set persistence.enabled=false \
   -f values.tempo.yaml
-
-# helm install tempo grafana/tempo-distributed --namespace monitoring --create-namespace -f values.tempo-distributed.yaml
 ```
 
 ## Configure OpenTelemetry
@@ -42,7 +41,7 @@ helm repo update
 Install Operator
 
 ```bash
-helm install opentelemetry-operator-system open-telemetry/opentelemetry-operator \
+helm install opentelemetry-operator open-telemetry/opentelemetry-operator \
   --namespace opentelemetry --create-namespace -f values.opentel-operator.yaml
 ```
 
