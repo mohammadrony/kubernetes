@@ -38,5 +38,7 @@ helm install tempo grafana/tempo --namespace monitoring --create-namespace \
 ```
 
 ```bash
-helm install grafana grafana/grafana --namespace monitoring --create-namespace -f values.grafana.yaml
+helm install grafana grafana/grafana --namespace monitoring --create-namespace \
+  --set persistence.enabled=false \
+  -f values.grafana.yaml
 ```

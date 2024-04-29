@@ -1,5 +1,6 @@
 #!/bin/bash
 alias kshell='kubectl run -it shell --image giantswarm/tiny-tools --restart Never --rm -- sh'
+alias nettools='kubectl run -it --image=jrecord/nettools nettools --restart=Never --namespace=default'
 
 # kubectl exec
 kx () {

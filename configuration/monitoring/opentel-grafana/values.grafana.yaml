@@ -9,7 +9,6 @@ sidecar:
       foldersFromFilesStructure: true
   datasources:
     enabled: true
-    searchNamespace: ALL
 grafana.ini:
   server:
     root_url: "%(protocol)s://%(domain)s:%(http_port)s/"
