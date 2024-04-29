@@ -31,3 +31,24 @@ datasources:
         url: http://tempo.monitoring.svc:3100
         isDefault: false
         editable: true
+      - name: Loki
+        type: loki
+        access: proxy
+        orgId: 1
+        uid: loki
+        url: http://tempo.monitoring.svc:3100
+        isDefault: false
+        editable: true
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        orgId: 1
+        uid: prometheus
+        url: http://kube-prometheus-stack-prometheus.monitoring.svc:9090
+        isDefault: false
+        editable: true
+
+persistence:
+  enabled: true
+  storageClassName: longhorn
+  size: 5Gi

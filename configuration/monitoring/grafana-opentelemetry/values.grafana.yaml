@@ -9,7 +9,6 @@ sidecar:
       foldersFromFilesStructure: true
   datasources:
     enabled: true
-    searchNamespace: ALL
 grafana.ini:
   server:
     root_url: "%(protocol)s://%(domain)s:%(http_port)s/"
@@ -54,3 +53,8 @@ datasources:
         url: http://kube-prometheus-stack-prometheus.monitoring.svc:9090
         isDefault: false
         editable: true
+
+persistence:
+  enabled: true
+  storageClassName: longhorn
+  size: 5Gi

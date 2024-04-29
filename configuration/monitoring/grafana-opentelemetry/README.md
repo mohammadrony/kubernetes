@@ -100,5 +100,7 @@ kubectl patch deployment/DEPLOYMENT_NAME -p '{"spec": {"template": {"metadata": 
 Install Grafana
 
 ```bash
-helm install grafana grafana/grafana --namespace monitoring --create-namespace -f values.grafana.yaml
+helm install grafana grafana/grafana --namespace monitoring --create-namespace \
+  --set persistence.enabled=false \
+ -f values.grafana.yaml
 ```
