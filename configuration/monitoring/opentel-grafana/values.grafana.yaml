@@ -27,7 +27,7 @@ datasources:
         access: proxy
         orgId: 1
         uid: tempo
-        url: http://tempo.monitoring.svc:3100
+        url: http://tempo-query-frontend.monitoring.svc:3100
         isDefault: false
         editable: true
       - name: Loki
@@ -35,7 +35,7 @@ datasources:
         access: proxy
         orgId: 1
         uid: loki
-        url: http://tempo.monitoring.svc:3100
+        url: http://loki.monitoring.svc:3100
         isDefault: false
         editable: true
       - name: Prometheus

@@ -28,7 +28,7 @@ spec:
       debug:
         verbosity: detailed
       otlp:
-        endpoint: tempo.monitoring.svc:4317
+        endpoint: tempo-distributor.monitoring.svc:4317
         tls:
           insecure: true
 

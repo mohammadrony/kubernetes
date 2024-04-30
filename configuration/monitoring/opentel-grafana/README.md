@@ -32,9 +32,7 @@ helm repo update
 ```
 
 ```bash
-helm install tempo grafana/tempo --namespace monitoring --create-namespace \
-  --set persistence.enabled=false \
-  -f values.tempo.yaml
+helm install tempo grafana/tempo-distributed --namespace monitoring --create-namespace -f values.tempo-distributed.yaml
 ```
 
 ```bash
