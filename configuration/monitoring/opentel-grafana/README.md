@@ -18,10 +18,10 @@ kubectl apply -f opentel-collector.yaml
 
 ```bash
 # Java
-kubectl patch deployment/DEPLOYMENT_NAME -p '{"spec": {"template": {"metadata": {"annotations": {"instrumentation.opentelemetry.io/inject-java": "opentelemetry/instrumentation"}}}}}'
+kubectl patch deployment/DEPLOYMENT_NAME --namespace NAMESPACE --patch '{"spec": {"template": {"metadata": {"annotations": {"instrumentation.opentelemetry.io/inject-java": "opentelemetry/instrumentation"}}}}}'
 
 # NodeJS
-kubectl patch deployment/DEPLOYMENT_NAME -p '{"spec": {"template": {"metadata": {"annotations": {"instrumentation.opentelemetry.io/inject-nodejs": "opentelemetry/instrumentation"}}}}}'
+kubectl patch deployment/DEPLOYMENT_NAME --namespace NAMESPACE --patch '{"spec": {"template": {"metadata": {"annotations": {"instrumentation.opentelemetry.io/inject-nodejs": "opentelemetry/instrumentation"}}}}}'
 ```
 
 ## Grafana
@@ -32,11 +32,17 @@ helm repo update
 ```
 
 ```bash
-helm install tempo grafana/tempo-distributed --namespace monitoring --create-namespace -f values.tempo-distributed.yaml
-```
+helm install tempo grafana/tempo-distributed --namespace monitoring --create-namespace -f values.tempo-distributed.yaml```
 
 ```bash
 helm install grafana grafana/grafana --namespace monitoring --create-namespace \
   --set persistence.enabled=false \
   -f values.grafana.yaml
+```
+
+Expose Grafana
+
+```bash
+# kubectl patch service grafana -n monitoring --patch '{"spec": {"ports": {"NodePort": 30000}, "type": NodePort}}'
+kubectl patch service grafana -n monitoring --type='json' -p='[{"op": "replace", "path": "/spec/type", "value": "NodePort" }, {"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30000 }]'
 ```
