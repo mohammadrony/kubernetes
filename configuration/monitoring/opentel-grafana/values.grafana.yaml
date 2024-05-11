@@ -4,11 +4,11 @@ sidecar:
   enableUniqueFilenames: true
   dashboards:
     enabled: true
-    searchNamespace: ALL
     provider:
       foldersFromFilesStructure: true
   datasources:
     enabled: true
+    # searchNamespace: ALL
 grafana.ini:
   server:
     root_url: "%(protocol)s://%(domain)s:%(http_port)s/"
@@ -38,6 +38,13 @@ datasources:
         url: http://loki.monitoring.svc:3100
         isDefault: false
         editable: true
+        jsonData:
+          derivedFields:
+            - datasourceName: Tempo
+              matcherRegex: "traceID=(\\w+)"
+              name: TraceID
+              url: "$${__value.raw}"
+              datasourceUid: tempo
       - name: Prometheus
         type: prometheus
         access: proxy
