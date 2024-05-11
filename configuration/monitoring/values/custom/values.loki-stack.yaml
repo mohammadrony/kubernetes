@@ -16,7 +16,7 @@ loki:
     storageClassName: longhorn
   # nodeSelector:
   #   kubernetes.io/hostname: worker-1
-
+lin
 fluent-bit:
   enabled: false
 

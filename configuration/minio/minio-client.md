@@ -14,3 +14,15 @@ chmod +x $HOME/.minio-binaries/mc
 # Update ~/.bashrc and ~/.zshrc
 export PATH=$PATH:$HOME/.minio-binaries/
 ```
+
+## Usage
+
+Add Minio Host
+
+```bash
+mc alias set MINIO $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY
+```
+
+```bash
+mc admin info
+```

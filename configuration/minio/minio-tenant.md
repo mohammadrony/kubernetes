@@ -5,7 +5,7 @@
 - Open Minio Operator
 - Select Create Tenant
 - Setup
-  - Name: `my-minio-tenant`
+  - Name: `minio-tenant`
   - Namespace: `namespace`
   - Storage Class: `local-storage`
   - Number of Servers: 2
@@ -16,3 +16,41 @@
   - Memory Request: 2
   - CPU Limit: 2
   - Memory Limit: 2
+
+## Kubectl minio command
+
+```bash
+kubectl minio tenant create minio-tenant  \
+  --servers          2                    \
+  --volumes          4                    \
+  --capacity         12Gi                 \
+  --namespace        minio                \
+  --storage-class    local-storage        \
+  --output > minio-tenant.yaml
+```
+
+## Helm Chart installation
+
+```bash
+helm show values minio-operator/tenant > values.tenant.yaml 
+```
+
+Custom values
+
+```yaml
+tenant:
+  name: myminio
+  pools:
+    - servers: 2
+      name: pool-0
+      volumesPerServer: 2
+      size: 3Gi
+      storageClassName: local-storage
+```
+
+```bash
+helm install \
+  --namespace minio \
+  --create-namespace \
+  minio-tenant minio-operator/tenant
+```
