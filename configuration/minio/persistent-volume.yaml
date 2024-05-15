@@ -1,18 +1,90 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-node-1-minio-tenant-1
+  name: minio-test-pv-1
   labels:
     type: local
 spec:
   capacity:
-    storage: 32Gi
+    storage: 1Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /minio-data/pv-1
+    path: /appdata/minio/pv-1
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k8s-node-2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-test-pv-2
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /appdata/minio/pv-2
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k8s-node-2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-test-pv-3
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /appdata/minio/pv-3
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k8s-node-3
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-test-pv-4
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /appdata/minio/pv-4
   nodeAffinity:
     required:
       nodeSelectorTerms:
