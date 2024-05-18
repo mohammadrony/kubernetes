@@ -49,6 +49,35 @@ helm upgrade --install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitm
   --create-namespace --namespace $NS
 ```
 
+## Expose with Nginx
+
+```bash
+sudo dnf install -y nginx-mod-stream
+```
+
+```bash
+vi /etc/nginx/nginx.conf
+```
+
+```conf
+stream {
+    upstream rabbitmq {
+      server <LoadBalancer IP>:5672;
+    }
+
+    server {
+        listen 5672;
+        proxy_pass rabbitmq;
+        proxy_timeout 1h;
+        proxy_connect_timeout 1h;
+    }
+}
+```
+
+```bash
+sudo systemctl reload nginx
+```
+
 ### Install with values file
 
 ```bash
