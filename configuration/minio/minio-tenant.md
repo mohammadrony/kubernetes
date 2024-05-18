@@ -54,3 +54,9 @@ helm install \
   --create-namespace \
   minio-tenant minio-operator/tenant
 ```
+
+## File Upload Limit
+
+- [Configure NGINX Proxy for MinIO Server](https://min.io/docs/minio/linux/integrations/setup-nginx-proxy-with-minio.html)
+- [Nginx HTTP Core Module](http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size)
+- [Custom max body size](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#custom-max-body-size)
