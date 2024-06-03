@@ -1,0 +1,43 @@
+deploymentMode: SingleBinary
+
+loki:
+  auth_enabled: false
+  commonConfig:
+    replication_factor: 1
+  storage:
+    type: "filesystem"
+  schemaConfig:
+    configs:
+      - from: "2024-01-01"
+        store: tsdb
+        index:
+          prefix: loki_index_
+          period: 24h
+        object_store: filesystem
+        schema: v13
+
+tableManager:
+  enabled: true
+  resources: {}
+  extraVolumes:
+    - name: data
+      emptyDir: {}
+  extraVolumeMounts:
+    - name: data
+      mountPath: /var/loki
+
+singleBinary:
+  replicas: 1
+  persistence:
+    enabled: true # Update persistency
+    size: 10Gi
+    storageClass: local-storage
+  nodeSelector:
+    kubernetes.io/hostname: banbeis-worker-1
+
+read:
+  replicas: 0
+backend:
+  replicas: 0
+write:
+  replicas: 0
