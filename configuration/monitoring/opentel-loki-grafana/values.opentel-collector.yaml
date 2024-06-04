@@ -93,14 +93,14 @@ config:
           value: "cluster-1" # REPLACE ME
 
   processors:
-    resource:
-      attributes:
-        - action: insert
-          key: loki.format
-          value: raw
-        - action: insert
-          key: loki.resource.labels
-          value: pod, namespace, container, cluster, filename
+    # resource:
+    #   attributes:
+    #     - action: insert
+    #       key: loki.format
+    #       value: raw
+    #     - action: insert
+    #       key: loki.resource.labels
+    #       value: pod, namespace, container, cluster, filename
     memory_limiter:
       check_interval: 1s
       limit_percentage: 75
@@ -179,7 +179,14 @@ config:
         exporters: [debug, otlp]
       logs:
         receivers: [filelog]
-        processors: [resource]
+        processors: [
+            # resource,
+            memory_limiter,
+            resourcedetection,
+            transform/drop_unneeded_resource_attributes,
+            attributes,
+            batch,
+          ]
         exporters: [loki]
 
 service:
