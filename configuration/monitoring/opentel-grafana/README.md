@@ -32,7 +32,8 @@ helm repo update
 ```
 
 ```bash
-helm install tempo grafana/tempo-distributed --namespace monitoring --create-namespace -f values.tempo-distributed.yaml```
+helm install tempo grafana/tempo-distributed --namespace monitoring --create-namespace -f values.tempo-distributed.yaml
+```
 
 ```bash
 helm install grafana grafana/grafana --namespace monitoring --create-namespace \
