@@ -10,3 +10,12 @@ ingester:
     trace_idle_period: 10s
     max_block_bytes: 1000000
     max_block_duration: 1m
+
+queryFrontend:
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "512Mi"
+    limits:
+      cpu: "1"
+      memory: "1Gi"
