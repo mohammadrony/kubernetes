@@ -1,4 +1,4 @@
-# Merge Kubeconfig
+# Merge multiple config
 
 Config backup
 
