@@ -38,13 +38,13 @@ helm show values grafana/loki-stack > values.loki-stack.yaml
 ```
 
 ```bash
-helm upgrade --install loki grafana/loki-stack --namespace loki-stack --values values.loki-stack-custom.yaml
+helm upgrade --install loki grafana/loki-stack --namespace monitoring --values values.loki-stack-custom.yaml
 ```
 
 Add Ingress for Grafana
 
 ```bash
-kubectl apply --namespace loki-stack -f grafana-ingress.yaml
+kubectl apply --namespace monitoring -f grafana-ingress.yaml
 ```
 
 ## Install Prometheus stack

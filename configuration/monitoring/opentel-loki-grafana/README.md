@@ -30,6 +30,10 @@ helm install tempo grafana/tempo-distributed --namespace monitoring --create-nam
 ```
 
 ```bash
+helm install loki grafana/loki --namespace monitoring --create-namespace -f values.loki.yaml
+```
+
+```bash
 helm install grafana grafana/grafana --namespace monitoring --create-namespace \
   --set persistence.enabled=false \
   -f values.grafana.yaml

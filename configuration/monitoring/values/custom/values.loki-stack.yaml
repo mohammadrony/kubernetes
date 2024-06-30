@@ -13,7 +13,7 @@ loki:
   persistence:
     enabled: true
     size: 8Gi
-    storageClassName: longhorn
+    storageClassName: local-storage
   # nodeSelector:
   #   kubernetes.io/hostname: worker-1
 
@@ -21,7 +21,7 @@ fluent-bit:
   enabled: false
 
 grafana:
-  enabled: true
+  enabled: false
   image:
     tag: 9.0.2
   persistence:
