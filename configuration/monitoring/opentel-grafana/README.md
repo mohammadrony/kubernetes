@@ -1,4 +1,4 @@
-# Monitoring with Opentelemetry and Grafana
+# Monitoring with Opentelemetry and Grafana (Tracing)
 
 ## Opentelemetry
 
@@ -12,6 +12,12 @@ Collector Install
 
 ```bash
 kubectl apply -f opentel-collector.yaml
+```
+
+Instrumentation
+
+```bash
+kubectl apply -f opentel-instrumentation.yaml
 ```
 
 ## Deployment

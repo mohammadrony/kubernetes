@@ -140,7 +140,7 @@ kubectl exec -it $(kubectl get pods -l "app=grafana,release=grafana" -o jsonpath
 
 ```bash
 kubectl exec -it kube-prometheus-stack-grafana-XXXX-XX -- /bin/bash
-grafana-cli admin reset-admin-password admin yourPassword
+grafana-cli admin reset-admin-password yourPassword
 ```
 
 ### Dashboard Setup

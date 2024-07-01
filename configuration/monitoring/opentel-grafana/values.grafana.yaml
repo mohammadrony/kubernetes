@@ -13,10 +13,6 @@ grafana.ini:
   server:
     root_url: "%(protocol)s://%(domain)s:%(http_port)s/"
     serve_from_sub_path: true
-ingress:
-  enabled: true
-  path: /
-  hosts: []
 
 datasources:
   datasources.yaml:
@@ -35,7 +31,7 @@ datasources:
         access: proxy
         orgId: 1
         uid: loki
-        url: http://loki.monitoring.svc:3100
+        url: http://loki-gateway.monitoring.svc
         isDefault: false
         editable: true
         jsonData:

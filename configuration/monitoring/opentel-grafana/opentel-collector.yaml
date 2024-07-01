@@ -41,4 +41,5 @@ spec:
               memory_limiter,
               batch,
             ]
-          exporters: [debug, otlp]
+          # exporters: [debug, otlp]
+          exporters: [otlp]
