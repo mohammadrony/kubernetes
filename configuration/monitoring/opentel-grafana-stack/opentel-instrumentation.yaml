@@ -20,9 +20,9 @@ spec:
       - name: OTEL_METRICS_EXPORTER
         value: none
       - name: OTEL_LOGS_EXPORTER
-        value: http://opentelemetry-collector-collector.opentelemetry.svc.cluster.local:4317
+        value: otlp
       - name: OTEL_TRACES_EXPORTER
-        value: http://opentelemetry-collector-collector.opentelemetry.svc.cluster.local:4317
+        value: otlp
   nodejs:
     env:
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
@@ -30,6 +30,6 @@ spec:
       - name: OTEL_METRICS_EXPORTER
         value: none
       - name: OTEL_LOGS_EXPORTER
-        value: http://opentelemetry-collector-collector.opentelemetry.svc.cluster.local:4317
+        value: otlp
       - name: OTEL_TRACES_EXPORTER
-        value: http://opentelemetry-collector-collector.opentelemetry.svc.cluster.local:4317
+        value: otlp
