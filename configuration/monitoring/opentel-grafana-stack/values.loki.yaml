@@ -33,7 +33,7 @@ singleBinary:
     size: 10Gi
     storageClass: local-storage
   nodeSelector:
-    kubernetes.io/hostname: banbeis-worker-1
+    kubernetes.io/hostname: worker-1
 
 read:
   replicas: 0
