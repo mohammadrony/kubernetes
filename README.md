@@ -10,6 +10,7 @@
 ## Configuration
 
 - [Add-ons](./configuration/addons/)
+- [DNS](./configuration/dns)
 - [Helm](./configuration/helm/)
 - [Kubectl](./configuration/kubectl/)
 - [Kustomize](./configuration/kustomize/)
@@ -28,12 +29,7 @@
 - [Kubectl alias](./scripts/1-kubectl-alias.sh)
 - [Zsh prompt](./scripts/2-zsh-prompt.sh)
 
-## Documentation
-
-### Articles
+## Others
 
 - [Understanding the Kubernetes Node](https://www.suse.com/c/rancher_blog/understanding-the-kubernetes-node/)
-
-### Snippets
-
 - [What's the difference between exposing nginx as load balancer vs Ingress controller?](https://stackoverflow.com/questions/50966300/whats-the-difference-between-exposing-nginx-as-load-balancer-vs-ingress-control)
