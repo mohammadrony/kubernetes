@@ -15,13 +15,13 @@ kubectl -n default get pods dnsutils
 ```
 
 ```bash
-kubectl -n default exec -i -t dnsutils -- nslookup kubernetes.default
+kubectl -n default exec dnsutils -- nslookup kubernetes.default
 ```
 
 Check local DNS configuration
 
 ```bash
-kubectl -n default exec -ti dnsutils -- cat /etc/resolv.conf
+kubectl -n default exec dnsutils -- cat /etc/resolv.conf
 ```
 
 ## Add Custom Host Address
@@ -47,4 +47,9 @@ kind: ConfigMap
 
 ```bash
 kubectl -n kube-system rollout restart deploy coredns
+```
+
+```bash
+kubectl apply -f https://k8s.io/examples/admin/dns/dnsutils.yaml
+kubectl -n default exec dnsutils -- nslookup www.example.com
 ```
