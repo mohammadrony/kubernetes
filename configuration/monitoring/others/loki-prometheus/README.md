@@ -1,4 +1,4 @@
-# Grafana with Loki Stack and Prometheus
+# Loki Stack and Prometheus
 
 ## Documentation
 

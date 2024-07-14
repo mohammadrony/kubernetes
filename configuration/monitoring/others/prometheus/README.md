@@ -1,4 +1,4 @@
-# Grafana and Prometheus
+# Prometheus and Grafana
 
 ## Setup Matrics server
 

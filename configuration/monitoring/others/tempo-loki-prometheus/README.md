@@ -1,4 +1,4 @@
-# Grafana with Tempo Loki Prometheus
+# Tempo Loki Prometheus
 
 ## Installation
 
