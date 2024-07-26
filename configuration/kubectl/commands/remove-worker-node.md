@@ -1,6 +1,6 @@
 # Remove Worker Node from Cluster
 
-## Remove  node
+## Remove node
 
 ```bash
 kubectl drain <name> --ignore-daemonsets --delete-local-data

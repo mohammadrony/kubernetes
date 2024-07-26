@@ -69,12 +69,26 @@ curl -sSfL https://raw.githubusercontent.com/longhorn/longhorn/v1.6.0/scripts/en
 
 ## Installation
 
-Chart update
+### YAML Manifest
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/master/deploy/longhorn.yaml
+```
+
+### Helm Chart
+
+Add chart repo
 
 ```bash
 helm repo add longhorn https://charts.longhorn.io
 helm repo update
 ```
+
+```bash
+helm upgrade --install longhorn longhorn/longhorn --create-namespace --namespace longhorn-system
+```
+
+Custom configuration
 
 ```bash
 helm show values longhorn/longhorn > values.longhorn.yaml
@@ -83,6 +97,8 @@ helm show values longhorn/longhorn > values.longhorn.yaml
 ```bash
 helm upgrade --install longhorn longhorn/longhorn --create-namespace --namespace longhorn-system --values values.longhorn.yaml
 ```
+
+Update ui service port
 
 ```bash
 kubectl edit service longhorn-frontend -n longhorn-system
