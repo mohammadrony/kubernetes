@@ -26,15 +26,14 @@ Loki
 
 ```bash
 helm show values grafana/loki-simple-scalable > values.loki-simple-scalable.yaml
-
-```
-
-```bash
-helm install loki grafana/loki-simple-scalable --namespace alloy --create-namespace
 ```
 
 ```bash
 helm upgrade --install loki grafana/loki-simple-scalable --namespace alloy -f values.loki-simple-scalable.v2.yaml
+```
+
+```bash
+helm install loki grafana/loki-simple-scalable --namespace alloy --create-namespace
 ```
 
 Tempo
@@ -64,3 +63,9 @@ helm install alloy grafana/alloy --namespace alloy --create-namespace
 ```bash
 helm upgrade --install alloy grafana/alloy --namespace alloy -f values.alloy.v2.yaml
 ```
+
+Grafana
+
+| Type    | Data source                                   |
+|---------|-----------------------------------------------|
+| Metrics | `http://mimir-nginx.alloy.svc:80/prometheus`  |
