@@ -10,13 +10,13 @@ helm repo update
 ```
 
 ```bash
-helm show values ingress-nginx/ingress-nginx > values.ingress-nginx.yaml
+helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace
 ```
 
 Custom configuration
 
 ```bash
-vi values.ingress-nginx.yaml
+helm show values ingress-nginx/ingress-nginx > values.ingress-nginx.yaml
 ```
 
 ```bash

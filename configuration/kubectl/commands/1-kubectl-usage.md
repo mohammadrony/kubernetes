@@ -101,6 +101,7 @@ kubectl get rolebinding
 kubectl get ... -o OUTPUT
 kubectl get ... -n NAMESPACE
 kubectl get ... -l KEY=VALUE
+kubectl get ... --field-selector spec.nodeName=<node>
 ```
 
 ### Logs
@@ -187,6 +188,11 @@ kubectl delete pod PODNAME
 kubectl delete svc SERVICE
 kubectl delete deploy DEPLOYMENT
 kubectl delete sts STATEFULSET
+```
+
+```bash
+kubectl delete pods -l <key>=<value>
+kubectl delete pods --field-selector spec.nodeName=<node>
 ```
 
 ### Copy files
