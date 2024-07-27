@@ -2,8 +2,8 @@
 
 ## Complete Monitoring
 
+- [Grafana](./grafana/)
 - [Opentelemetry and Grafana Stack](./opentel-grafana-stack/)
-- [Alloy (Grafana)](./alloy/)
 
 ## Helpers
 
