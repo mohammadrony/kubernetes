@@ -1,4 +1,4 @@
-# VirtualBox VM Setup
+# Vagrant to Virtualbox
 
 ## Prerequisites
 

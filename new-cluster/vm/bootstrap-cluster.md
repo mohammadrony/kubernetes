@@ -1,0 +1,59 @@
+# Bootstrap Cluster
+
+Prerequisites
+
+```bash
+sudo setenforce 0
+sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+```
+
+Note: *Disable selinux to allow containers to access hosts filesystem*
+
+Install kubeadm and kubelet
+
+```bash
+sudo tee -a /etc/yum.repos.d/kubernetes.repo << EOF
+[kubernetes]
+name=Kubernetes
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/
+enabled=1
+gpgcheck=1
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/repodata/repomd.xml.key
+exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
+EOF
+```
+
+```bash
+sudo yum install -y kubeadm kubelet --disableexcludes=kubernetes
+# sudo yum install -y kubeadm-'1.31.*' kubelet-'1.31.*' --disableexcludes=kubernetes
+```
+
+Install kubectl
+
+```bash
+sudo yum install -y kubectl --disableexcludes=kubernetes
+# curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+# sudo chmod +x kubectl
+# sudo mv kubectl /usr/local/bin/kubectl
+```
+
+Start kubelet
+
+```bash
+sudo systemctl enable --now kubelet
+```
+
+Initialize cluster
+
+```bash
+control_node=192.168.x.x
+cidr=192.168.0.0/16 # calico cni
+sudo kubeadm init --cri-socket=unix:///run/containerd/containerd.sock --pod-network-cidr=$cidr # --apiserver-advertise-address=$control_node
+```
+
+Install calico
+
+```bash
+version=3.28.0
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/calico.yaml
+```
