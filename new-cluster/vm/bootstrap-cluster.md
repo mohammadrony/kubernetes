@@ -15,17 +15,17 @@ Install kubeadm and kubelet
 sudo tee -a /etc/yum.repos.d/kubernetes.repo << EOF
 [kubernetes]
 name=Kubernetes
-baseurl=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.30/rpm/
 enabled=1
 gpgcheck=1
-gpgkey=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/repodata/repomd.xml.key
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.30/rpm/repodata/repomd.xml.key
 exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
 EOF
 ```
 
 ```bash
 sudo yum install -y kubeadm kubelet --disableexcludes=kubernetes
-# sudo yum install -y kubeadm-'1.31.*' kubelet-'1.31.*' --disableexcludes=kubernetes
+# sudo yum install -y kubeadm-'1.30.*' kubelet-'1.30.*' --disableexcludes=kubernetes
 ```
 
 Install kubectl
@@ -46,8 +46,8 @@ sudo systemctl enable --now kubelet
 Initialize cluster
 
 ```bash
-control_node=192.168.x.x
-cidr=192.168.0.0/16 # 192.168.128.0/17 # calico
+control_node=192.168.56.111
+cidr=192.168.128.0/17 # 192.168.128.0/17 # calico
 sudo kubeadm init --cri-socket=unix:///run/containerd/containerd.sock --pod-network-cidr=$cidr  --apiserver-advertise-address=$control_node
 ```
 
