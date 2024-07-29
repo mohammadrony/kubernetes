@@ -47,8 +47,8 @@ Initialize cluster
 
 ```bash
 control_node=192.168.56.111
-cidr=192.168.128.0/17 # 192.168.128.0/17 # calico
-sudo kubeadm init --cri-socket=unix:///run/containerd/containerd.sock --pod-network-cidr=$cidr  --apiserver-advertise-address=$control_node
+cidr=192.168.128.0/17 # 192.168.0.0/16 # calico
+sudo kubeadm init --v=5 --cri-socket=unix:///run/containerd/containerd.sock --pod-network-cidr=$cidr  --apiserver-advertise-address=$control_node
 ```
 
 Add kubeconfig

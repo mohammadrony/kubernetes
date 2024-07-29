@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
         sudo dnf update -y
 
         # Install basic packages
-        sudo dnf install -y vim net-tools tcpdump nmap iptables-services
+        sudo dnf install -y vim net-tools nmap telnet
 
         # Set timezone
         sudo timedatectl set-timezone Asia/Dhaka
@@ -72,6 +72,7 @@ EOF
         sudo dnf install -y containerd.io
         sudo mkdir -p /etc/containerd
         sudo containerd config default | tee /etc/containerd/config.toml
+        sudo sed -i 's/\(SystemdCgroup = \).*/\1true/' /etc/containerd/config.toml
         sudo systemctl enable --now containerd
 
         # Load necessary modules
