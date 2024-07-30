@@ -198,8 +198,8 @@ kubectl delete pods --field-selector spec.nodeName=<node>
 ### Copy files
 
 ```bash
-kubectl cp PODNAME:/foo ./
-kubectl cp ./ PODNAME:/foo
+kubectl cp PODNAME:/file ./
+kubectl cp ./ PODNAME:/file
 ```
 
 ### Enable access

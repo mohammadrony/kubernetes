@@ -48,7 +48,8 @@ Initialize cluster
 ```bash
 control_node=192.168.56.111
 cidr=192.168.128.0/17 # 192.168.0.0/16 # calico
-sudo kubeadm init --v=5 --cri-socket=unix:///run/containerd/containerd.sock --pod-network-cidr=$cidr  --apiserver-advertise-address=$control_node
+sudo kubeadm init --v=5 --cri-socket=unix:///run/containerd/containerd.sock --pod-network-cidr=$cidr \
+  --apiserver-advertise-address=$control_node
 ```
 
 Add kubeconfig
@@ -62,7 +63,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 Install calico
 
 ```bash
-version=3.28.0
+version=3.28.0 # https://github.com/projectcalico/calico/releases
 curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/calico.yaml
 ```
 
@@ -77,5 +78,6 @@ kubeadm token create --print-join-command
 ```
 
 ```bash
-sudo kubeadm join 192.168.56.111:6443 --token xxxx.xxxx --discovery-token-ca-cert-hash sha256:xxxx.xxxx
+sudo kubeadm join 192.168.56.111:6443 --token xxxx.xxxx --discovery-token-ca-cert-hash sha256:xxxx.xxxx \
+  --cri-socket=unix:///run/containerd/containerd.sock
 ```
