@@ -69,3 +69,13 @@ curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manife
 ```bash
 kubectl apply -f calico.yaml
 ```
+
+Add worker node in cluster
+
+```bash
+kubeadm token create --print-join-command
+```
+
+```bash
+sudo kubeadm join 192.168.56.111:6443 --token xxxx.xxxx --discovery-token-ca-cert-hash sha256:xxxx.xxxx
+```
