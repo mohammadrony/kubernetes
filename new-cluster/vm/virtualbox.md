@@ -1,10 +1,6 @@
 # Vagrant to Virtualbox
 
-## Prerequisites
-
-Common config for all kubernetes node in [Vagrantfile](./Vagrantfile).
-
-Start VM
+## Start VM
 
 ```bash
 vagrant up
@@ -18,12 +14,6 @@ vagrant ssh # kube-control-1 kube-worker-1 kube-worker-2
 
 ```bash
 sshpass -p 'vagrant' ssh vagrant@192.168.56.111 # 112 113
-```
-
-## Cluster Setup
-
-```bash
-# kubectl kubeadm kubelet
 ```
 
 ## Cleanup

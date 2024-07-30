@@ -1,6 +1,8 @@
 # Bootstrap Cluster
 
-Prerequisites
+## Prerequisites
+
+Start 3 CentOS Node with some common configuration from [Vagrantfile](./Vagrantfile).
 
 ```bash
 sudo setenforce 0
@@ -8,6 +10,8 @@ sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 ```
 
 Note: *Disable selinux to allow containers to access hosts filesystem*
+
+## All Node
 
 Install kubeadm and kubelet
 
@@ -43,6 +47,8 @@ Start kubelet
 sudo systemctl enable --now kubelet
 ```
 
+## Control Node
+
 Initialize cluster
 
 ```bash
@@ -71,6 +77,8 @@ curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manife
 kubectl apply -f calico.yaml
 ```
 
+## Worker Node
+
 Add worker node in cluster
 
 ```bash
@@ -80,4 +88,10 @@ kubeadm token create --print-join-command
 ```bash
 sudo kubeadm join 192.168.56.111:6443 --token xxxx.xxxx --discovery-token-ca-cert-hash sha256:xxxx.xxxx \
   --cri-socket=unix:///run/containerd/containerd.sock
+```
+
+Update label of worker node
+
+```bash
+kubectl label node kube-worker-1 node-role.kubernetes.io/worker= # kube-worker-2
 ```

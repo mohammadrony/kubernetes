@@ -1,4 +1,4 @@
-# Kubectl Useful Commands
+# Kubectl Usage
 
 ## Kubeadm initial commands
 

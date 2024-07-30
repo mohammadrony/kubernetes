@@ -1,4 +1,4 @@
-# Remove Worker Node from Cluster
+# Remove Worker Node
 
 ## Remove node
 
@@ -30,4 +30,8 @@ do
 done
 
 kubectl drain $NODENAME
+```
+
+```bash
+kubectl delete node $NODENAME
 ```

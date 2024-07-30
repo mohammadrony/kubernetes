@@ -7,4 +7,6 @@
 
 ## Commands
 
-- [Commands](./commands/)
+- [Kubectl Usage](./kubectl-usage.md)
+- [Kubectl with Bash](./kubectl-with-bash.md)
+- [Remove Worker Node](./remove-worker-node.md)
