@@ -16,3 +16,12 @@ spec:
         requests:
           memory: 256Mi
           cpu: "0.2"
+      env:
+        - name: PROTOCOL
+          value: "http"
+        - name: PORT
+          value: "80"
+        - name: HOST
+          value: "127.0.0.1"
+        - name: SERVICE_ADDRESS
+          value: "$(PROTOCOL)://$(HOST):$(PORT)"
