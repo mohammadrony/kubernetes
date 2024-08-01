@@ -234,29 +234,3 @@ Enable scheduling for node
 ```bash
 kubectl uncordon NODE
 ```
-
-### Label
-
-Get node labels
-
-```bash
-kubectl get nodes --show-labels
-```
-
-Add label in a node
-
-```bash
-kubectl label nodes NODE KEY=VALUE
-```
-
-Update label value
-
-```bash
-kubectl label nodes NODE KEY=VALUE --overwrite
-```
-
-Remove label from node
-
-```bash
-kubectl label nodes NODE KEY-
-```
