@@ -151,17 +151,24 @@ kubectl run PODNAME --image=IMAGE:TAG --port=PORT
 
 ### Run
 
+Useful containers
+
 ```bash
 kubectl run -it busybox --image=busybox --rm -- sh
 kubectl run -it shell --image giantswarm/tiny-tools --restart Never --rm -- sh
 ```
 
+Login shell
+
 ```bash
 kubectl exec -it PODNAME -- COMMAND
 ```
 
+Environment variable
+
 ```bash
 kubectl exec PODNAME -- env
+kubectl exec PODNAME -- printenv
 ```
 
 ### Update
