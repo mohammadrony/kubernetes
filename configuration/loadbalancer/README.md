@@ -10,6 +10,10 @@ Install with Helm
 helm show values oci://registry-1.docker.io/bitnamicharts/metallb > values.metallb.yaml
 ```
 
+```bash
+helm install metallb oci://registry-1.docker.io/bitnamicharts/metallb --create-namespace --namespace metallb-system
+```
+
 Custom configuration
 
 ```bash

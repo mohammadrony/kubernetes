@@ -5,7 +5,7 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-    - lb-ip-range
+    - "<lb.ip.address.range>"
 
 ---
 apiVersion: metallb.io/v1beta1
