@@ -10,16 +10,18 @@
 ## Configuration
 
 - [Add-ons](./configuration/addons/)
+- [Cert Manager](./configuration/cert-manager/)
+- [Container Network Interface](./configuration/cni/)
 - [DNS](./configuration/dns)
 - [Helm](./configuration/helm/)
+- [Ingress Controller](./configuration/ingress/)
+- [Keycloak](./configuration/keycloak/)
+- [Kubeconfig](./configuration/kubeconfig/)
 - [Kubectl](./configuration/kubectl/)
 - [Kustomize](./configuration/kustomize/)
-- [Nginx Ingress](./configuration/ingress/)
-- [Cert Manager](./configuration/cert-manager/)
-- [Monitoring](./configuration/monitoring/)
 - [Load Balancer](./configuration/loadbalancer/)
 - [Minio](./configuration/minio/)
-- [Keycloak](./configuration/keycloak/)
+- [Monitoring](./configuration/monitoring/)
 - [RabbitMQ](./configuration/rabbitmq/)
 - [Storage](./configuration/storage/)
 

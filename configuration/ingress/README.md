@@ -1,4 +1,4 @@
-# Ingress
+# Ingress Controller
 
 ## Ingress Nginx
 

@@ -71,6 +71,7 @@ Install calico
 ```bash
 version=3.28.0 # https://github.com/projectcalico/calico/releases
 curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/calico.yaml
+# curl -LO https://docs.projectcalico.org/manifests/calico.yaml
 ```
 
 ```bash
