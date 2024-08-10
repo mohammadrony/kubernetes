@@ -2,6 +2,7 @@
 
 ## Commands
 
+- [Context](./context.md)
 - [Kubectl Usage](./kubectl-usage.md)
 - [Kubectl with Bash](./kubectl-with-bash.md)
 - [Label and Selector](./label-selector.md)
@@ -11,3 +12,7 @@
 
 - [Applications](./manifest/applications/)
 - [Templates](./manifest/templates/)
+
+## Others
+
+- [Documentation](./docs.md)
