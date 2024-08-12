@@ -4,8 +4,10 @@
 
 ### New Cluster
 
-- [Kind](./new-cluster/kind/)
+- [EC2](./new-cluster/ec2/)
 - [K3s](./new-cluster/k3s/)
+- [Kind](./new-cluster/kind/)
+- [Virtual Machine](./new-cluster/vm/)
 
 ## Configuration
 

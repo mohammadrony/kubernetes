@@ -1,4 +1,4 @@
-# Virtual Machine Configuration
+# Virtual Machine Cluster
 
 - [Vagrant to Virtualbox](./virtualbox.md)
 - [Bootstrap Cluster](./bootstrap-cluster.md)
