@@ -2,6 +2,7 @@
 
 ## Commands
 
+- [Configmap and Secrets](./configmap-secrets.md)
 - [Context](./context.md)
 - [Kubectl Usage](./kubectl-usage.md)
 - [Kubectl with Bash](./kubectl-with-bash.md)

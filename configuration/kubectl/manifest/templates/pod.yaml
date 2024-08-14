@@ -5,23 +5,69 @@ metadata:
   namespace: default
 spec:
   containers:
-    - name: nginx-app
-      image: nginx:latest
-      ports:
-        - containerPort: 80
-      resources:
-        limits:
-          memory: 512Mi
-          cpu: "1"
-        requests:
-          memory: 256Mi
-          cpu: "0.2"
-      env:
-        - name: PROTOCOL
-          value: "http"
-        - name: PORT
-          value: "80"
-        - name: HOST
-          value: "127.0.0.1"
-        - name: SERVICE_ADDRESS
-          value: "$(PROTOCOL)://$(HOST):$(PORT)"
+  - name: nginx
+    image: nginx:alpine
+    ports:
+      - containerPort: 80
+
+    resources:
+      limits:
+        memory: 512Mi
+        cpu: "1"
+      requests:
+        memory: 256Mi
+        cpu: "0.2"
+
+    env:
+    - name: PROTOCOL
+      value: "http"
+    - name: PORT
+      value: "80"
+    - name: HOST
+      value: "127.0.0.1"
+    - name: SERVICE_ADDRESS
+      value: "$(PROTOCOL)://$(HOST):$(PORT)"
+
+    - name: ENV_VAR1
+      valueFrom:
+        configMapKeyRef:
+          key: KEY1
+          name: CONFIGMAP
+    - name: ENV_VAR2
+      valueFrom:
+        configMapKeyRef:
+          key: KEY2
+          name: CONFIGMAP
+          optional: true
+
+    - name: SECRET_VAR1
+      valueFrom:
+        secretKeyRef:
+          key: KEY1
+          name: SECRET
+    - name: SECRET_VAR2
+      valueFrom:
+        secretKeyRef:
+          key: KEY2
+          name: SECRET
+          optional: true
+
+    envFrom:
+    - configMapRef:
+        name: CONFIGMAP
+    - secretRef:
+        name: SECRET
+
+    volumeMounts:
+    - name: CONFIG_FILE
+      mountPath: /path/config/
+    - name: SECRET_FILE
+      mountPath: /path/secret/
+
+  volumes:
+    - name: CONFIG_FILE
+      configMap:
+        name: CONFIGMAP
+    - name: SECRET_FILE
+      secret:
+        name: SECRET

@@ -55,7 +55,7 @@ kubectl get svc
 kubectl get service
 ```
 
-### Stateful sets
+### Stateful statefulset
 
 ```bash
 kubectl get sts
@@ -67,19 +67,6 @@ kubectl get statefulset
 ```bash
 kubectl get sa
 kubectl get serviceaccount
-```
-
-### Secrets
-
-```bash
-kubectl get secrets
-```
-
-### Config map
-
-```bash
-kubectl get cm
-kubectl get configmap
 ```
 
 ### Role
