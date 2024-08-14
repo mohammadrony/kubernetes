@@ -104,20 +104,6 @@ kubectl get ... -l KEY=VALUE
 kubectl get ... --field-selector spec.nodeName=<node>
 ```
 
-### Logs
-
-```bash
-kubectl logs pod/PODNAME
-kubectl logs svc/SERVICE
-kubectl logs deploy/DEPLOYMENT
-kubectl logs sts/STATEFULSET
-kubectl logs cm/CONFIGMAP
-kubectl logs secret/SECRET
-kubectl logs sa/SERVICEACCOUNT
-kubectl logs role/ROLE
-kubectl logs rb/ROLEBINDING
-```
-
 ### Describe
 
 ```bash

@@ -1,6 +1,6 @@
 # EC2 Cluster
 
-## Instance Configuration
+## Common Configuration
 
 Stop source destination checking
 
