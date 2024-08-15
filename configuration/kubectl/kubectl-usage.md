@@ -16,6 +16,14 @@ kubeadm token create --print-join-command
 kubectl cluster-info
 ```
 
+```bash
+kubectl api-versions
+```
+
+```bash
+kubectl api-resources
+```
+
 ### Nodes
 
 ```bash
@@ -60,6 +68,13 @@ kubectl get service
 ```bash
 kubectl get sts
 kubectl get statefulset
+```
+
+### Auto scaler
+
+```bash
+kubectl get hpa
+kubectl get horizontalpodautoscaler
 ```
 
 ### Service account
@@ -156,9 +171,13 @@ kubectl edit sts STATEFULSET
 ### Scale
 
 ```bash
-kubectl scale --replicas=N PODNAME
+kubectl scale --replicas=N REPLICASET
 kubectl scale --replicas=N DEPLOYMENT
 kubectl scale --replicas=N STATEFULSET
+```
+
+```bash
+kubectl autoscale deployment DEPLOYMENT --cpu-percent=50 --min=1 --max 5
 ```
 
 ### Delete
@@ -182,23 +201,40 @@ kubectl cp PODNAME:/file ./
 kubectl cp ./ PODNAME:/file
 ```
 
-### Enable access
+### Expose service
 
 ```bash
 kubectl port-forward svc/SERVICE HOST_PORT:CONTAINER_PORT
 ```
 
 ```bash
+kubectl expose DEPLOYMENT SERVICE --port CONTAINER_PORT
+```
+
+```bash
 kubectl expose svc/SERVICE --type=NodePort --target-port=CONTAINER_PORT --name=SERVICE_2
 ```
 
-### Restart
+### Rollout
 
 ```bash
 kubectl rollout restart pod PODNAME
 kubectl rollout restart deploy DEPLOYMENT
 kubectl rollout restart svc SERVICE
 kubectl rollout restart sts STATEFULSET
+```
+
+```bash
+kubectl rollout status deploy DEPLOYMENT
+```
+
+```bash
+kubectl rollout history deploy DEPLOYMENT
+kubectl rollout history deploy DEPLOYMENT --revision=N
+```
+
+```bash
+kubectl rollout undo deployment DEPLOYMENT --to-revision=N
 ```
 
 ### Schedule
