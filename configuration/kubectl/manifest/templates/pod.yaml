@@ -7,6 +7,7 @@ spec:
   containers:
   - name: nginx
     image: nginx:alpine
+    imagePullPolicy: Always
     ports:
       - containerPort: 80
 
@@ -28,46 +29,49 @@ spec:
     - name: SERVICE_ADDRESS
       value: "$(PROTOCOL)://$(HOST):$(PORT)"
 
-    - name: ENV_VAR1
+    - name: ENV1
       valueFrom:
         configMapKeyRef:
-          key: KEY1
-          name: CONFIGMAP
-    - name: ENV_VAR2
+          key: key1
+          name: my-configmap
+    - name: ENV2
       valueFrom:
         configMapKeyRef:
-          key: KEY2
-          name: CONFIGMAP
+          key: key2
+          name: my-configmap
           optional: true
 
-    - name: SECRET_VAR1
+    - name: SECRET1
       valueFrom:
         secretKeyRef:
-          key: KEY1
-          name: SECRET
-    - name: SECRET_VAR2
+          key: username
+          name: my-secret
+    - name: SECRET2
       valueFrom:
         secretKeyRef:
-          key: KEY2
-          name: SECRET
+          key: password
+          name: my-secret
           optional: true
 
     envFrom:
     - configMapRef:
-        name: CONFIGMAP
+        name: my-configmap
     - secretRef:
-        name: SECRET
+        name: my-secret
 
     volumeMounts:
-    - name: CONFIG_FILE
+    - name: config-file
       mountPath: /path/config/
-    - name: SECRET_FILE
+    - name: secret-file
       mountPath: /path/secret/
 
   volumes:
-    - name: CONFIG_FILE
+    - name: config-file
       configMap:
-        name: CONFIGMAP
-    - name: SECRET_FILE
+        name: my-configmap
+    - name: secret-file
       secret:
-        name: SECRET
+        secretName: my-secret
+  
+  imagePullSecrets:
+    - name: private-registry

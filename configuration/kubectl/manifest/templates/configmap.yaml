@@ -4,7 +4,7 @@ metadata:
   name: my-configmap
   namespace: default
 data:
-  host_ip: 192.168.0.101
+  key1: value1
+  key2: value2
   config.yaml: |
-    key1: value1
-    key2: value2
+    host: 192.168.0.101

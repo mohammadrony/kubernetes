@@ -12,13 +12,35 @@ kubectl get configmap
 Create
 
 ```bash
-kubectl create cm CONFIGMAP --from-literal KEY=VALUE
+kubectl create cm CONFIGMAP --from-literal KEY="VALUE" --from-literal KEY2="VALUE2"
+```
+
+```bash
+kubectl create cm CONFIGMAP --from-literal KEY="VALUE" --from-file FILENAME
 ```
 
 ### Secrets
 
-Get
+Get secrets
 
 ```bash
 kubectl get secrets
+```
+
+Create generic secret
+
+```bash
+kubectl create secret generic SECRET --from-literal KEY="VALUE" --from-literal KEY2="VALUE2"
+```
+
+```bash
+kubectl create secret generic SECRET --from-literal KEY="VALUE" --from-file FILENAME
+```
+
+Create docker registry secret
+
+```bash
+kubectl create secret docker-registry SECRET --docker-server DOCKER_REGISTRY_SERVER \
+  --docker-username DOCKER_USER --docker-password DOCKER_PASSWORD \
+  # --docker-email DOCKER_EMAIL --namespace NAMESPACE
 ```
