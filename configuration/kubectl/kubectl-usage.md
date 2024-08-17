@@ -109,7 +109,7 @@ kubectl get ... --field-selector spec.nodeName=<node>
 ### Describe
 
 ```bash
-kubectl describe pod PODNAME
+kubectl describe pod POD
 kubectl describe svc SERVICE
 kubectl describe deploy DEPLOYMENT
 kubectl describe sts STATEFULSET
@@ -133,8 +133,8 @@ kubectl apply -f FILE.yaml
 ```
 
 ```bash
-kubectl run PODNAME --image=IMAGE:TAG
-kubectl run PODNAME --image=IMAGE:TAG --port=PORT
+kubectl run POD --image=IMAGE:TAG
+kubectl run POD --image=IMAGE:TAG --port=PORT
 ```
 
 ### Run
@@ -149,23 +149,37 @@ kubectl run -it shell --image giantswarm/tiny-tools --restart Never --rm -- sh
 Login shell
 
 ```bash
-kubectl exec -it PODNAME -- COMMAND
+kubectl exec -it POD -- COMMAND
 ```
 
 Environment variable
 
 ```bash
-kubectl exec PODNAME -- env
-kubectl exec PODNAME -- printenv
+kubectl exec POD -- env
+kubectl exec POD -- printenv
 ```
 
 ### Update
 
 ```bash
-kubectl edit pod PODNAME
+kubectl edit pod POD
 kubectl edit svc SERVICE
 kubectl edit deploy DEPLOYMENT
 kubectl edit sts STATEFULSET
+```
+
+Patch
+
+```bash
+kubectl patch pod POD --type='json' -p='[{"op": "add", "path": "/spec/containers/0/env/-", "value": {"name": "MODE", "value": "production"}}]'
+```
+
+```bash
+kubectl patch pod POD --type='json' -p='[{"op": "replace", "path": "/spec/containers/0/image", "value": "IMAGE:TAG"}]'
+```
+
+```bash
+kubectl patch pod POD --type='json' -p='[{"op": "remove", "path": "/spec/nodeSelector"}]'
 ```
 
 ### Scale
@@ -183,7 +197,7 @@ kubectl autoscale deployment DEPLOYMENT --cpu-percent=50 --min=1 --max 5
 ### Delete
 
 ```bash
-kubectl delete pod PODNAME
+kubectl delete pod POD
 kubectl delete svc SERVICE
 kubectl delete deploy DEPLOYMENT
 kubectl delete sts STATEFULSET
@@ -197,8 +211,8 @@ kubectl delete pods --field-selector spec.nodeName=<node>
 ### Copy files
 
 ```bash
-kubectl cp PODNAME:/file ./
-kubectl cp ./ PODNAME:/file
+kubectl cp POD:/file ./
+kubectl cp ./ POD:/file
 ```
 
 ### Expose service
@@ -218,7 +232,7 @@ kubectl expose svc/SERVICE --type=NodePort --target-port=CONTAINER_PORT --name=S
 ### Rollout
 
 ```bash
-kubectl rollout restart pod PODNAME
+kubectl rollout restart pod POD
 kubectl rollout restart deploy DEPLOYMENT
 kubectl rollout restart svc SERVICE
 kubectl rollout restart sts STATEFULSET
@@ -235,18 +249,4 @@ kubectl rollout history deploy DEPLOYMENT --revision=N
 
 ```bash
 kubectl rollout undo deployment DEPLOYMENT --to-revision=N
-```
-
-### Schedule
-
-Disable scheduling for node
-
-```bash
-kubectl cordon NODE
-```
-
-Enable scheduling for node
-
-```bash
-kubectl uncordon NODE
 ```

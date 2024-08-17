@@ -8,7 +8,9 @@
 - [Kubectl with Bash](./kubectl-with-bash.md)
 - [Label and Selector](./label-selector.md)
 - [Logs](./logs.md)
+- [Pod Scheduling](./pod-scheduling.md)
 - [Remove Worker Node](./remove-worker-node.md)
+- [YQ Usage](./yq-usage.md)
 
 ## Manifests
 

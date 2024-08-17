@@ -24,5 +24,5 @@ mc alias set MINIO $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY
 ```
 
 ```bash
-mc admin info
+mc admin info MINIO
 ```

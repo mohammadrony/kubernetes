@@ -1,10 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: nginx
   namespace: default
 spec:
-  replicas: 10
   selector:
     matchLabels:
       app: nginx
@@ -25,8 +24,7 @@ spec:
             requests:
               memory: 256Mi
               cpu: "0.2"
-  strategy:
-    type: RollingUpdate # Recreate
+  updateStrategy:
+    type: RollingUpdate # onDelete
     rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
+      maxUnavailable: 1
