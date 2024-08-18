@@ -45,10 +45,6 @@ kubectl get pod
 kubectl get pods
 ```
 
-```bash
-kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node>
-```
-
 ### Deployment
 
 ```bash
@@ -104,6 +100,20 @@ kubectl get ... -o OUTPUT
 kubectl get ... -n NAMESPACE
 kubectl get ... -l KEY=VALUE
 kubectl get ... --field-selector spec.nodeName=<node>
+```
+
+Examples
+
+```bash
+kubectl get pods --all-namespaces
+```
+
+```bash
+kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node>
+```
+
+```bash
+kubectl get nodes --output custom-columns=NODE_NAME:.metadata.name,TAINTS:.spec.taints
 ```
 
 ### Describe
