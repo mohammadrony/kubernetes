@@ -1,6 +1,6 @@
 # ETCD Backup
 
-## Installation
+## Install etcdctl
 
 ```bash
 git clone https://github.com/etcd-io/etcd.git
