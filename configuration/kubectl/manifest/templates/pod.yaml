@@ -4,6 +4,8 @@ metadata:
   name: nginx
   namespace: default
 spec:
+  # priorityClassName: first
+  # nodeName: controlplane
   containers:
   - name: nginx
     image: nginx:latest

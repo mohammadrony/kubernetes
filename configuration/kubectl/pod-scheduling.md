@@ -13,7 +13,12 @@ spec:
 Get taints from node
 
 ```bash
-kubectl get node NODE -o yaml | yq .spec.taints
+kubectl get nodes -o yaml | yq '.items[].spec.taints'
+# kubectl get nodes -o json | jq '.items[].spec.taints'
+```
+
+```bash
+kubectl get nodes NODE -o yaml | yq .spec.taints
 ```
 
 Ignore `KEY=LABEL` labeled pod to be scheduled in specified `NODE`
@@ -85,6 +90,8 @@ spec:
             operator: In
             values:
             - frontend
+          # matchLabels:
+          #   app: frontend
         topologyKey: kubernetes.io/hostname
 ```
 
@@ -102,6 +109,8 @@ spec:
               operator: In
               values:
               - backend
+            # matchLabels:
+            #   app: backend
           topologyKey: kubernetes.io/hostname
 ```
 
@@ -119,6 +128,8 @@ spec:
             operator: In
             values:
             - frontend
+          # matchLabels:
+          #   app: frontend
         topologyKey: kubernetes.io/hostname
 ```
 
@@ -136,6 +147,8 @@ spec:
               operator: In
               values:
               - backend
+            # matchLabels:
+            #   app: backend
           topologyKey: kubernetes.io/hostname
 ```
 

@@ -2,6 +2,13 @@
 
 ## Label
 
+Get pod labels
+
+```bash
+kubectl get pods --show-labels
+kubectl get pods -o wide --show-labels
+```
+
 Get node labels
 
 ```bash

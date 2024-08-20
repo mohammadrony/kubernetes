@@ -146,21 +146,7 @@ kubectl create -f FILE.yaml
 kubectl apply -f FILE.yaml
 ```
 
-```bash
-kubectl run POD --image=IMAGE:TAG
-kubectl run POD --image=IMAGE:TAG --port=PORT
-```
-
-### Run
-
-Useful containers
-
-```bash
-kubectl run -it busybox --image=busybox --rm -- sh
-kubectl run -it shell --image giantswarm/tiny-tools --restart Never --rm -- sh
-```
-
-Login shell
+### Login Shell
 
 ```bash
 kubectl exec -it POD -- COMMAND
@@ -171,41 +157,6 @@ Environment variable
 ```bash
 kubectl exec POD -- env
 kubectl exec POD -- printenv
-```
-
-### Update
-
-```bash
-kubectl edit pod POD
-kubectl edit svc SERVICE
-kubectl edit deploy DEPLOYMENT
-kubectl edit sts STATEFULSET
-```
-
-Patch
-
-```bash
-kubectl patch pod POD --type='json' -p='[{"op": "add", "path": "/spec/containers/0/env/-", "value": {"name": "MODE", "value": "production"}}]'
-```
-
-```bash
-kubectl patch pod POD --type='json' -p='[{"op": "replace", "path": "/spec/containers/0/image", "value": "IMAGE:TAG"}]'
-```
-
-```bash
-kubectl patch pod POD --type='json' -p='[{"op": "remove", "path": "/spec/nodeSelector"}]'
-```
-
-### Scale
-
-```bash
-kubectl scale --replicas=N REPLICASET
-kubectl scale --replicas=N DEPLOYMENT
-kubectl scale --replicas=N STATEFULSET
-```
-
-```bash
-kubectl autoscale deployment DEPLOYMENT --cpu-percent=50 --min=1 --max 5
 ```
 
 ### Delete
@@ -220,6 +171,12 @@ kubectl delete sts STATEFULSET
 ```bash
 kubectl delete pods -l <key>=<value>
 kubectl delete pods --field-selector spec.nodeName=<node>
+```
+
+Delete pod immediately
+
+```bash
+kubectl delete pod POD --force --grace-period 0
 ```
 
 ### Copy files
