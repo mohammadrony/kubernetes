@@ -16,10 +16,23 @@ EOF
 
 ## Kubeadm
 
-Control Node
+Upgrade binary
 
 ```bash
+# Debian
+sudo apt-mark unhold kubeadm
+sudo apt update
+sudo apt upgrade -y kubeadm
+sudo apt-mark hold kubeadm
+```
+
+```bash
+# RHEL
 sudo yum install -y kubeadm-'1.31.x-*' --disableexcludes=kubernetes
+kubeadm version
+```
+
+```bash
 kubeadm version
 ```
 
@@ -27,16 +40,13 @@ kubeadm version
 sudo kubeadm upgrade plan
 ```
 
+Upgrade control plane
+
 ```bash
 sudo kubeadm upgrade apply v1.31.x
 ```
 
-Workers
-
-```bash
-sudo yum install -y kubeadm-'1.31.x-*' --disableexcludes=kubernetes
-kubeadm version
-```
+Upgrade worker node
 
 ```bash
 sudo kubeadm upgrade node
@@ -49,6 +59,15 @@ kubectl drain <node-to-drain> --ignore-daemonsets
 ```
 
 ```bash
+# Debian
+sudo apt-mark unhold kubelet kubectl
+sudo apt update
+sudo apt upgrade -y kubelet kubectl
+sudo apt-mark hold kubelet kubectl
+```
+
+```bash
+# RHEL
 sudo yum install -y kubelet-'1.31.x-*' kubectl-'1.31.x-*' --disableexcludes=kubernetes
 ```
 

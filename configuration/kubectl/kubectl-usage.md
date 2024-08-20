@@ -24,6 +24,10 @@ kubectl api-versions
 kubectl api-resources
 ```
 
+```bash
+kubectl get componentstatuses
+```
+
 ### Nodes
 
 ```bash

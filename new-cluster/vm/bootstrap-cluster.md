@@ -47,7 +47,7 @@ Start kubelet
 sudo systemctl enable --now kubelet
 ```
 
-## Control Node
+## Control Plane
 
 Initialize cluster
 
@@ -76,6 +76,13 @@ curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manife
 
 ```bash
 kubectl apply -f calico.yaml
+```
+
+Join control plane
+
+```bash
+sudo kubeadm join 192.168.56.111:6443 --token xxxx.xxxx --discovery-token-ca-cert-hash sha256:xxxx.xxxx \
+  --controle-plane --certificate-key xxxx.xxxx --cri-socket=unix:///run/containerd/containerd.sock
 ```
 
 ## Worker Node

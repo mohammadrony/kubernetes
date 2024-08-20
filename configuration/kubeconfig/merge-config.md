@@ -1,4 +1,4 @@
-# Merge multiple config
+# Merge Config File
 
 Config backup
 

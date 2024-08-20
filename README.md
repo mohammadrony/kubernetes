@@ -14,6 +14,7 @@
 - [Add-ons](./configuration/addons/)
 - [Cert Manager](./configuration/cert-manager/)
 - [Container Network Interface](./configuration/cni/)
+- [Core Components](./configuration/core-components/)
 - [DNS](./configuration/dns)
 - [Helm](./configuration/helm/)
 - [Ingress Controller](./configuration/ingress/)

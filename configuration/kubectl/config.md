@@ -1,4 +1,4 @@
-# Kubectl config commands
+# Config Commands
 
 Get cluster list
 
