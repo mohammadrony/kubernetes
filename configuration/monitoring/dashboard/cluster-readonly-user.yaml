@@ -19,23 +19,7 @@ metadata:
   name: cluster-read-only-role
 rules:
   - apiGroups: ["*"]
-    resources:
-      [
-        "nodes",
-        "namespaces",
-        "pods",
-        "services",
-        "configmaps",
-        "secrets",
-        "pods/log",
-        "deployments",
-        "daemonsets",
-        "statefulset",
-        "replicasets",
-        "serviceaccounts",
-        "ingresses",
-        "events",
-      ]
+    resources: ["*"]
     verbs: ["get", "list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1

@@ -186,20 +186,6 @@ kubectl cp POD:/file ./
 kubectl cp ./ POD:/file
 ```
 
-### Expose service
-
-```bash
-kubectl port-forward svc/SERVICE HOST_PORT:CONTAINER_PORT
-```
-
-```bash
-kubectl expose DEPLOYMENT SERVICE --port CONTAINER_PORT
-```
-
-```bash
-kubectl expose svc/SERVICE --type=NodePort --target-port=CONTAINER_PORT --name=SERVICE_2
-```
-
 ### Rollout
 
 ```bash

@@ -13,7 +13,7 @@ helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dash
 
 ## Dashboard User
 
-TL;DR
+TLDR
 
 ```bash
 kubectl -n kubernetes-dashboard create sa admin-user
@@ -21,18 +21,20 @@ kubectl create clusterrolebinding admin-user --clusterrole cluster-admin --servi
 kubectl -n kubernetes-dashboard create token admin-user
 ```
 
-Create admin user account
+Create cluster user account
 
 ```bash
 kubectl apply -f cluster-admin-user.yaml
 kubectl apply -f cluster-readonly-user.yaml
+kubectl apply -f cluster-restricted-user.yaml
 ```
 
-Create read-only user account
+Create namespace user account
 
 ```bash
 kubectl apply -f ns-admin-user.yaml
 kubectl apply -f ns-readonly-user.yaml
+kubectl apply -f ns-restricted-user.yaml
 ```
 
 Update service account secret
@@ -40,11 +42,13 @@ Update service account secret
 ```bash
 kubectl patch serviceaccount cluster-admin-sa -n kubernetes-dashboard -p '{"secrets": [{"name": "cluster-admin-secret"}]}'
 kubectl patch serviceaccount cluster-read-only-sa -n kubernetes-dashboard -p '{"secrets": [{"name": "cluster-read-only-secret"}]}'
+kubectl patch serviceaccount cluster-restricted-sa -n kubernetes-dashboard -p '{"secrets": [{"name": "cluster-restricted-secret"}]}'
 ```
 
 ```bash
 kubectl patch serviceaccount default-admin-sa -n default -p '{"secrets": [{"name": "default-admin-secret"}]}'
 kubectl patch serviceaccount default-read-only-sa -n default -p '{"secrets": [{"name": "default-read-only-secret"}]}'
+kubectl patch serviceaccount default-restricted-sa -n default -p '{"secrets": [{"name": "default-restricted-secret"}]}'
 ```
 
 Get service accounts
@@ -58,11 +62,13 @@ Get service account token from secret
 ```bash
 kubectl get secret cluster-admin-secret -n kubernetes-dashboard -o yaml | yq .data.token | base64 -d && echo
 kubectl get secret cluster-read-only-secret -n kubernetes-dashboard -o yaml | yq .data.token | base64 -d && echo
+kubectl get secret cluster-restricted-secret -n kubernetes-dashboard -o yaml | yq .data.token | base64 -d && echo
 ```
 
 ```bash
 kubectl get secret default-admin-secret -n default -o yaml | yq .data.token | base64 -d && echo
 kubectl get secret default-read-only-secret -n default -o yaml | yq .data.token | base64 -d && echo
+kubectl get secret default-restricted-secret -n default -o yaml | yq .data.token | base64 -d && echo
 ```
 
 Generate new token
@@ -70,11 +76,13 @@ Generate new token
 ```bash
 kubectl create token cluster-admin-sa -n kubernetes-dashboard
 kubectl create token cluster-read-only-sa -n kubernetes-dashboard
+kubectl create token cluster-restricted-sa -n kubernetes-dashboard
 ```
 
 ```bash
 kubectl create token default-admin-sa -n default
 kubectl create token default-read-only-sa -n default
+kubectl create token default-restricted-sa -n default
 ```
 
 ## Expose Service
@@ -86,6 +94,12 @@ kubectl proxy --port=8001
 ```
 
 Open [kubernetes-dashboard](http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard-kong-proxy:443/proxy/#/login) link in browser.
+
+Port forwarding
+
+```bash
+kubectl -n kubernetes-dashboard port-forward service/kubernetes-dashboard-kong-proxy 443:443
+```
 
 Domain setup
 
