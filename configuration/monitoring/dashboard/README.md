@@ -11,7 +11,15 @@ helm repo update
 helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace kubernetes-dashboard --create-namespace
 ```
 
-## Create dashboard user
+## Dashboard User
+
+TL;DR
+
+```bash
+kubectl -n kubernetes-dashboard create sa admin-user
+kubectl create clusterrolebinding admin-user --clusterrole cluster-admin --serviceaccount kubernetes-dashboard:admin-user
+kubectl -n kubernetes-dashboard create token admin-user
+```
 
 Create admin user account
 
@@ -69,7 +77,7 @@ kubectl create token default-admin-sa -n default
 kubectl create token default-read-only-sa -n default
 ```
 
-## Expose service
+## Expose Service
 
 Proxy service
 
