@@ -22,7 +22,7 @@ kubectl proxy --port=8001
 
 Visit following URL for `SERVICE.NAMESPACE:PORT` service and `http` or `https` protocol.
 
-<http://localhost:8001/api/v1/namespaces/NAMESPACE/services/http:SERVICE:PORT/proxy/>
+<http://localhost:8001/api/v1/namespaces/NAMESPACE/services/HTTP:SERVICE:PORT/proxy/>
 
 ## Ingress
 
