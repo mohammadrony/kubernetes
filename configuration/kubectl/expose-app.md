@@ -20,9 +20,9 @@ kubectl expose svc/SERVICE --type=NodePort --target-port=CONTAINER_PORT --name=S
 kubectl proxy --port=8001
 ```
 
-Visit following URL for `SERVICE.NAMESPACE:PORT` service in `http` or `https` protocol.
+Visit following URL for `SERVICE.NAMESPACE:PORT` service and `http` or `https` protocol.
 
-<http://localhost:8001/api/v1/namespaces/NAMESPACE/services/https:SERVICE:PORT/proxy/>
+<http://localhost:8001/api/v1/namespaces/NAMESPACE/services/http:SERVICE:PORT/proxy/>
 
 ## Ingress
 
