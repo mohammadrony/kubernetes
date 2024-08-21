@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cluster-read-only-sa
+  namespace: kubernetes-dashboard
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: cluster-read-only-secret
+  namespace: kubernetes-dashboard
+  annotations:
+    kubernetes.io/service-account.name: "cluster-read-only-sa"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-read-only-role
+rules:
+  - apiGroups: ["*"]
+    resources:
+      [
+        "nodes",
+        "namespaces",
+        "pods",
+        "services",
+        "configmaps",
+        "secrets",
+        "pods/log",
+        "deployments",
+        "daemonsets",
+        "statefulset",
+        "replicasets",
+        "serviceaccounts",
+        "ingresses",
+        "events",
+      ]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cluster-read-only-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: cluster-read-only-sa
+    namespace: kubernetes-dashboard
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-read-only-role

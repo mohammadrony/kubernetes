@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: default-read-only-sa
+  namespace: default
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: default-read-only-secret
+  namespace: default
+  annotations:
+    kubernetes.io/service-account.name: "default-read-only-sa"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: default-read-only-role
+  namespace: default
+rules:
+  - apiGroups: ["*"]
+    resources:
+      [
+        "pods",
+        "services",
+        "configmaps",
+        "secrets",
+        "pods/log",
+        "deployments",
+        "daemonsets",
+        "statefulset",
+        "replicasets",
+        "serviceaccounts",
+        "ingresses",
+        "events",
+      ]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: default-read-only-role-binding
+  namespace: default
+subjects:
+  - kind: ServiceAccount
+    name: default-read-only-sa
+    namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: default-read-only-role

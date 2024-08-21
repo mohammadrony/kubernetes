@@ -2,6 +2,7 @@
 
 ## Complete Monitoring
 
+- [Kubernetes Dashboard](./dashboard/)
 - [Grafana](./grafana/)
 - [Opentelemetry and Grafana Stack](./opentel-grafana-stack/)
 
