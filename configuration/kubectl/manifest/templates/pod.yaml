@@ -12,7 +12,7 @@ spec:
     imagePullPolicy: Always
     ports:
       - containerPort: 80
-
+    command: [ "/bin/sh", "-c", "echo hello > /host/file"]
     resources:
       limits:
         memory: 512Mi
@@ -80,6 +80,8 @@ spec:
       mountPath: /path/config/
     - name: secret-file
       mountPath: /path/secret/
+    - name: host-file
+      mountPath: /host/
 
   volumes:
     - name: config-file
@@ -88,6 +90,10 @@ spec:
     - name: secret-file
       secret:
         secretName: my-secret
+    - name: host-file
+      hostPath:
+        path: /host/
+        type: DirectoryOrCreate
   
   containerLogMaxSize: 10Mi
   containerLogMaxFiles: 7
