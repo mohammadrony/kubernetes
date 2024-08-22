@@ -1,0 +1,47 @@
+# Deny all traffic for NAMESPACE pods
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: NP-DENY-ALL
+  namespace: NAMESPACE
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+---
+# Deny all incoming and outgoing traffic for APP=FRONTEND labeled pods
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: NP-FRONTEND-DENY-ALL
+  namespace: NAMESPACE
+spec:
+  podSelector:
+    matchLabels:
+      APP: FRONTEND
+  policyTypes:
+    - Ingress
+    - Egress
+---
+# Deny all incoming traffic for NAMESPACE pods
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: NP-DENY-INCOMING
+  namespace: NAMESPACE
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+---
+# Deny all outgoing traffic for NAMESPACE pods
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: NP-DENY-OUTGOING
+  namespace: NAMESPACE
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress

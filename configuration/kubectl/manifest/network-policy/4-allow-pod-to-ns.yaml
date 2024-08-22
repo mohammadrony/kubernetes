@@ -1,0 +1,23 @@
+# APP=BACKEND pods will only receive and send traffic with NAMESPACE_2
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: NP-BACKEND-NS
+  namespace: NAMESPACE
+spec:
+  podSelector:
+    matchLabels:
+      APP: BACKEND
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: NAMESPACE_2
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: NAMESPACE_2

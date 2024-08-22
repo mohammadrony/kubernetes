@@ -1,0 +1,23 @@
+# APP=BACKEND will only receive and send traffic with APP=FRONTEND
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: NP-BACKEND
+  namespace: NAMESPACE
+spec:
+  podSelector:
+    matchLabels:
+      APP: BACKEND
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              APP: FRONTEND
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              APP: FRONTEND
