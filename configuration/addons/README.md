@@ -3,6 +3,8 @@
 ## Kubectl Plugins
 
 - [Krew](./plugins/krew.md)
+- [Ksniff](./plugins/ksniff.md)
+- [View ServiceAccount Kubeconfig](./plugins/view-sa-kubeconfig.md)
 
 ## Kubectx and Kubens
 
