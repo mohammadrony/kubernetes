@@ -1,4 +1,4 @@
-# Multiple Control Node
+# Multiple Control Plane
 
 Save secret files copy from following directories:
 

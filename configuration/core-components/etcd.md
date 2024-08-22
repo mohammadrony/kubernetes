@@ -1,4 +1,4 @@
-# ETCD Backup
+# ETCD Management
 
 ## Install etcdctl
 

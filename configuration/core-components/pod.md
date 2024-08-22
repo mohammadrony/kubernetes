@@ -1,6 +1,6 @@
-# Monitoring
+# Pod Usage
 
-## Probes
+## Monitoring Probes
 
 Liveness Probe
 

@@ -1,4 +1,5 @@
 # Core Components
 
-- [ETCD Backup](./etcd-backup.md)
-- [Monitoring](./monitoring.md)
+- [Certificate Generate](./certificate-generate.md)
+- [ETCD Management](./etcd.md)
+- [Pod Usage](./pod.md)
