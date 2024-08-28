@@ -1,7 +1,5 @@
 # Minio
 
-[Minio Client](./minio-client.md)
-
 ## Helm Install
 
 ### Operator
