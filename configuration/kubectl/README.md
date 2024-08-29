@@ -7,6 +7,7 @@
 - [Context](./context.md)
 - [Events](./events.md)
 - [Expose Application](./expose-app.md)
+- [Kubectl Get](./kubectl-get.md)
 - [Kubectl Usage](./kubectl-usage.md)
 - [Kubectl with Bash](./kubectl-with-bash.md)
 - [Label and Selector](./label-selector.md)
