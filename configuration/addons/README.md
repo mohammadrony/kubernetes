@@ -2,8 +2,10 @@
 
 ## Kubectl Plugins
 
+- [Foreach](./plugins/foreach.md)
 - [Krew](./plugins/krew.md)
 - [Ksniff](./plugins/ksniff.md)
+- [Tail](./plugins/tail.md)
 - [View ServiceAccount Kubeconfig](./plugins/view-sa-kubeconfig.md)
 
 ## Kubectx and Kubens
