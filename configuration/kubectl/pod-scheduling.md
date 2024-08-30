@@ -13,12 +13,16 @@ spec:
 Get taints from node
 
 ```bash
+kubectl get nodes NODE -o yaml | yq .spec.taints
+```
+
+```bash
 kubectl get nodes -o yaml | yq '.items[].spec.taints'
 # kubectl get nodes -o json | jq '.items[].spec.taints'
 ```
 
 ```bash
-kubectl get nodes NODE -o yaml | yq .spec.taints
+kubectl get nodes -o='custom-columns=NodeName:.metadata.name,TaintKey:.spec.taints[*].key,TaintValue:.spec.taints[*].value,TaintEffect:.spec.taints[*].effect'
 ```
 
 Ignore `KEY=LABEL` labeled pod to be scheduled in specified `NODE`
