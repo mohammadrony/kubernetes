@@ -28,10 +28,15 @@ EOF
 Upgrade binary
 
 ```bash
+apt-cache madison kubeadm
+````
+
+```bash
 # Debian
-sudo apt-mark unhold kubeadm
 sudo apt update
-sudo apt upgrade -y kubeadm
+sudo apt-mark unhold kubeadm
+sudo apt install -y kubeadm
+# sudo apt install -y kubeadm='1.31.x*'
 sudo apt-mark hold kubeadm
 ```
 
@@ -68,10 +73,15 @@ kubectl drain <node-to-drain> --ignore-daemonsets
 ```
 
 ```bash
+apt-cache madison kubelet kubectl
+```
+
+```bash
 # Debian
-sudo apt-mark unhold kubelet kubectl
 sudo apt update
-sudo apt upgrade -y kubelet kubectl
+sudo apt-mark unhold kubelet kubectl
+# sudo apt install -y kubelet='1.31.x*' kubectl='1.31.x*'
+sudo apt install -y kubelet kubectl
 sudo apt-mark hold kubelet kubectl
 ```
 
