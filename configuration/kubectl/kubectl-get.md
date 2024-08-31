@@ -87,6 +87,13 @@ kubectl get ... --sort-by='FIELD'
 kubectl get ... --field-selector spec.nodeName=<node>
 ```
 
+Examples
+
+```bash
+kubectl get ... -o name
+kubectl get ... --no-headers
+```
+
 ## Examples
 
 Get all namespace pods

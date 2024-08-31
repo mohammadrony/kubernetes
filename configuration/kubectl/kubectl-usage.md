@@ -22,6 +22,7 @@ kubectl api-versions
 
 ```bash
 kubectl api-resources
+kubectl api-resources --namespaced
 ```
 
 ### Describe

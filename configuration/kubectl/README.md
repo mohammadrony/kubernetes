@@ -15,7 +15,7 @@
 - [Modify](./modify.md)
 - [Pod Scheduling](./pod-scheduling.md)
 - [Remove Worker Node](./remove-worker-node.md)
-- [Run Pod](./run-pod.md)
+- [Pod Run](./pod-run.md)
 - [Useful Commands](./useful-commands.md)
 - [YQ Usage](./yq-usage.md)
 

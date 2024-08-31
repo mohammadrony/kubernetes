@@ -1,4 +1,4 @@
-# Run Pod
+# Pod Run
 
 ## Templates
 
@@ -12,7 +12,14 @@ Run pod
 
 ```bash
 kubectl run POD --image=IMAGE:TAG
+```
+
+```bash
 kubectl run POD --image=IMAGE:TAG --port=PORT
+```
+
+```bash
+kubectl run POD --image=IMAGE:TAG --labels='KEY=VALUE'
 ```
 
 ## Useful Apps
