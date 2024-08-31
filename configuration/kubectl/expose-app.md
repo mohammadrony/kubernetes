@@ -11,7 +11,7 @@ kubectl expose DEPLOYMENT SERVICE --port CONTAINER_PORT
 Expose nodeport service
 
 ```bash
-kubectl expose svc/SERVICE --type=NodePort --target-port=CONTAINER_PORT --name=SERVICE_2
+kubectl expose svc/SERVICE --type=NodePort --port SERVICE_PORT --target-port=CONTAINER_PORT --name=SERVICE_NAME
 ```
 
 ## Proxy service

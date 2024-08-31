@@ -8,7 +8,7 @@ Get pod manifest
 kubectl run POD --image=IMAGE -o yaml --dry-run=client > POD.yaml
 ```
 
-Run pod
+Run pod options
 
 ```bash
 kubectl run POD --image=IMAGE:TAG
@@ -22,9 +22,20 @@ kubectl run POD --image=IMAGE:TAG --port=PORT
 kubectl run POD --image=IMAGE:TAG --labels='KEY=VALUE'
 ```
 
+```bash
+kubectl run POD --image=IMAGE:TAG --restart Never
+```
+
 ## Useful Apps
 
 ```bash
 kubectl run -it busybox --image=busybox --rm -- sh
-kubectl run -it shell --image giantswarm/tiny-tools --restart Never --rm -- sh
+```
+
+```bash
+kubectl run -it netshoot --image=nicolaka/netshoot --rm -- sh
+```
+
+```bash
+kubectl run -it shell --image giantswarm/tiny-tools --rm -- sh
 ```

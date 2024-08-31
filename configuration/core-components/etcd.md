@@ -39,6 +39,12 @@ Backup certificate
 sudo tar -zcvf etcd.tar.gz /etc/kubernetes/pki/etcd
 ```
 
+Drain nodes before restore
+
+```bash
+kubectl drain NODE --ignore-daemonsets
+```
+
 Restore database
 
 ```bash
