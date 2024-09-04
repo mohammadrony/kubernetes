@@ -52,10 +52,10 @@ sudo systemctl enable --now kubelet
 Initialize cluster
 
 ```bash
-control_node=192.168.56.111
-cidr=192.168.128.0/17 # 192.168.0.0/16 # calico
-sudo kubeadm init --v=5 --pod-network-cidr=$cidr --apiserver-advertise-address=$control_node \
-   --kubernetes-version 1.30 --cri-socket=unix:///run/containerd/containerd.sock
+control_node=10.10.10.14
+cidr=192.168.0.0/16 # 192.168.0.0/16 # calico
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=10.10.10.14 \
+  --cri-socket=unix:///run/containerd/containerd.sock --v=5
 ```
 
 Add kubeconfig
@@ -69,7 +69,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 Install calico
 
 ```bash
-version=3.28.0 # https://github.com/projectcalico/calico/releases
+version=3.28.1 # https://github.com/projectcalico/calico/releases
 curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/calico.yaml
 # curl -LO https://docs.projectcalico.org/manifests/calico.yaml
 ```
