@@ -33,9 +33,15 @@ kubectl run -it busybox --image=busybox --rm -- sh
 ```
 
 ```bash
+kubectl run -it shell --image giantswarm/tiny-tools --rm -- sh
+```
+
+Netshoot
+
+```bash
 kubectl run -it netshoot --image=nicolaka/netshoot --rm -- sh
 ```
 
 ```bash
-kubectl run -it shell --image giantswarm/tiny-tools --rm -- sh
+kubectl run netshoot --image=nicolaka/netshoot -- sleep infinity
 ```

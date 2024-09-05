@@ -52,9 +52,9 @@ sudo systemctl enable --now kubelet
 Initialize cluster
 
 ```bash
-control_node=10.10.10.14
-cidr=192.168.0.0/16 # 192.168.0.0/16 # calico
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=10.10.10.14 \
+control_node=192.168.56.111
+cidr=192.168.128.0/17 # 192.168.0.0/16 # calico
+sudo kubeadm init --pod-network-cidr=$cidr --apiserver-advertise-address=$control_node \
   --cri-socket=unix:///run/containerd/containerd.sock --v=5
 ```
 

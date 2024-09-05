@@ -73,6 +73,10 @@ EOF
         sudo sed -i 's/\(SystemdCgroup = \).*/\1true/' /etc/containerd/config.toml
         sudo systemctl enable --now containerd
 
+        # Disable apparmor
+        sudo systemctl disable --now apparmor
+        sudo systemctl restart containerd
+        
         # Load necessary modules
         sudo tee /etc/modules-load.d/k8s.conf << EOF
 overlay

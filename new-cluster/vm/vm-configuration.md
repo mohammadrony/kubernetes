@@ -1,66 +1,118 @@
-#!/bin/bash
+# VM Configuration
 
-# Ubuntu
+## Ubuntu
+
+Update package
+
+```bash
 sudo apt update
+```
 
-# Install basic packages
+Install some common package
+
+```bash
 sudo apt install -y vim net-tools nmap telnet
+```
 
-# Set timezone
+Set timezone
+
+```bash
 sudo timedatectl set-timezone Asia/Dhaka
+```
 
-# Set hosts
+Set hosts
 
-# Disable swap
+```bash
+sudo tee -a /etc/hosts << EOF
+192.168.56.111 kube-control-1
+EOF
+```
+
+Disable swap
+
+```bash
 sudo swapoff -a
 sudo sed -i '/swap/d' /etc/fstab
+```
 
-# Enable IP forwarding
+Enable IP forwarding
+
+```bash
 sudo tee -a /etc/sysctl.conf << EOF
 net.ipv4.ip_forward = 1
 EOF
 sudo sysctl -p
+```
 
-# Install container runtime (containerd)
+Install containerd
+
+```bash
 sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
 sudo apt install -y containerd.io
 sudo mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
 sudo sed -i 's/\(SystemdCgroup = \).*/\1true/' /etc/containerd/config.toml
 sudo systemctl enable --now containerd
+```
 
-# Containerd runtime setup
+Containerd config setup
+
+```bash
 sudo tee /etc/crictl.yaml << EOF
 runtime-endpoint: unix:///run/containerd/containerd.sock
 image-endpoint: unix:///run/containerd/containerd.sock
 EOF
 sudo systemctl restart containerd
 sudo crictl config --list
+```
 
-# Load necessary modules
+Disable apparmor
+
+```bash
+sudo systemctl disable --now apparmor
+sudo systemctl restart containerd
+```
+
+Load kernal modules
+
+```bash
 sudo tee /etc/modules-load.d/k8s.conf << EOF
 overlay
 br_netfilter
 EOF
 sudo modprobe overlay
 sudo modprobe br_netfilter
+```
 
-# Set up required sysctl params
+Set up required sysctl params
+
+```bash
 sudo tee /etc/sysctl.d/k8s.conf << EOF
 net.bridge.bridge-nf-call-iptables  = 1
 net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward                 = 1
 EOF
 sudo sysctl --system
+```
 
-# Kubernetes repository
+Add kubernetes repository
+
+```bash
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+```
 
-# Install kubeadm kubelet
+Install kubeadm kubelet
+
+```bash
 sudo apt update
 sudo apt install -y kubeadm kubelet kubectl
 sudo apt-mark hold kubeadm kubelet kubectl
+```
 
+Restart kubelet
+
+```bash
 sudo systemctl enable --now kubelet
 sudo systemctl status kubelet
+```
