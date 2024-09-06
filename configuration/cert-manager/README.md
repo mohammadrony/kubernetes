@@ -6,7 +6,8 @@
 
 ```bash
 version=1.15.3
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v$version/cert-manager.yaml
+curl -LO https://github.com/cert-manager/cert-manager/releases/download/v$version/cert-manager.yaml
+kubectl apply -f cert-manager.yaml
 ```
 
 Helm chart
