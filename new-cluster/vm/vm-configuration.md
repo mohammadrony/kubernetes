@@ -49,6 +49,7 @@ Install containerd
 ```bash
 sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
 sudo apt install -y containerd.io
+sudo apt-mark hold containerd.io
 sudo mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
 sudo sed -i 's/\(SystemdCgroup = \).*/\1true/' /etc/containerd/config.toml

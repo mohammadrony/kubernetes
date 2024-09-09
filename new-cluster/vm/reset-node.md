@@ -29,11 +29,11 @@ sudo rm -f /etc/sysctl.d/k8s.conf
 ```bash
 # Redhat
 sudo dnf remove -y containerd
-sudo dnf remove -y kubelet kubeadm kubectl
+sudo dnf remove -y kubelet kubeadm
 ```
 
 ```bash
-sudo apt-mark unhold
+sudo apt-mark unhold containerd.io kubelet kubeadm
 sudo apt remove -y containerd.io
-sudo apt remove -y kubelet kubeadm kubectl
+sudo apt remove -y kubelet kubeadm
 ```
