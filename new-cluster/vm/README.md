@@ -14,3 +14,4 @@ Configuration
 Others
 
 - [Cluster Issues](./issues.md)
+- [Reset Nodes](./reset-node.md)
