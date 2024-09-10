@@ -1,4 +1,4 @@
-# Minio Install with Kubectl Plugin
+# Minio Kubectl Plugin
 
 ```bash
 kubectl krew install minio

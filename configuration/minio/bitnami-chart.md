@@ -1,4 +1,4 @@
-# Minio Install with Bitnami Chart
+# Bitnami Chart
 
 ```bash
 helm show values oci://registry-1.docker.io/bitnamicharts/minio > values.minio-bitnami.yaml
