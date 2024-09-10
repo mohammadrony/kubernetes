@@ -39,7 +39,7 @@ sudo systemctl enable --now iscsid
 
 ```bash
 sudo apt install -y nfs-common
-sudo dnf install -y jq
+sudo apt install -y jq
 ```
 
 Check NFSv4 support is enabled in kernel
