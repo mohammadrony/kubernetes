@@ -1,6 +1,6 @@
 # Kubectl with Bash
 
-Delete stuck namespace
+Delete terminating namespace
 
 ```bash
 NAMESPACE=<namespace>

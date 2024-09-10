@@ -23,7 +23,7 @@
 kubectl minio tenant create minio-tenant  \
   --servers          2                    \
   --volumes          4                    \
-  --capacity         4Gi                 \
+  --capacity         4Gi                  \
   --namespace        minio                \
   --storage-class    local-storage        \
   --output > minio-tenant.yaml
