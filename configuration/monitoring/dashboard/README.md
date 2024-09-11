@@ -54,6 +54,10 @@ kubectl patch serviceaccount default-restricted-sa -n default -p '{"secrets": [{
 Get service accounts
 
 ```bash
+kubectl get serviceaccounts -n kubernetes-dashboard
+```
+
+```bash
 kubectl get serviceaccounts
 ```
 
