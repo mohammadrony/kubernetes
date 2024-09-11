@@ -23,7 +23,7 @@ sudo snap install k9s
 sudo ln -s /snap/k9s/current/bin/k9s /snap/bin/
 ```
 
-Autocompletion
+Auto completion
 
 ```zsh
 # Zsh
@@ -33,6 +33,15 @@ source <(kubectl completion zsh)
 ```bash
 # Bash
 source <(kubectl completion bash)
+```
+
+```bash
+echo 'alias k=kubectl' >> ~/.bashrc
+echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc
+```
+
+```bash
+source ~/.bashrc
 ```
 
 Convert run and create command to yaml
