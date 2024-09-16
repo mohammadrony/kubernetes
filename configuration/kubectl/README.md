@@ -14,6 +14,7 @@
 - [Logs](./logs.md)
 - [Modify](./modify.md)
 - [Pod Scheduling](./pod-scheduling.md)
+- [Quick Reference](./quick-reference.md)
 - [Remove Worker Node](./remove-worker-node.md)
 - [Pod Run](./pod-run.md)
 - [Useful Commands](./useful-commands.md)
