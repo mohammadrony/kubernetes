@@ -34,11 +34,15 @@ helm repo update
 ```
 
 ```bash
-helm show values grafana/loki-stack > values.loki-stack.yaml
+kubectl apply -f loki-pv.yaml
 ```
 
 ```bash
-helm upgrade --install loki grafana/loki-stack --namespace monitoring --values values.loki-stack-custom.yaml
+helm show values grafana/loki-stack > values.loki-stack.orig.yaml
+```
+
+```bash
+helm upgrade --install loki grafana/loki-stack --namespace monitoring --create-namespace --values values.loki-stack.yaml
 ```
 
 Add Ingress for Grafana
@@ -49,6 +53,14 @@ kubectl apply --namespace monitoring -f grafana-ingress.yaml
 
 ## Install Prometheus stack
 
+Prerequisites
+
+```bash
+# for all node
+sudo systemctl stop node_exporter
+sudo systemctl disable node_exporter
+```
+
 Add Prometheus repo
 
 ```bash
@@ -57,14 +69,6 @@ helm repo update
 ```
 
 Install Prometheus
-
-```bash
-helm search repo prometheus-community
-```
-
-```bash
-kubectl create namespace monitoring
-```
 
 ```bash
 helm show values prometheus-community/kube-prometheus-stack > values.prometheus-stack.yaml
@@ -80,19 +84,11 @@ Update
 
 ```yaml
 grafana:
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-    hosts:
-    - grafana.example.com
+  enabled: false
 ```
 
 ```bash
-helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack --namespace monitoring --values values.prometheus-stack.yaml
-```
-
-```bash
-kubectl get pods -l "release=kube-prometheus-stack" --namespace monitoring
+helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace --values values.prometheus-stack.yaml
 ```
 
 ## Expose Grafana service NodePort
@@ -145,9 +141,16 @@ grafana-cli admin reset-admin-password yourPassword
 
 ### Dashboard Setup
 
-Dashboards > New > New Dashboard > Import dashboard
+Data soruces
 
-Metrics monitoring dashboard
+| Type        | Name        | URL                                                         |
+|-------------|-------------|-------------------------------------------------------------|
+| Prometheus  | Prometheus  | `http://kube-prometheus-stack-prometheus.monitoring:9090`   |
+| Loki        | Loki        | `http://loki.monitoring:3100`                               |
+
+Dashboards
+
+Metrics monitoring dashboard (Prometheus)
 
 | ID    | Title                            |
 |-------|----------------------------------|
@@ -159,7 +162,7 @@ Metrics monitoring dashboard
 
 Select dashboard ID > Load > Data source > Prometheus > Import
 
-Log monitoring dashboard
+Log monitoring dashboard (Loki)
 
 | ID    | Title                            |
 |-------|----------------------------------|
@@ -173,6 +176,10 @@ Select dashboard ID > Load > Data source > Loki > Import
 
 ```bash
 helm uninstall kube-prometheus-stack --namespace monitoring
-helm uninstall loki --namespace loki-stack
-kubectl delete -f --namespace loki-stack -f grafana-ingress.yaml
+helm uninstall loki --namespace monitoring
+```
+
+```bash
+kubectl delete -f --namespace monitoring -f grafana-ingress.yaml
+kubectl delete namespace monitoring
 ```

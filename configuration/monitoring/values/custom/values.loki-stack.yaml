@@ -15,7 +15,7 @@ loki:
     size: 8Gi
     storageClassName: local-storage
   # nodeSelector:
-  #   kubernetes.io/hostname: worker-1
+  #   kubernetes.io/hostname: node-1
 
 fluent-bit:
   enabled: false
@@ -32,7 +32,7 @@ grafana:
     datasources:
       enabled: true
   # nodeSelector:
-  #   kubernetes.io/hostname: worker-1
+  #   kubernetes.io/hostname: node-1
 
 prometheus:
   enabled: false
@@ -41,8 +41,6 @@ promtail:
   config:
     lokiAddress: http://{{ .Release.Name }}:3100/loki/api/v1/push
   enabled: true
-  # nodeSelector:
-  #   kubernetes.io/hostname: worker-1
 
 filebeat:
   enabled: false
