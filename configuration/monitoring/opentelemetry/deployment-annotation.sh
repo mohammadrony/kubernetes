@@ -6,3 +6,6 @@ kubectl patch deployment/DEPLOYMENT_NAME --namespace NAMESPACE --patch '{"spec":
 
 # Node.js
 kubectl patch deployment/DEPLOYMENT_NAME --namespace NAMESPACE --patch '{"spec": {"template": {"metadata": {"annotations": {"instrumentation.opentelemetry.io/inject-nodejs": "opentelemetry/nodejs-instrumentation"}}}}}'
+
+# Remove annotation
+kubectl patch deployment/DEPLOYMENT_NAME --namespace NAMESPACE --type='json' -p='[{"op": "remove", "path": "/spec/template/metadata/annotations"}]'

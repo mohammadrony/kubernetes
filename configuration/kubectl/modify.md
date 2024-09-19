@@ -23,13 +23,19 @@ kubectl autoscale deployment DEPLOYMENT --cpu-percent=50 --min=1 --max 5
 
 ## Patch
 
+Add
+
 ```bash
 kubectl patch pod POD --type='json' -p='[{"op": "add", "path": "/spec/containers/0/env/-", "value": {"name": "MODE", "value": "production"}}]'
 ```
 
+Replace
+
 ```bash
 kubectl patch pod POD --type='json' -p='[{"op": "replace", "path": "/spec/containers/0/image", "value": "IMAGE:TAG"}]'
 ```
+
+Remove
 
 ```bash
 kubectl patch pod POD --type='json' -p='[{"op": "remove", "path": "/spec/nodeSelector"}]'
