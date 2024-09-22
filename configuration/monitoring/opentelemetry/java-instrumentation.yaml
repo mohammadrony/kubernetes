@@ -5,7 +5,7 @@ metadata:
   namespace: opentelemetry
 spec:
   exporter:
-    endpoint: http://opentelemetry-collector.opentelemetry:4317
+    endpoint: http://opentelemetry-collector.opentelemetry.svc:4317
   propagators:
     - tracecontext
     - baggage
@@ -16,7 +16,7 @@ spec:
   java:
     env:
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
-        value: http://opentelemetry-collector.opentelemetry.svc.cluster.local:4317
+        value: http://opentelemetry-collector.opentelemetry.svc:4317
       - name: OTEL_METRICS_EXPORTER
         value: otlp
       - name: OTEL_LOGS_EXPORTER

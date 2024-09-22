@@ -23,7 +23,7 @@ datasources:
         access: proxy
         orgId: 1
         uid: tempo
-        url: http://tempo-query-frontend.monitoring.svc:3100
+        url: http://tempo-distributed-query-frontend.grafana.svc:3100
         isDefault: false
         editable: true
       - name: Loki
@@ -31,7 +31,7 @@ datasources:
         access: proxy
         orgId: 1
         uid: loki
-        url: http://loki-gateway.monitoring.svc
+        url: http://loki-distributed-query-frontend.grafana.svc:3100
         isDefault: false
         editable: true
         jsonData:

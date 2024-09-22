@@ -153,17 +153,18 @@ config:
     debug:
       verbosity: detailed
     otlp:
-      endpoint: tempo-distributed-distributor.grafana.svc:4317
+      endpoint: tempo-distributor.monitoring.svc:4317
       tls:
         insecure: true
     loki:
-      endpoint: http://loki-distributed-distributor.grafana.svc:3100/loki/api/v1/push
+      endpoint: http://loki.monitoring:3100/loki/api/v1/push
       tls:
         insecure: true
 
   service:
     extensions:
       - health_check
+      - memory_ballast
     pipelines:
       traces:
         receivers: [otlp]

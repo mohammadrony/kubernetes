@@ -17,12 +17,12 @@ helm upgrade --install opentelemetry-operator open-telemetry/opentelemetry-opera
 ```
 
 ```bash
-kubectl apply -f ot-collector.yaml
+# kubectl apply -f ot-collector.yaml
 ```
 
 ```bash
-# helm upgrade --install opentelemetry open-telemetry/opentelemetry-collector \
-#   --namespace opentelemetry --create-namespace -f values.ot-collector.yaml
+helm upgrade --install opentelemetry-collector open-telemetry/opentelemetry-collector \
+  --namespace opentelemetry --create-namespace -f values.ot-collector.yaml
 ```
 
 ```bash
@@ -37,7 +37,7 @@ helm repo update
 ```
 
 ```bash
-helm install tempo grafana/tempo-distributed --namespace monitoring --create-namespace -f values.tempo-distributed.yaml
+helm install tempo grafana/tempo-distributed --namespace grafana --create-namespace -f values.tempo-distributed.yaml
 ```
 
 ```bash
@@ -45,11 +45,11 @@ helm install tempo grafana/tempo-distributed --namespace monitoring --create-nam
 ```
 
 ```bash
-helm install loki grafana/loki --namespace monitoring --create-namespace -f values.loki.yaml
+helm install loki grafana/loki --namespace grafana --create-namespace -f values.loki.yaml
 ```
 
 ```bash
-helm install grafana grafana/grafana --namespace monitoring --create-namespace \
+helm install grafana grafana/grafana --namespace grafana --create-namespace \
   --set persistence.enabled=false \
   -f values.grafana.yaml
 ```
