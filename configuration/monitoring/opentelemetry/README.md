@@ -1,9 +1,10 @@
 # Opentelemetry
 
-Configuration
+## Docs
 
+- [Efficient Application Log Collection and Analysis using OpenTelemetry and Loki](https://addozhang.medium.com/efficient-application-log-collection-and-analysis-using-opentelemetry-and-loki-baf04bc4a8a2)
 
-Concept
+## Concept
 
 - AlwaysOn: sampler samples every trace, for example, a new trace will be started and exported for every request.
 - AlwaysOff: sampler samples no traces or, in other words, drops all traces. You can use this sampler to perform load testing or to temporarily disable tracing.
