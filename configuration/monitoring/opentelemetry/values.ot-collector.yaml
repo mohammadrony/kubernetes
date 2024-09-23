@@ -5,6 +5,13 @@ image:
 command:
   name: "otelcol-contrib"
 
+presets:
+  kubernetesAttributes:
+    enabled: true
+    extractAllPodLabels: true
+  kubernetesEvents:
+    enabled: true
+
 extraVolumes:
   - name: varlog
     hostPath:
