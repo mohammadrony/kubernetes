@@ -26,6 +26,8 @@ config:
     filelog:
       include:
         - /var/log/pods/*/*/*.log
+      exclude:
+        - /var/log/pods/*/otel-collector/*.log
       start_at: beginning
       include_file_path: true
       include_file_name: false
@@ -93,14 +95,14 @@ config:
           value: "cluster-1" # REPLACE ME
 
   processors:
-    # resource:
-    #   attributes:
-    #     - action: insert
-    #       key: loki.format
-    #       value: raw
-    #     - action: insert
-    #       key: loki.resource.labels
-    #       value: pod, namespace, container, cluster, filename
+    resource:
+      attributes:
+        - action: insert
+          key: loki.format
+          value: raw
+        - action: insert
+          key: loki.resource.labels
+          value: pod, namespace, container, cluster, filename
     memory_limiter:
       check_interval: 1s
       limit_percentage: 75
@@ -116,6 +118,9 @@ config:
         - action: insert
           key: loki.attribute.labels
           value: event.domain, event.name
+        - action: insert
+          key: timestamp
+          value: $CURRENT_TIME
         - action: insert
           key: loki.resource.labels
           value: service.name, service.namespace
@@ -153,19 +158,26 @@ config:
     debug:
       verbosity: detailed
     otlp:
-      endpoint: tempo-distributor.monitoring.svc:4317
+      endpoint: tempo.grafana.svc:4317
       tls:
         insecure: true
     loki:
-      endpoint: http://loki.monitoring:3100/loki/api/v1/push
+      endpoint: http://loki-gateway.grafana.svc/loki/api/v1/push
       tls:
         insecure: true
+      sending_queue:
+        enabled: true
+      retry_on_failure:
+        enabled: true
 
   service:
     extensions:
       - health_check
-      - memory_ballast
     pipelines:
+      metrics:
+        receivers: [otlp]
+        processors: []
+        exporters: [debug]
       traces:
         receivers: [otlp]
         processors:
@@ -179,8 +191,9 @@ config:
         exporters: [debug, otlp]
       logs:
         receivers: [filelog]
-        processors: [
-            # resource,
+        processors:
+          [
+            resource,
             memory_limiter,
             resourcedetection,
             transform/drop_unneeded_resource_attributes,
