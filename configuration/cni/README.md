@@ -2,3 +2,4 @@
 
 - [Calico](./calico.md)
 - [Cilium](./cilium.md)
+- [Weavenet](./weavenet.md)
