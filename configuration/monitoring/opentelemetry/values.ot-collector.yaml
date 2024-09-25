@@ -186,11 +186,6 @@ config:
       endpoint: http://loki-gateway.grafana.svc/loki/api/v1/push
       tls:
         insecure: true
-      # sending_queue:
-      #   enabled: true
-      # retry_on_failure:
-      #   enabled: true
-
   service:
     extensions:
       - health_check
