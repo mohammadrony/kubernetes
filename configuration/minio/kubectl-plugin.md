@@ -10,9 +10,10 @@ kubectl krew install minio
 
 ```bash
 kubectl minio tenant create miniotenant \
-  --capacity 4Gi       \
-  --servers 2          \
-  --volumes 4          \
-  --namespace minio    \
+  --capacity 4Gi                        \
+  --servers 2                           \
+  --volumes 4                           \
+  --namespace minio                     \
   --storage-class local-storage
+  # --output > minio-tenant.yaml
 ```

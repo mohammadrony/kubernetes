@@ -29,6 +29,10 @@ kubectl minio tenant create minio-tenant  \
   --output > minio-tenant.yaml
 ```
 
+```bash
+kubectl apply -f minio-tenant.yaml
+```
+
 ## Helm Chart installation
 
 ```bash
