@@ -26,7 +26,7 @@ Create cluster user account
 ```bash
 kubectl apply -f cluster-admin-user.yaml
 kubectl apply -f cluster-readonly-user.yaml
-kubectl apply -f cluster-restricted-user.yaml
+kubectl apply -f cluster-custom-user.yaml
 ```
 
 Create namespace user account
@@ -34,7 +34,7 @@ Create namespace user account
 ```bash
 kubectl apply -f ns-admin-user.yaml
 kubectl apply -f ns-readonly-user.yaml
-kubectl apply -f ns-restricted-user.yaml
+kubectl apply -f ns-custom-user.yaml
 ```
 
 Update service account secret
@@ -42,13 +42,13 @@ Update service account secret
 ```bash
 kubectl patch serviceaccount cluster-admin-sa -n kubernetes-dashboard -p '{"secrets": [{"name": "cluster-admin-secret"}]}'
 kubectl patch serviceaccount cluster-read-only-sa -n kubernetes-dashboard -p '{"secrets": [{"name": "cluster-read-only-secret"}]}'
-kubectl patch serviceaccount cluster-restricted-sa -n kubernetes-dashboard -p '{"secrets": [{"name": "cluster-restricted-secret"}]}'
+kubectl patch serviceaccount cluster-custom-sa -n kubernetes-dashboard -p '{"secrets": [{"name": "cluster-custom-secret"}]}'
 ```
 
 ```bash
 kubectl patch serviceaccount default-admin-sa -n default -p '{"secrets": [{"name": "default-admin-secret"}]}'
 kubectl patch serviceaccount default-read-only-sa -n default -p '{"secrets": [{"name": "default-read-only-secret"}]}'
-kubectl patch serviceaccount default-restricted-sa -n default -p '{"secrets": [{"name": "default-restricted-secret"}]}'
+kubectl patch serviceaccount default-custom-sa -n default -p '{"secrets": [{"name": "default-custom-secret"}]}'
 ```
 
 Get service accounts
@@ -66,13 +66,13 @@ Get service account token from secret
 ```bash
 kubectl get secret cluster-admin-secret -n kubernetes-dashboard -o yaml | yq .data.token | base64 -d && echo
 kubectl get secret cluster-read-only-secret -n kubernetes-dashboard -o yaml | yq .data.token | base64 -d && echo
-kubectl get secret cluster-restricted-secret -n kubernetes-dashboard -o yaml | yq .data.token | base64 -d && echo
+kubectl get secret cluster-custom-secret -n kubernetes-dashboard -o yaml | yq .data.token | base64 -d && echo
 ```
 
 ```bash
 kubectl get secret default-admin-secret -n default -o yaml | yq .data.token | base64 -d && echo
 kubectl get secret default-read-only-secret -n default -o yaml | yq .data.token | base64 -d && echo
-kubectl get secret default-restricted-secret -n default -o yaml | yq .data.token | base64 -d && echo
+kubectl get secret default-custom-secret -n default -o yaml | yq .data.token | base64 -d && echo
 ```
 
 Generate new token
@@ -80,13 +80,13 @@ Generate new token
 ```bash
 kubectl create token cluster-admin-sa -n kubernetes-dashboard
 kubectl create token cluster-read-only-sa -n kubernetes-dashboard
-kubectl create token cluster-restricted-sa -n kubernetes-dashboard
+kubectl create token cluster-custom-sa -n kubernetes-dashboard
 ```
 
 ```bash
 kubectl create token default-admin-sa -n default
 kubectl create token default-read-only-sa -n default
-kubectl create token default-restricted-sa -n default
+kubectl create token default-custom-sa -n default
 ```
 
 ## Expose Service

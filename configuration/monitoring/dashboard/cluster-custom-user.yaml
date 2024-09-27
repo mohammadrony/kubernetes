@@ -1,27 +1,28 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: default-restricted-sa
-  namespace: default
+  name: cluster-custom-sa
+  namespace: kubernetes-dashboard
 ---
 apiVersion: v1
 kind: Secret
 type: kubernetes.io/service-account-token
 metadata:
-  name: default-restricted-secret
-  namespace: default
+  name: cluster-custom-secret
+  namespace: kubernetes-dashboard
   annotations:
-    kubernetes.io/service-account.name: "default-restricted-sa"
+    kubernetes.io/service-account.name: "cluster-custom-sa"
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
-  name: default-restricted-role
-  namespace: default
+  name: cluster-custom-role
 rules:
   - apiGroups: ["*"]
     resources:
       [
+        "nodes",
+        "namespaces",
         "pods",
         "services",
         "configmaps",
@@ -35,18 +36,17 @@ rules:
         "ingresses",
         "events",
       ]
-    verbs: ["get", "list", "watch"]
+    verbs: ["get", "list", "watch", "update"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
-  name: default-restricted-role-binding
-  namespace: default
+  name: cluster-custom-role-binding
 subjects:
   - kind: ServiceAccount
-    name: default-restricted-sa
-    namespace: default
+    name: cluster-custom-sa
+    namespace: kubernetes-dashboard
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: default-restricted-role
+  kind: ClusterRole
+  name: cluster-custom-role
