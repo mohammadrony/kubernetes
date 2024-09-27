@@ -69,6 +69,12 @@ helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheu
 kubectl get pods -l "release=kube-prometheus-stack" --namespace monitoring
 ```
 
+Install without grafana
+
+```bash
+helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack --namespace monitoring --set grafana.enabled=false
+```
+
 ## Expose Grafana service NodePort
 
 ### Expose grafana service
