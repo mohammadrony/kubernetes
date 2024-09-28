@@ -32,7 +32,7 @@ Possible server volume combination
 kubectl minio tenant create minio-tenant  \
   --servers          1                    \
   --volumes          2                    \
-  --capacity         6Gi                  \
+  --capacity         8Gi                  \
   --namespace        minio                \
   --storage-class    local-storage        \
   --output > minio-tenant.yaml
@@ -46,33 +46,13 @@ sed -i '/creationTimestamp/d' minio-tenant.yaml
 kubectl apply -f minio-tenant.yaml
 ```
 
-## Helm Chart installation
+Ingress config
 
 ```bash
-helm show values minio-operator/tenant > values.tenant.yaml 
+kubectl apply -f minio-ingress.yaml
 ```
 
-Custom values
-
-```yaml
-tenant:
-  name: myminio
-  pools:
-    - servers: 2
-      name: pool-0
-      volumesPerServer: 2
-      size: 1Gi
-      storageClassName: local-storage
-```
-
-```bash
-helm install \
-  --namespace minio \
-  --create-namespace \
-  minio-tenant minio-operator/tenant
-```
-
-## File Upload Limit
+## Nginx Config
 
 - [Configure NGINX Proxy for MinIO Server](https://min.io/docs/minio/linux/integrations/setup-nginx-proxy-with-minio.html)
 - [Nginx HTTP Core Module](http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size)
