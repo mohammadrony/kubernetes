@@ -1,4 +1,4 @@
-# ConfigMap to Persistent Volume
+# Hostpath to Persistent Volume
 
 Pod using Hostpath
 

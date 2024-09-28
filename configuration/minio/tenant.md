@@ -16,17 +16,30 @@
   - Memory Request: 2
   - CPU Limit: 2
   - Memory Limit: 2
+  
+Possible server volume combination
+
+| Server count  | Volume count  | Volumes per server  |
+|---------------|---------------|---------------------|
+| 1             | 1, 2, 3       | 1, 2, 3             |
+| 2             | 4, 6, 8       | 2, 3, 4             |
+| 3             | 6, 9, 12      | 2, 3, 4             |
+| 4             | 4, 8, 12      | 1, 2, 3             |
 
 ## Kubectl minio command
 
 ```bash
 kubectl minio tenant create minio-tenant  \
-  --servers          2                    \
-  --volumes          4                    \
-  --capacity         4Gi                  \
+  --servers          1                    \
+  --volumes          2                    \
+  --capacity         6Gi                  \
   --namespace        minio                \
   --storage-class    local-storage        \
   --output > minio-tenant.yaml
+```
+
+```bash
+sed -i '/creationTimestamp/d' minio-tenant.yaml
 ```
 
 ```bash
