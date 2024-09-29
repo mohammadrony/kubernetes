@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/server-snippet: |
+      return 301 $scheme://example.org$request_uri;
+  name: ingress-redirect
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: app.example.org

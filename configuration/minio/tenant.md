@@ -16,7 +16,7 @@
   - Memory Request: 2
   - CPU Limit: 2
   - Memory Limit: 2
-  
+
 Possible server volume combination
 
 | Server count  | Volume count  | Volumes per server  |

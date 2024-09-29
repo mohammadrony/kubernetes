@@ -17,7 +17,7 @@
 - [Core Components](./configuration/core-components/)
 - [DNS](./configuration/dns)
 - [Helm](./configuration/helm/)
-- [Ingress Controller](./configuration/ingress/)
+- [Ingress and Ingress Controller](./configuration/ingress/)
 - [Keycloak](./configuration/keycloak/)
 - [Kubeconfig](./configuration/kubeconfig/)
 - [Kubectl](./configuration/kubectl/)
