@@ -5,6 +5,7 @@
 - [Foreach](./plugins/foreach.md)
 - [Krew](./plugins/krew.md)
 - [Ksniff](./plugins/ksniff.md)
+- [Stern](./plugins/stern.md)
 - [Tail](./plugins/tail.md)
 - [View ServiceAccount Kubeconfig](./plugins/view-sa-kubeconfig.md)
 
