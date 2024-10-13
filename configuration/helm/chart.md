@@ -23,7 +23,7 @@ helm install <name> --repo <repository> <chart>
 Install from local files
 
 ```bash
-
+helm install <name> ./chart
 ```
 
 Install with custom values
