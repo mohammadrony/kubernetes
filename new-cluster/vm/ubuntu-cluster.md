@@ -1,8 +1,6 @@
-# VM Configuration
+# Ubuntu Cluster
 
-## Ubuntu
-
-Update package
+Update ackage
 
 ```bash
 sudo apt update
@@ -24,7 +22,7 @@ Set hosts
 
 ```bash
 sudo tee -a /etc/hosts << EOF
-192.168.56.111 kube-control-1
+192.168.56.101 kube-control-1
 EOF
 ```
 
@@ -50,6 +48,11 @@ Install containerd
 sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
 sudo apt install -y containerd.io
 sudo apt-mark hold containerd.io
+```
+
+Update default config
+
+```bash
 sudo mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
 sudo sed -i 's/\(SystemdCgroup = \).*/\1true/' /etc/containerd/config.toml
@@ -99,8 +102,8 @@ sudo sysctl --system
 Add kubernetes repository
 
 ```bash
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 ```
 
 Install kubeadm kubelet

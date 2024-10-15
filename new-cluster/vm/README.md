@@ -6,10 +6,10 @@ Virtualization
 
 Configuration
 
-- [Bootstrap Cluster](./bootstrap-cluster.md)
-- [Upgrade Version](./upgrade-version.md)
 - [Multiple Control Plane](./multiple-control-plane.md)
-- [VM Configuration](./vm-configuration.md)
+- [RHEL Cluster](./rhel-cluster.md)
+- [Ubuntu Cluster](./ubuntu-cluster.md)
+- [Upgrade Version](./upgrade-version.md)
 
 Others
 

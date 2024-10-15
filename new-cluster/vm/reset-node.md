@@ -3,7 +3,7 @@
 Delete node from cluster
 
 ```bash
-NODE='cad-reg-worker-8'
+NODE='<node>'
 kubectl drain $NODE --ignore-daemonsets
 kubectl cordon $NODE
 kubectl delete node $NODE
