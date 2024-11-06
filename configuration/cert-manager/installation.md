@@ -3,7 +3,7 @@
 [Release](https://github.com/cert-manager/cert-manager/releases)
 
 ```bash
-version=1.15.3
+version=1.16.1
 curl -LO https://github.com/cert-manager/cert-manager/releases/download/v$version/cert-manager.yaml
 kubectl apply -f cert-manager.yaml
 ```

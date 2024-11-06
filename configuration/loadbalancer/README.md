@@ -11,8 +11,9 @@ Install [cert-manager](../cert-manager/)
 [Releases](https://github.com/metallb/metallb/releases)
 
 ```bash
+version=0.14.8
 # curl -O https://raw.githubusercontent.com/metallb/metallb/main/config/manifests/metallb-native.yaml
-curl -O https://raw.githubusercontent.com/metallb/metallb/v0.14.3/config/manifests/metallb-native.yaml
+curl -O https://raw.githubusercontent.com/metallb/metallb/v$version/config/manifests/metallb-native.yaml
 kubectl apply -f metallb-native.yaml
 # If memberlist secret not found
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"

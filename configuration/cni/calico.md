@@ -19,7 +19,7 @@ Manifests
 Install calico
 
 ```bash
-version=3.28.2 # https://github.com/projectcalico/calico/releases
+version=3.29.0 # https://github.com/projectcalico/calico/releases
 curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/calico.yaml
 ```
 
@@ -43,7 +43,7 @@ sudo kubeadm init --v=5 --cri-socket=unix:///run/containerd/containerd.sock --po
 Install calico
 
 ```bash
-version=3.28.2
+version=3.29.0
 curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/tigera-operator.yaml
 curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/custom-resources.yaml
 ```
