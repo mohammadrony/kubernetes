@@ -4,14 +4,14 @@ metadata:
   name: example-ingress
   namespace: default
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
         - example.com
-      secretName: example-tls
+      secretName: letsencrypt-prod
   rules:
     - host: example.com
       http:
