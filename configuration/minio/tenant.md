@@ -26,7 +26,7 @@ Possible server volume combination
 | 3             | 6, 9, 12      | 2, 3, 4             |
 | 4             | 4, 8, 12      | 1, 2, 3             |
 
-## Kubectl minio command
+### Kubectl Plugin Installation
 
 ```bash
 kubectl minio tenant create minio-tenant  \
@@ -50,6 +50,32 @@ Ingress config
 
 ```bash
 kubectl apply -f minio-ingress.yaml
+```
+
+### Helm Chart Installation
+
+```bash
+helm show values minio/tenant > values.tenant.yaml 
+```
+
+Custom values
+
+```yaml
+tenant:
+  name: myminio
+  pools:
+    - servers: 2
+      name: pool-0
+      volumesPerServer: 2
+      size: 1Gi
+      storageClassName: local-storage
+```
+
+```bash
+helm install \
+  --namespace minio \
+  --create-namespace \
+  minio-tenant minio/tenant
 ```
 
 ## Nginx Config

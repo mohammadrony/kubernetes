@@ -1,18 +1,13 @@
-# Minio Operator Chart
+# Minio Operator
 
-## Prepare Nodes for Label selector
+## Chart Installation
 
-```bash
-kubectl get nodes --show-labels
-kubectl label nodes NODE-NAME storage-type=persistent
-```
-
-## Configuration
+### Configuration
 
 Setup repository from [Github](https://github.com/minio/operator)
 
 ```bash
-helm repo add minio-operator
+helm repo add minio https://operator.min.io/
 helm repo update
 ```
 
@@ -43,18 +38,6 @@ console:
     hosts:
       - minio.example.com
 
-operator:
-  affinity:
-    nodeAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          preference:
-            matchExpressions:
-              - key: storage-type
-                operator: In
-                values:
-                  - persistent
-
   resources:
     requests:
       memory: 512Mi
@@ -64,7 +47,7 @@ operator:
       cpu: 1000m
 ```
 
-## Installation
+### Installation
 
 ```bash
 helm install minio-operator operator --namespace minio-operator --create-namespace --values operator/values.yaml
@@ -75,5 +58,5 @@ kubectl apply -f secret.operator-console.yaml
 ```
 
 ```bash
-kubectl -n minio-operator  get secret console-sa-secret -o jsonpath="{.data.token}" | base64 --decode
+kubectl -n minio-operator  get secret console-sa-secret -o jsonpath="{.data.token}" | base64 --decode && echo
 ```

@@ -9,5 +9,5 @@ kubectl apply -f manifests/cluster-issuer.yaml
 Create ingerss
 
 ```bash
-kubectl apply -f manifests/ingress.yaml
+kubectl apply -f manifests/https-ingress.yaml
 ```
