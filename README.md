@@ -15,7 +15,7 @@
 - [Cert Manager](./configuration/cert-manager/)
 - [Container Network Interface](./configuration/cni/)
 - [Core Components](./configuration/core-components/)
-- [DNS](./configuration/dns)
+- [DNS](./configuration/dns/)
 - [Helm](./configuration/helm/)
 - [Ingress and Ingress Controller](./configuration/ingress/)
 - [Keycloak](./configuration/keycloak/)
@@ -30,9 +30,9 @@
 
 ## Scripts
 
+- [Kubectl alias](./scripts/kubectl-alias.sh)
 - [Reset k8s node](./scripts/reset-node.sh)
-- [Kubectl alias](./scripts/1-kubectl-alias.sh)
-- [Zsh prompt](./scripts/2-zsh-prompt.sh)
+- [Zsh prompt](./scripts/zsh-prompt.sh)
 
 ## Others
 
