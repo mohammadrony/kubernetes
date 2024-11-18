@@ -2,7 +2,7 @@
 
 [kubectl Quick Reference](https://kubernetes.io/docs/reference/kubectl/quick-reference/)
 
-Jsonpath
+Json path
 
 ```bash
 kubectl get nodes -o json | jq -c 'paths|join(".")'
