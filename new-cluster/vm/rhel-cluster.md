@@ -126,6 +126,18 @@ sudo yum install -y kubectl --disableexcludes=kubernetes
 # sudo mv kubectl /usr/local/bin/kubectl
 ```
 
+Alias
+
+```bash
+echo 'alias k="kubectl"' >> ~/.bash_aliases
+```
+
+Auto completion
+
+```bash
+echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc
+```
+
 Start kubelet
 
 ```bash

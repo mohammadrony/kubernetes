@@ -40,6 +40,18 @@ chmod +x kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 
+Alias
+
+```bash
+echo 'alias k="kubectl"' >> ~/.bash_aliases
+```
+
+Auto completion
+
+```bash
+echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc
+```
+
 ```bash
 kubectl version --client --output=yaml
 ```
