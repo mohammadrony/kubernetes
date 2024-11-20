@@ -4,7 +4,7 @@ Delete node from cluster
 
 ```bash
 NODE='<node>'
-kubectl drain $NODE --ignore-daemonsets
+kubectl drain $NODE --ignore-daemonsets --delete-local-data
 kubectl cordon $NODE
 kubectl delete node $NODE
 ```
@@ -26,14 +26,17 @@ sudo rm -f /etc/modules-load.d/k8s.conf
 sudo rm -f /etc/sysctl.d/k8s.conf
 ```
 
-```bash
-# Redhat
-sudo dnf remove -y containerd
-sudo dnf remove -y kubelet kubeadm
-```
+Ubuntu package remove
 
 ```bash
 sudo apt-mark unhold containerd.io kubelet kubeadm
-sudo apt remove -y containerd.io
+sudo apt remove -y containerd
 sudo apt remove -y kubelet kubeadm
+```
+
+RHEL package remove
+
+```bash
+sudo dnf remove -y containerd
+sudo dnf remove -y kubelet kubeadm
 ```

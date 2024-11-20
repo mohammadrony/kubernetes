@@ -1,12 +1,5 @@
 # Remove Worker Node
 
-## Remove node
-
-```bash
-kubectl drain <name> --ignore-daemonsets --delete-local-data
-kubectl delete node <name>
-```
-
 ## Remove working node zero downtime
 
 ```bash
@@ -29,7 +22,7 @@ do
     kubectl rollout status deployment/name -n $NAMESPACE
 done
 
-kubectl drain $NODENAME
+kubectl drain $NODENAME --ignore-daemonsets --delete-local-data
 ```
 
 ```bash
