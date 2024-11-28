@@ -5,7 +5,7 @@
 ### Baremetal cluster controller
 
 ```bash
-curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.9.6/deploy/static/provider/baremetal/deploy.yaml
+curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.3/deploy/static/provider/baremetal/deploy.yaml
 kubectl apply -f deploy.yaml
 ```
 
