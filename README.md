@@ -7,6 +7,7 @@
 - [EC2](./new-cluster/ec2/)
 - [K3s](./new-cluster/k3s/)
 - [Kind](./new-cluster/kind/)
+- [MicroK8s](./new-cluster/microk8s/)
 - [Virtual Machine](./new-cluster/vm/)
 
 ## Configuration
