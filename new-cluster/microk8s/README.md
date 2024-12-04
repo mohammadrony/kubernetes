@@ -36,7 +36,20 @@ microk8s status
 # microk8s status --wait-ready
 ```
 
+Start service
+
+```bash
+microk8s start
+```
+
 ## Commands
+
+kubectl commands
+
+```bash
+mk get all --all-namespaces
+# microk8s kubectl get all --all-namespaces
+```
 
 Enable services
 
@@ -51,21 +64,6 @@ microk8s enable registry
 microk8s enable istio
 ```
 
-kubectl commands
-
-```bash
-mk get all --all-namespaces
-# microk8s kubectl get all --all-namespaces
-```
-
-Access dashboard
-
-```bash
-microk8s dashboard-proxy
-```
-
-## Uninstall
-
 Disable services
 
 ```bash
@@ -77,6 +75,26 @@ microk8s disable dashboard
 microk8s disable dns
 microk8s disable registry
 microk8s disable istio
+```
+
+Access dashboard
+
+```bash
+microk8s dashboard-proxy
+```
+
+## Uninstall
+
+Disable addons
+
+```bash
+sudo microk8s reset
+```
+
+Stop service
+
+```bash
+microk8s stop
 ```
 
 Uninstall microk8s
