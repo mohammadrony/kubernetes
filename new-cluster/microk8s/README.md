@@ -11,7 +11,7 @@ sudo snap install microk8s --classic
 Alias setup
 
 ```bash
-echo 'alias mk="microk8s kubectl"' >> ~/.bash_aliases
+echo 'alias mk="microk8s"' >> ~/.bash_aliases
 source ~/.bashrc
 ```
 
@@ -27,6 +27,12 @@ Reload
 ```bash
 newgrp microk8s
 # sudo reboot
+```
+
+Kubeconfig
+
+```bash
+microk8s config > ~/.kube/microk8s-config
 ```
 
 Status
@@ -47,8 +53,11 @@ microk8s start
 kubectl commands
 
 ```bash
-mk get all --all-namespaces
-# microk8s kubectl get all --all-namespaces
+microk8s kubectl get all -A
+```
+
+```bash
+kubectl get all -A --kubeconfig="$HOME/.kube/microk8s-config"
 ```
 
 Enable services
@@ -58,6 +67,7 @@ microk8s enable --help
 ```
 
 ```bash
+microk8s enable community
 microk8s enable dashboard
 microk8s enable dns
 microk8s enable registry
@@ -71,6 +81,7 @@ microk8s disable --help
 ```
 
 ```bash
+microk8s disable community
 microk8s disable dashboard
 microk8s disable dns
 microk8s disable registry
