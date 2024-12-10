@@ -1,5 +1,9 @@
 # Kubernetes
 
+## Certification
+
+- [CKA](./certification/CKA)
+
 ## Cluster Setup
 
 ### New Cluster
@@ -9,6 +13,10 @@
 - [Kind](./new-cluster/kind/)
 - [MicroK8s](./new-cluster/microk8s/)
 - [Virtual Machine](./new-cluster/vm/)
+
+### Application
+
+- [Microservice Application](./application/)
 
 ## Configuration
 
@@ -39,7 +47,3 @@
 
 - [Understanding the Kubernetes Node](https://www.suse.com/c/rancher_blog/understanding-the-kubernetes-node/)
 - [What's the difference between exposing nginx as load balancer vs Ingress controller?](https://stackoverflow.com/questions/50966300/whats-the-difference-between-exposing-nginx-as-load-balancer-vs-ingress-control)
-
-## Certification
-
-- [CKA](./certification/CKA)
