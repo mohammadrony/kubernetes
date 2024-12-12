@@ -1,10 +1,10 @@
 # Install Cert Manager
 
-[Release](https://github.com/cert-manager/cert-manager/releases)
+YAML install
 
 ```bash
-version=1.16.1
-curl -LO https://github.com/cert-manager/cert-manager/releases/download/v$version/cert-manager.yaml
+version=$(curl https://api.github.com/repos/cert-manager/cert-manager/releases/latest | jq -r .tag_name)
+curl -LO https://github.com/cert-manager/cert-manager/releases/download/$version/cert-manager.yaml
 kubectl apply -f cert-manager.yaml
 ```
 

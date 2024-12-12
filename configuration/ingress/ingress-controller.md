@@ -4,8 +4,11 @@
 
 ### Baremetal cluster controller
 
+YAML install
+
 ```bash
-curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.3/deploy/static/provider/baremetal/deploy.yaml
+version=$(curl https://api.github.com/repos/kubernetes/ingress-nginx/releases/latest | jq -r .tag_name)
+curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/$version/deploy/static/provider/baremetal/deploy.yaml
 kubectl apply -f deploy.yaml
 ```
 
@@ -15,8 +18,11 @@ kubectl get services -o wide --all-namespaces | grep -E 'LoadBalancer|NAMESPACE'
 
 ### Kind cluster controller
 
+YAML install
+
 ```bash
-curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+version=$(curl https://api.github.com/repos/kubernetes/ingress-nginx/releases/latest | jq -r .tag_name)
+curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/$version/deploy/static/provider/kind/deploy.yaml
 kubectl apply -f deploy.yaml
 ```
 

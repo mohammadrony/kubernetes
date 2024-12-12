@@ -7,7 +7,7 @@
 [Available version](https://github.com/kubernetes-sigs/krew/releases)
 
 ```bash
-version=v0.4.4 
+version=$(curl https://api.github.com/repos/kubernetes-sigs/krew/releases/latest | jq -r .tag_name)
 wget https://github.com/kubernetes-sigs/krew/releases/download/$version/krew-linux_amd64.tar.gz
 ```
 

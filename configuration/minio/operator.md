@@ -12,7 +12,7 @@ helm repo update
 ```
 
 ```bash
-version=5.0.9
+version=$(curl https://api.github.com/repos/minio/operator/releases/latest | jq -r .tag_name)
 wget https://raw.githubusercontent.com/minio/operator/master/helm-releases/operator-$version.tgz -O operator.tgz
 wget https://raw.githubusercontent.com/minio/operator/master/helm-releases/tenant-$version.tgz -O tenant.tgz
 ```

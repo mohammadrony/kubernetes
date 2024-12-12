@@ -21,6 +21,7 @@
 ## Configuration
 
 - [Add-ons](./configuration/addons/)
+- [Argo CD](./configuration/argocd/)
 - [Cert Manager](./configuration/cert-manager/)
 - [Container Network Interface](./configuration/cni/)
 - [Core Components](./configuration/core-components/)

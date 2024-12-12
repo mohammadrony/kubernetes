@@ -14,13 +14,13 @@ sudo kubeadm init --v=5 --cri-socket=unix:///run/containerd/containerd.sock --po
 Manifests
 
 - [projectcalico.org](https://docs.projectcalico.org/manifests/calico.yaml)
-- [github.com](https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/calico.yaml)
+- [github.com](https://raw.githubusercontent.com/projectcalico/calico/v3.29.1/manifests/calico.yaml)
 
 Install calico
 
 ```bash
-version=3.29.0 # https://github.com/projectcalico/calico/releases
-curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/calico.yaml
+version=$(curl https://api.github.com/repos/projectcalico/calico/releases/latest | jq -r .tag_name)
+curl -LO https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/calico.yaml
 ```
 
 ```bash
@@ -43,7 +43,7 @@ sudo kubeadm init --v=5 --cri-socket=unix:///run/containerd/containerd.sock --po
 Install calico
 
 ```bash
-version=3.29.0
+version=$(curl https://api.github.com/repos/projectcalico/calico/releases/latest | jq -r .tag_name)
 curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/tigera-operator.yaml
 curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/custom-resources.yaml
 ```

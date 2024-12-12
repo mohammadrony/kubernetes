@@ -166,8 +166,8 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 Install calico
 
 ```bash
-version=3.28.1 # https://github.com/projectcalico/calico/releases
-curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/calico.yaml
+version=$(curl https://api.github.com/repos/projectcalico/calico/releases/latest | jq -r .tag_name)
+curl -LO https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/calico.yaml
 # curl -LO https://docs.projectcalico.org/manifests/calico.yaml
 ```
 

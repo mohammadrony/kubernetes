@@ -69,7 +69,7 @@ curl -sSfL https://raw.githubusercontent.com/longhorn/longhorn/v1.6.0/scripts/en
 
 ## Installation
 
-### YAML Manifest
+### YAML install
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/master/deploy/longhorn.yaml
