@@ -43,7 +43,3 @@ Get CDI components
 ```bash
 kubectl get cdi -n kubevirt
 ```
-
-```bash
-echo "KubeVirt and CDI have been successfully deployed in the kubevirt namespace."
-```
