@@ -21,7 +21,7 @@
 ## Configuration
 
 - [Add-ons](./configuration/addons/README.md)
-- [Argo CD](./configuration/argocd/README.md)
+- [Argo](./configuration/argo/README.md)
 - [Cert Manager](./configuration/cert-manager/README.md)
 - [Container Network Interface](./configuration/cni/README.md)
 - [Core Components](./configuration/core-components/README.md)

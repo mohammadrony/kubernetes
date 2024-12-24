@@ -22,3 +22,17 @@ Argo CD
 # helm pull argo/argo-cd --untar
 helm install argocd argo/argo-cd --namespace argocd --create-namespace
 ```
+
+## Dashboard
+
+Ingress
+
+```bash
+kubectl apply -f ingress.yaml
+```
+
+Admin password
+
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+```

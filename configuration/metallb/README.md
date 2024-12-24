@@ -22,7 +22,7 @@ kubectl create secret generic -n metallb-system memberlist --from-literal=secret
 IP pool
 
 ```bash
-kubectl apply -f metallb.ip-pool.yaml
+kubectl apply -f ip-pool.yaml
 ```
 
 ## Helm chart
