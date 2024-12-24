@@ -21,10 +21,10 @@ Deploy KubeVirt
 version=$(curl https://api.github.com/repos/kubevirt/kubevirt/releases/latest | jq -r .tag_name)
 
 # operator
-kubectl apply -f https://github.com/kubevirt/kubevirt/releases/download/$version/kubevirt-operator.yaml -n kubevirt
+kubectl apply -n kubevirt -f https://github.com/kubevirt/kubevirt/releases/download/$version/kubevirt-operator.yaml
 
 # custom resource
-kubectl apply -f https://github.com/kubevirt/kubevirt/releases/download/$version/kubevirt-cr.yaml -n kubevirt
+kubectl apply -n kubevirt -f https://github.com/kubevirt/kubevirt/releases/download/$version/kubevirt-cr.yaml
 ```
 
 Get KubeVirt components
@@ -39,10 +39,10 @@ Deploy KubeVirt CDI
 version=$(curl https://api.github.com/repos/kubevirt/containerized-data-importer/releases/latest | jq -r .tag_name)
 
 # operator
-kubectl apply -f https://github.com/kubevirt/containerized-data-importer/releases/download/$version/cdi-operator.yaml -n kubevirt
+kubectl apply -n kubevirt -f https://github.com/kubevirt/containerized-data-importer/releases/download/$version/cdi-operator.yaml
 
 # custom resource
-kubectl apply -f https://github.com/kubevirt/containerized-data-importer/releases/download/$version/cdi-cr.yaml -n kubevirt
+kubectl apply -n kubevirt -f https://github.com/kubevirt/containerized-data-importer/releases/download/$version/cdi-cr.yaml
 ```
 
 Get CDI components

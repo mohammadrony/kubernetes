@@ -14,10 +14,6 @@
 - [MicroK8s](./new-cluster/microk8s/README.md)
 - [Virtual Machine](./new-cluster/vm/README.md)
 
-### Application
-
-- [Microservice Application](./application/README.md)
-
 ## Configuration
 
 - [Add-ons](./configuration/addons/README.md)
