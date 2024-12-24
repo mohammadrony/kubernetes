@@ -36,7 +36,8 @@ kubectl label nodes NODE KEY-
 Update label of worker node
 
 ```bash
-kubectl label node worker-1 node-role.kubernetes.io/worker= # worker-2
+NODE=worker-1 # worker-2
+kubectl label node $NODE node-role.kubernetes.io/worker=
 ```
 
 ## Selector

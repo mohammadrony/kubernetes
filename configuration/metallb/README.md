@@ -1,18 +1,16 @@
-# Load Balancer
+# MetalLB Load Balancer
 
-## MetalLB Load Balancer
+## Prerequisites
 
-### Pre-requisites
+Install [cert-manager](../cert-manager/README.md)
 
-Install [cert-manager](../cert-manager/)
-
-### MetalLB Manifest
+## Manifest
 
 YAML install
 
 ```bash
 version=$(curl https://api.github.com/repos/metallb/metallb/releases/latest | jq -r .tag_name)
-curl -O https://raw.githubusercontent.com/metallb/metallb/v$version/config/manifests/metallb-native.yaml
+curl -O https://raw.githubusercontent.com/metallb/metallb/$version/config/manifests/metallb-native.yaml
 kubectl apply -f metallb-native.yaml
 ```
 
@@ -27,7 +25,7 @@ IP pool
 kubectl apply -f metallb.ip-pool.yaml
 ```
 
-### MetalLB Helm chart
+## Helm chart
 
 Install with Helm
 

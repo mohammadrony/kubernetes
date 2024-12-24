@@ -9,7 +9,7 @@ cp ~/.kube/config ~/.kube/config.bak
 Merge config
 
 ```bash
-export KUBECONFIG=~/.kube/config:./path/config
+export KUBECONFIG=~/.kube/config:~/.kube/config-2
 ```
 
 ```bash
@@ -20,6 +20,7 @@ Save changes
 
 ```bash
 mv config ~/.kube/config
+chmod 600 ~/.kube/config
 ```
 
 ```bash

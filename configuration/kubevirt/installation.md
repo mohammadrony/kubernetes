@@ -8,6 +8,13 @@ Create namespace
 kubectl create namespace kubevirt
 ```
 
+Label control plane
+
+```bash
+node=<node-name>
+kubectl label node $node node-role.kubernetes.io/control-plane=
+```
+
 Deploy KubeVirt
 
 ```bash

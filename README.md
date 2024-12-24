@@ -2,43 +2,43 @@
 
 ## Certification
 
-- [CKA](./certification/CKA)
+- [CKA](./certification/CKA/README.md)
 
 ## Cluster Setup
 
 ### New Cluster
 
-- [EC2](./new-cluster/ec2/)
-- [K3s](./new-cluster/k3s/)
-- [Kind](./new-cluster/kind/)
-- [MicroK8s](./new-cluster/microk8s/)
-- [Virtual Machine](./new-cluster/vm/)
+- [EC2](./new-cluster/ec2/README.md)
+- [K3s](./new-cluster/k3s/README.md)
+- [Kind](./new-cluster/kind/README.md)
+- [MicroK8s](./new-cluster/microk8s/README.md)
+- [Virtual Machine](./new-cluster/vm/README.md)
 
 ### Application
 
-- [Microservice Application](./application/)
+- [Microservice Application](./application/README.md)
 
 ## Configuration
 
-- [Add-ons](./configuration/addons/)
-- [Argo CD](./configuration/argocd/)
-- [Cert Manager](./configuration/cert-manager/)
-- [Container Network Interface](./configuration/cni/)
-- [Core Components](./configuration/core-components/)
-- [DNS](./configuration/dns/)
-- [Helm](./configuration/helm/)
-- [Ingress and Ingress Controller](./configuration/ingress/)
-- [Istio](./configuration/istio/)
-- [Keycloak](./configuration/keycloak/)
-- [Kubeconfig](./configuration/kubeconfig/)
-- [Kubectl](./configuration/kubectl/)
-- [KubeVirt](./configuration/kubevirt/)
-- [Kustomize](./configuration/kustomize/)
-- [Load Balancer](./configuration/loadbalancer/)
-- [Minio](./configuration/minio/)
-- [Monitoring](./configuration/monitoring/)
-- [RabbitMQ](./configuration/rabbitmq/)
-- [Storage](./configuration/storage/)
+- [Add-ons](./configuration/addons/README.md)
+- [Argo CD](./configuration/argocd/README.md)
+- [Cert Manager](./configuration/cert-manager/README.md)
+- [Container Network Interface](./configuration/cni/README.md)
+- [Core Components](./configuration/core-components/README.md)
+- [DNS](./configuration/dns/README.md)
+- [Helm](./configuration/helm/README.md)
+- [Ingress and Ingress Controller](./configuration/ingress/README.md)
+- [Istio](./configuration/istio/README.md)
+- [Keycloak](./configuration/keycloak/README.md)
+- [Kubeconfig](./configuration/kubeconfig/README.md)
+- [Kubectl](./configuration/kubectl/README.md)
+- [KubeVirt](./configuration/kubevirt/README.md)
+- [Kustomize](./configuration/kustomize/README.md)
+- [MetalLB Load Balancer](./configuration/metallb/README.md)
+- [Minio](./configuration/minio/README.md)
+- [Monitoring](./configuration/monitoring/README.md)
+- [RabbitMQ](./configuration/rabbitmq/README.md)
+- [Storage](./configuration/storage/README.md)
 
 ## Scripts
 

@@ -22,9 +22,9 @@
 
 ## Manifests
 
-- [Applications](./manifest/applications/)
-- [Network Policy](./network-policy/)
-- [Templates](./manifest/templates/)
+- [Applications](./applications/README.md)
+- [Network Policy](./network-policy/README.md)
+- [Templates](./templates/README.md)
 
 ## Others
 

@@ -12,6 +12,6 @@ YAML install
 
 ```bash
 version=$(curl https://api.github.com/repos/weaveworks/weave/releases/latest | jq -r .tag_name)
-curl -LO https://github.com/weaveworks/weave/releases/download/v$version/weave-daemonset-k8s.yaml
+curl -LO https://github.com/weaveworks/weave/releases/download/$version/weave-daemonset-k8s.yaml
 kubectl apply -f weave-daemonset-k8s.yaml
 ```

@@ -1,6 +1,6 @@
 # Longhorn
 
-## Pre-requisites
+## Prerequisites
 
 ### CentOS
 

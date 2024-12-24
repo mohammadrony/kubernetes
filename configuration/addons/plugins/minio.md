@@ -1,4 +1,4 @@
-# Minio Kubectl Plugin
+# Minio
 
 ```bash
 kubectl krew install minio
@@ -20,12 +20,6 @@ kubectl minio init
 
 ## Tenant
 
-Create persistent volume
-
-```bash
-kubectl apply -f persistent-volume.yaml
-```
-
 Start minio tenant
 
 ```bash
@@ -35,11 +29,5 @@ kubectl minio tenant create miniotenant \
   --volumes 4                           \
   --namespace minio                     \
   --storage-class local-storage
-  # --output > minio-tenant.yaml
-```
-
-Minio api ingress
-
-```bash
-kubectl apply -f minio-ingress.yaml
+  --output > minio-tenant.yaml
 ```

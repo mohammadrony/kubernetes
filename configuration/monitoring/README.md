@@ -2,18 +2,18 @@
 
 ## Complete Monitoring
 
-- [Kubernetes Dashboard](./dashboard/)
-- [Grafana](./grafana/)
-- [Opentelemetry and Grafana Stack](./opentel-grafana-stack/)
+- [Kubernetes Dashboard](./dashboard/README.md)
+- [Grafana](./grafana/README.md)
+- [Opentelemetry and Grafana Stack](./opentel-grafana-stack/README.md)
 
 ## Helpers
 
-- [Opentelemetry](./opentelemetry/)
-- [Values](./values/)
+- [Opentelemetry](./opentelemetry/README.md)
+- [Values](./values/README.md)
 
 ## Others
 
-- [EFK Stack](./others/efk-stack/)
-- [Loki Prometheus](./others/loki-prometheus/)
-- [Prometheus](./others/prometheus/)
-- [Tempo Loki Prometheus](./others/tempo-loki-prometheus/)
+- [EFK Stack](./others/efk-stack/README.md)
+- [Loki Prometheus](./others/loki-prometheus/README.md)
+- [Prometheus](./others/prometheus/README.md)
+- [Tempo Loki Prometheus](./others/tempo-loki-prometheus/README.md)

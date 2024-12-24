@@ -44,8 +44,8 @@ Install calico
 
 ```bash
 version=$(curl https://api.github.com/repos/projectcalico/calico/releases/latest | jq -r .tag_name)
-curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/tigera-operator.yaml
-curl -LO https://raw.githubusercontent.com/projectcalico/calico/v$version/manifests/custom-resources.yaml
+curl -LO https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/tigera-operator.yaml
+curl -LO https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/custom-resources.yaml
 ```
 
 ```bash
