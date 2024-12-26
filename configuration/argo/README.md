@@ -7,4 +7,4 @@
 
 Guides
 
-- [All About ArgoCD, A Beginner's Guide](https://dev.to/abhinavd26/all-about-argocd-a-beginners-guide-33c9)
+- [Easy Argo Rollouts Setup on Kubernetes](https://devopscube.com/argo-rollouts-setup-on-kubernetes/)

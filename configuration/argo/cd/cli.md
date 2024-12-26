@@ -14,12 +14,12 @@ rm argocd-linux-amd64
 ### Login
 
 ```bash
-argocd login <host> --username admin --password <password>
+argocd login <host> --username admin --password <password> --grpc-web # --insecure
 ```
 
 ### Context
 
-List contexts
+Context list
 
 ```bash
 argocd context
@@ -35,6 +35,14 @@ Delete context
 
 ```bash
 argocd context cd.example.com --delete
+```
+
+### Cluster
+
+Cluster list
+
+```bash
+argocd cluster list
 ```
 
 ### Application
