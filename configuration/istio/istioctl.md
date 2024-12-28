@@ -1,7 +1,5 @@
 # istioctl
 
-## Setup
-
 Installation
 
 ```bash
@@ -15,25 +13,11 @@ sudo mv istio-*/bin/istioctl /usr/local/bin
 Auto completion
 
 ```bash
+mkdir ~/.auto-completion
 cp istio-*/tools/_istioctl ~/.auto-completion
 ```
 
 ```bash
+# Update ~/.zshrc and ~/.bashrc
 source ~/.auto-completion/_istioctl
-```
-
-## Istio Install
-
-```bash
-istioctl install
-```
-
-## Uninstall
-
-```bash
-istioctl uninstall --purge
-```
-
-```bash
-kubectl delete namespace istio-system
 ```

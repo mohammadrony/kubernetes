@@ -44,13 +44,14 @@ Install calico
 
 ```bash
 version=$(curl https://api.github.com/repos/projectcalico/calico/releases/latest | jq -r .tag_name)
-curl -LO https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/tigera-operator.yaml
-curl -LO https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/custom-resources.yaml
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/tigera-operator.yaml
 ```
 
 ```bash
-kubectl apply -f tigera-operator.yaml
+curl -O https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/custom-resources.yaml
 ```
+
+Custom CIDR
 
 ```bash
 cidr=172.16.0.0

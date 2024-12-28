@@ -10,8 +10,7 @@ YAML install
 
 ```bash
 version=$(curl https://api.github.com/repos/metallb/metallb/releases/latest | jq -r .tag_name)
-curl -O https://raw.githubusercontent.com/metallb/metallb/$version/config/manifests/metallb-native.yaml
-kubectl apply -f metallb-native.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/$version/config/manifests/metallb-native.yaml
 ```
 
 ```bash

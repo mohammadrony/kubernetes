@@ -23,6 +23,14 @@ mv config ~/.kube/config
 chmod 600 ~/.kube/config
 ```
 
+Update kubeconfig variable
+
+```bash
+export KUBECONFIG=~/.kube/config
+```
+
+Get clusters
+
 ```bash
 kubectl config get-clusters
 ```

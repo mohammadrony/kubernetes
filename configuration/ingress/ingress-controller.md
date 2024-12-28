@@ -8,8 +8,8 @@ YAML install
 
 ```bash
 version=$(curl https://api.github.com/repos/kubernetes/ingress-nginx/releases/latest | jq -r .tag_name)
-curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/$version/deploy/static/provider/baremetal/deploy.yaml
-kubectl apply -f deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/$version/deploy/static/provider/baremetal/deploy.yaml
+ deploy.yaml
 ```
 
 ```bash
@@ -22,8 +22,7 @@ YAML install
 
 ```bash
 version=$(curl https://api.github.com/repos/kubernetes/ingress-nginx/releases/latest | jq -r .tag_name)
-curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/$version/deploy/static/provider/kind/deploy.yaml
-kubectl apply -f deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/$version/deploy/static/provider/kind/deploy.yaml
 ```
 
 ```bash
