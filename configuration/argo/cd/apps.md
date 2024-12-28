@@ -14,16 +14,82 @@ Recurse directory
 argocd app create <app-name> ... --directory-recurse
 ```
 
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+spec:
+  source:
+    directory:
+      recurse: true
+```
+
 Automatic sync
 
 ```bash
 argocd app create <app-name> ... --sync-policy automated
 ```
 
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+spec:
+  syncPolicy:
+    automated: {}
+```
+
 Create namespace
 
 ```bash
 argocd app create <app-name> ... --sync-option CreateNamespace=true
+```
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+```
+
+Automatic prune
+
+```bash
+argocd app create <app-name> ... --sync-policy automated --auto-prune
+```
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+```
+
+Self healing
+
+```bash
+argocd app create <app-name> ... --sync-policy automated --self-heal
+```
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+spec:
+  syncPolicy:
+    automated:
+      selfHeal: true
+```
+
+Prevent pruning resource
+
+```yaml
+apiVersion: ...
+kind: ...
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
 ```
 
 Apply manifest

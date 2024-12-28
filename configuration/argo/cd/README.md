@@ -3,6 +3,8 @@
 - [Apps](./apps.md)
 - [CLI](./cli.md)
 - [Installation](./installation.md)
+- [Project](./project.md)
+- [Repo Secret](./repo-secret.md)
 
 Guides
 

@@ -17,6 +17,8 @@ spec:
       commonLabels:
         app: <app-name>
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
