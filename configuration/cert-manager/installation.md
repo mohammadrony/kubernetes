@@ -4,8 +4,7 @@ YAML install
 
 ```bash
 version=$(curl https://api.github.com/repos/cert-manager/cert-manager/releases/latest | jq -r .tag_name)
-curl -LO https://github.com/cert-manager/cert-manager/releases/download/$version/cert-manager.yaml
-kubectl apply -f cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/$version/cert-manager.yaml
 ```
 
 Helm chart

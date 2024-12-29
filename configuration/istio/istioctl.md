@@ -21,3 +21,9 @@ cp istio-*/tools/_istioctl ~/.auto-completion
 # Update ~/.zshrc and ~/.bashrc
 source ~/.auto-completion/_istioctl
 ```
+
+Checking cluster
+
+```bash
+istioctl x precheck
+```

@@ -4,10 +4,10 @@
 
 Install [istioctl](./istioctl.md)
 
-Checking cluster
+Analyze cluster
 
 ```bash
-istioctl x precheck
+istioctl analyze
 ```
 
 ## Profile Install

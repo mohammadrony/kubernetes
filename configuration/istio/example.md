@@ -26,3 +26,9 @@ version=$(curl https://api.github.com/repos/istio/istio/releases/latest | jq -r 
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/$version/samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/$version/samples/bookinfo/platform/kube/bookinfo-versions.yaml
 ```
+
+Gateway
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/$version/samples/bookinfo/networking/bookinfo-gateway.yaml
+```
