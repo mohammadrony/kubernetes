@@ -44,7 +44,7 @@ Retry rollout
 kubectl argo rollouts retry <rollout-name>
 ```
 
-## Dashboard
+### Dashboard
 
 Start UI dashboard
 
@@ -55,5 +55,7 @@ kubectl argo rollouts dashboard
 Start UI dashboard on a specific port
 
 ```bash
-kubectl argo rollouts dashboard --port 8080
+kubectl argo rollouts dashboard --port 3100
 ```
+
+[Dashboard UI](http://localhost:3100/rollouts)
