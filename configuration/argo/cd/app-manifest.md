@@ -1,12 +1,4 @@
-# Application
-
-- [Argo CD Example Apps](https://github.com/argoproj/argocd-example-apps)
-
-## Create
-
-```bash
-argocd app create <app-name> --repo https://github.com/<username>/<repository>.git --path <path> --revision <branch> --dest-server https://kubernetes.default.svc --dest-namespace <namespace> --sync-policy automated --sync-option CreateNamespace=true
-```
+# Application Manifest
 
 Recurse directory
 
@@ -52,6 +44,38 @@ spec:
       - CreateNamespace=true
 ```
 
+Selective sync
+
+```bash
+argocd app create <app-name> ... --sync-option ApplyOutOfSyncOnly=true
+```
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+spec:
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+```
+
+Disable sync in shared resource
+
+```bash
+argocd app create <app-name> ... --sync-option FailOnSharedResource=true
+```
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+spec:
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - FailOnSharedResource=true
+```
+
 Automatic prune
 
 ```bash
@@ -92,34 +116,26 @@ metadata:
     argocd.argoproj.io/sync-options: Prune=false
 ```
 
-Apply manifest
+Replace resource
 
 ```bash
-kubectl apply -f application.yaml
+argocd app create <app-name> ... --sync-option Replace=true
 ```
 
-```bash
-kubectl apply -f helm-application.yaml
+```yaml
+apiVersion: ...
+kind: ...
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
 ```
 
-```bash
-kubectl apply -f kustomize-application.yaml
-```
-
-## Sync
-
-```bash
-argocd app sync <app-name>
-```
-
-Delete unexpected resource
-
-```bash
-argocd app sync <app-name> --prune
-```
-
-## List
-
-```bash
-argocd app list
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+spec:
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - Replace=true
 ```

@@ -1,6 +1,7 @@
 # Argo CD
 
-- [Apps](./apps.md)
+- [Application Manifest](./app-manifest.md)
+- [Application](./app.md)
 - [CLI](./cli.md)
 - [Installation](./installation.md)
 - [Project](./project.md)
