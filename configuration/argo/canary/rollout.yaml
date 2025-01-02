@@ -26,12 +26,8 @@ spec:
       trafficRouting:
         nginx:
           stableIngress: stable
-          additionalIngressAnnotations:
-            canary-by-header: X-Canary
-            canary-by-header-value: "true"
-            canary-by-cookie: "canary"
       dynamicStableScale: true
-      abortScaleDownDelaySeconds: 600
+      abortScaleDownDelaySeconds: 300
       steps:
         - setWeight: 20
         - pause: {}
