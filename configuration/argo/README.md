@@ -6,6 +6,10 @@
 - [Rollout](./rollout/README.md)
 - [Workflow](./workflow/README.md)
 
-Guides
+## Argo Practice
 
-- [Easy Argo Rollouts Setup on Kubernetes](https://devopscube.com/argo-rollouts-setup-on-kubernetes/)
+![repo](./images/config-repository.png)
+
+Applications
+
+![group](./images/applications.png)

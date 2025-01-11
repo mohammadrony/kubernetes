@@ -2,8 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: stable
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
 spec:
   ingressClassName: nginx
   rules:
@@ -22,8 +20,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: canary
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
 spec:
   ingressClassName: nginx
   rules:
