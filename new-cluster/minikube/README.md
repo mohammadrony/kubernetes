@@ -23,7 +23,7 @@ minikube start
 ```
 
 ```bash
-minikube start --memory=8g --cpus=4 --kubernetes-version=v1.31
+minikube start --memory=8g --cpus=4 --kubernetes-version=v1.32
 ```
 
 Status

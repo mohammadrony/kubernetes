@@ -5,20 +5,20 @@
 Debian
 
 ```bash
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring-1.31.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes-1.31.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring-1.32.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.33/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes-1.32.list
 ```
 
 RHEL
 
 ```bash
-sudo tee /etc/yum.repos.d/kubernetes-1.31.repo << EOF
+sudo tee /etc/yum.repos.d/kubernetes-1.32.repo << EOF
 [kubernetes]
 name=Kubernetes
-baseurl=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
 enabled=1
 gpgcheck=1
-gpgkey=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/repodata/repomd.xml.key
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
 exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
 EOF
 ```
@@ -36,13 +36,13 @@ apt-cache madison kubeadm
 sudo apt update
 sudo apt-mark unhold kubeadm
 sudo apt install -y kubeadm
-# sudo apt install -y kubeadm='1.31.x*'
+# sudo apt install -y kubeadm='1.32.x*'
 sudo apt-mark hold kubeadm
 ```
 
 ```bash
 # RHEL
-sudo yum install -y kubeadm-'1.31.x-*' --disableexcludes=kubernetes
+sudo yum install -y kubeadm-'1.32.x-*' --disableexcludes=kubernetes
 kubeadm version
 ```
 
@@ -57,7 +57,7 @@ sudo kubeadm upgrade plan
 Upgrade control plane
 
 ```bash
-sudo kubeadm upgrade apply v1.31.x
+sudo kubeadm upgrade apply v1.33.x
 ```
 
 Upgrade worker node
@@ -80,14 +80,14 @@ apt-cache madison kubelet kubectl
 # Debian
 sudo apt update
 sudo apt-mark unhold kubelet kubectl
-# sudo apt install -y kubelet='1.31.x*' kubectl='1.31.x*'
+# sudo apt install -y kubelet='1.32.x*' kubectl='1.32.x*'
 sudo apt install -y kubelet kubectl
 sudo apt-mark hold kubelet kubectl
 ```
 
 ```bash
 # RHEL
-sudo yum install -y kubelet-'1.31.x-*' kubectl-'1.31.x-*' --disableexcludes=kubernetes
+sudo yum install -y kubelet-'1.32.x-*' kubectl-'1.32.x-*' --disableexcludes=kubernetes
 ```
 
 ```bash

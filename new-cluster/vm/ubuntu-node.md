@@ -1,4 +1,4 @@
-# Ubuntu Cluster
+# Ubuntu Node Configuration
 
 Update ackage
 
@@ -16,14 +16,6 @@ Set timezone
 
 ```bash
 sudo timedatectl set-timezone Asia/Dhaka
-```
-
-Set hosts
-
-```bash
-sudo tee -a /etc/hosts << EOF
-192.168.56.101 kube-control-1
-EOF
 ```
 
 Disable swap
@@ -102,19 +94,26 @@ sudo sysctl --system
 Add kubernetes repository
 
 ```bash
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 ```
 
 Install kubeadm kubelet
 
 ```bash
 sudo apt update
-sudo apt install -y kubeadm kubelet kubectl
-sudo apt-mark hold kubeadm kubelet kubectl
+sudo apt install -y kubeadm kubelet
+sudo apt-mark hold kubeadm kubelet
 ```
 
-Restart kubelet
+Install kubectl
+
+```bash
+sudo apt install -y kubectl
+sudo apt-mark hold kubectl
+```
+
+Start kubelet
 
 ```bash
 sudo systemctl enable --now kubelet

@@ -1,14 +1,14 @@
 # Virtual Machine Cluster
 
-Virtualization
+Start VM
 
 - [Vagrant with Virtualbox](./virtualbox.md)
 
 Configuration
 
-- [Multiple Control Plane](./multiple-control-plane.md)
-- [RHEL Cluster](./rhel-cluster.md)
-- [Ubuntu Cluster](./ubuntu-cluster.md)
+- [Initialize Cluster](./initialize-cluster.md)
+- [RHEL Node Configuration](./rhel-node.md)
+- [Ubuntu Node Configuration](./ubuntu-node.md)
 - [Upgrade Version](./upgrade-version.md)
 
 Others

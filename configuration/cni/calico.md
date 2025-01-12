@@ -7,8 +7,7 @@ Initialize cluster
 ```bash
 control_node=192.168.x.x
 cidr=192.168.128.0/17 # 192.168.0.0/16 # calico
-sudo kubeadm init --v=5 --cri-socket=unix:///run/containerd/containerd.sock --pod-network-cidr=$cidr \
-  --apiserver-advertise-address=$control_node
+sudo kubeadm init --pod-network-cidr=$cidr --apiserver-advertise-address=$control_node --v=5
 ```
 
 Manifests
@@ -36,8 +35,7 @@ Initialize cluster
 ```bash
 control_node=192.168.x.x
 cidr=172.16.0.0/16
-sudo kubeadm init --v=5 --cri-socket=unix:///run/containerd/containerd.sock --pod-network-cidr=$cidr \
-  --apiserver-advertise-address=$control_node
+sudo kubeadm init --pod-network-cidr=$cidr --apiserver-advertise-address=$control_node --v=5
 ```
 
 Install calico

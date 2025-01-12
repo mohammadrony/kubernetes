@@ -1,6 +1,6 @@
 # Vagrant with Virtualbox
 
-## Start VM
+Start VM
 
 ```bash
 vagrant up
@@ -13,10 +13,8 @@ vagrant ssh # kube-control-1 worker-1 worker-2
 ```
 
 ```bash
-sshpass -p 'vagrant' ssh vagrant@192.168.56.101 # 102 103
+sshpass -p 'vagrant' ssh vagrant@192.168.56.2 # 3 4
 ```
-
-## Cleanup
 
 Stop VM
 
