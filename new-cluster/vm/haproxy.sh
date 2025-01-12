@@ -1,3 +1,4 @@
+sudo tee /etc/haproxy/haproxy.cfg <<EOF
 global
   log /dev/log  local0
   log /dev/log  local1 notice
@@ -19,8 +20,6 @@ global
 
 defaults
   log  global
-  mode  http
-  option  httplog
   option  dontlognull
   timeout connect 5000
   timeout client  50000
@@ -70,3 +69,6 @@ backend etcd-peer-backend
     balance roundrobin
     server master1 192.168.56.2:2380 check fall 3 rise 2
     #server master2 192.168.56.3:2380 check fall 3 rise 2
+EOF
+
+haproxy -c -f /etc/haproxy/haproxy.cfg

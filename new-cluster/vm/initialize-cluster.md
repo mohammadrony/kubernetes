@@ -28,7 +28,7 @@ sudo systemctl enable haproxy
 ```
 
 ```bash
-sudo cp -f haproxy.cfg /etc/haproxy/
+sh haproxy.sh
 ```
 
 ```bash
@@ -43,7 +43,6 @@ control_plan_ip="192.168.56.2"
 load_balancer="192.168.56.101"
 control_plane_endpoint="${load_balancer}:6443"
 
-# Initialize the cluster
 sudo kubeadm init --control-plane-endpoint $control_plane_endpoint --pod-network-cidr=$cidr --upload-certs
 ```
 
