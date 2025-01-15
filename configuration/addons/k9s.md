@@ -10,7 +10,10 @@ sudo ln -s /snap/k9s/current/bin/k9s /snap/bin/
 Source
 
 ```bash
-curl -sS https://webi.sh/k9s | bash
+curl -L https://webi.sh/k9s -o install.sh
+
+sh install.sh
+rm -f install.sh
 ```
 
 Usage

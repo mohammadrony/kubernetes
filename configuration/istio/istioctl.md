@@ -3,7 +3,10 @@
 Installation
 
 ```bash
-curl -L https://istio.io/downloadIstio | sh -
+curl -L https://istio.io/downloadIstio -o install.sh
+
+sh install.sh
+rm -f install.sh
 ```
 
 ```bash

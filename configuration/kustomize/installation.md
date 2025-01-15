@@ -1,7 +1,10 @@
 # Installation
 
 ```bash
-curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+curl https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh -o install.sh
+
+bash install.sh
+rm -f install.sh
 sudo mv kustomize /usr/local/bin/
 ```
 

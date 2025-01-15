@@ -64,7 +64,11 @@ sudo targetcli ls
 Master Node
 
 ```bash
-curl -sSfL https://raw.githubusercontent.com/longhorn/longhorn/v1.6.0/scripts/environment_check.sh | bash
+version=$(curl https://api.github.com/repos/longhorn/longhorn/releases/latest | jq -r .tag_name)
+curl https://raw.githubusercontent.com/longhorn/longhorn/$version/scripts/environment_check.sh -o install.sh
+
+bash install.sh
+rm -f install.sh
 ```
 
 ## Installation

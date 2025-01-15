@@ -1,7 +1,10 @@
 # Helm Install
 
 ```bash
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 -o install.sh
+
+bash install.sh
+rm -f install.sh
 ```
 
 Or

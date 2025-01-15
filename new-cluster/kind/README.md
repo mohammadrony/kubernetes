@@ -5,7 +5,10 @@
 ## Install Docker
 
 ```bash
-curl -fsSL https://get.docker.com | sh
+curl -fsSL https://get.docker.com -o install.sh
+
+sh install.sh
+rm -f install.sh
 sudo usermod -aG docker $USER
 newgrp docker
 ```

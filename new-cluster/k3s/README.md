@@ -7,7 +7,10 @@
 Server
 
 ```bash
-curl -sfL https://get.k3s.io | sh -
+curl -sfL https://get.k3s.io -o install.sh
+
+sh install.sh
+rm -f install.sh
 ```
 
 Copy kubeconfig
