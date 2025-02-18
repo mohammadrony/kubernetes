@@ -8,6 +8,12 @@
 argocd app create <app-name> --repo https://github.com/<username>/<repository>.git --path <path> --revision <branch> --dest-server https://kubernetes.default.svc --dest-namespace <namespace> --sync-policy automated --sync-option CreateNamespace=true
 ```
 
+App of apps
+
+```bash
+argocd app create app-of-apps -f app-of-apps.yaml
+```
+
 Apply manifest
 
 ```bash

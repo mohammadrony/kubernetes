@@ -18,7 +18,7 @@ kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/rele
 Dashboard
 
 ```bash
-version=$(curl https://api.github.com/repos/argoproj/argo-rollouts/releases/latest | jq -r .tag_name)
+version=v1.7.2
 kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/download/$version/dashboard-install.yaml
 ```
 
