@@ -6,7 +6,7 @@ Debian
 
 ```bash
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring-1.32.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.33/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes-1.32.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring-1.32.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes-1.32.list
 ```
 
 RHEL
@@ -50,14 +50,14 @@ kubeadm version
 kubeadm version
 ```
 
+Upgrade control plane
+
 ```bash
 sudo kubeadm upgrade plan
 ```
 
-Upgrade control plane
-
 ```bash
-sudo kubeadm upgrade apply v1.33.x
+sudo kubeadm upgrade apply v1.32.x
 ```
 
 Upgrade worker node

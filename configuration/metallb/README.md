@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Install [cert-manager](../cert-manager/README.md)
+[Install Cert Manager](../cert-manager/installation.md)
 
 ## Manifest
 
@@ -18,7 +18,7 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/$version/conf
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 ```
 
-IP pool
+Update [ip address](./ip-pool.yaml) and apply
 
 ```bash
 kubectl apply -f ip-pool.yaml
