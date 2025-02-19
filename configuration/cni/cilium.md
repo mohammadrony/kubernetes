@@ -1,15 +1,15 @@
 # Cilium
 
-Installation
+## Installation
 
 ```bash
 version=$(curl https://api.github.com/repos/cilium/cilium-cli/releases/latest | jq -r .tag_name)
 GOOS=$(go env GOOS)
 GOARCH=$(go env GOARCH)
-curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/download/$version/cilium-${GOOS}-${GOARCH}.tar.gz{,.sha256sum}
-sha256sum --check cilium-${GOOS}-${GOARCH}.tar.gz.sha256sum
-sudo tar -C /usr/local/bin -xzvf cilium-${GOOS}-${GOARCH}.tar.gz
-rm cilium-${GOOS}-${GOARCH}.tar.gz{,.sha256sum}
+curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/download/$version/cilium-$GOOS-$GOARCH.tar.gz{,.sha256sum}
+sha256sum --check cilium-$GOOS-$GOARCH.tar.gz.sha256sum
+sudo tar -C /usr/local/bin -xzvf cilium-$GOOS-$GOARCH.tar.gz
+rm -f cilium-$GOOS-$GOARCH.tar.gz{,.sha256sum}
 ```
 
 ```bash
@@ -25,6 +25,18 @@ cilium status --wait
 kubectl get pods -n kube-system
 ```
 
+## Hubble
+
 ```bash
 cilium hubble enable
+```
+
+```bash
+cilium hubble enable --ui
+```
+
+Hubble ui
+
+```bash
+cilium hubble ui
 ```

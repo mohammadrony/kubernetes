@@ -33,10 +33,10 @@ Remove label from node
 kubectl label nodes NODE KEY-
 ```
 
-Update label of worker node
+Update worker node label
 
 ```bash
-NODE=worker-1 # worker-2
+NODE=worker
 kubectl label node $NODE node-role.kubernetes.io/worker=
 ```
 

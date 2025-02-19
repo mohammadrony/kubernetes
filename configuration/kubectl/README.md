@@ -17,11 +17,13 @@
 - [Quick Reference](./quick-reference.md)
 - [Remove Worker Node](./remove-worker-node.md)
 - [Pod Run](./pod-run.md)
+- [Taint and Toleration](./taint-toleration.md)
 - [Useful Commands](./useful-commands.md)
 - [YQ Usage](./yq-usage.md)
 
 ## Manifests
 
+- [Affinity Anti-affinity](./affinity-anti-affinity.md)
 - [Applications](./applications/README.md)
 - [Network Policy](./network-policy/README.md)
 - [Templates](./templates/README.md)

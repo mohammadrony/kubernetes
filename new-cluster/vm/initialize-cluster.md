@@ -109,6 +109,6 @@ sudo kubeadm join 192.168.56.101:6443 --token xxxx.xxxx --discovery-token-ca-cer
 Update worker node label
 
 ```bash
-NODE=worker-1 # worker-2
+NODE=worker
 kubectl label node $NODE node-role.kubernetes.io/worker=
 ```

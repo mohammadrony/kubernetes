@@ -1,6 +1,4 @@
-# Documentation
-
-## Kubernetes Official
+# Kubernetes Documentation
 
 - [kubectl Quick Reference](https://kubernetes.io/docs/reference/kubectl/quick-reference/)
 - [Documentation](https://kubernetes.io/docs/home/)
