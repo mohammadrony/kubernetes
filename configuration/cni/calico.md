@@ -19,11 +19,7 @@ Install calico
 
 ```bash
 version=$(curl https://api.github.com/repos/projectcalico/calico/releases/latest | jq -r .tag_name)
-curl -LO https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/calico.yaml
-```
-
-```bash
-kubectl apply -f calico.yaml
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/calico.yaml
 ```
 
 ## Custom Configuration

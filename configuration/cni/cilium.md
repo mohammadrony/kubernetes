@@ -25,6 +25,12 @@ cilium status --wait
 kubectl get pods -n kube-system
 ```
 
+Uninstall
+
+```bash
+cilium uninstall
+```
+
 ## Hubble
 
 ```bash

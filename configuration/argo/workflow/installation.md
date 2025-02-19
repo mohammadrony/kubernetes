@@ -8,8 +8,7 @@ YAML install
 
 ```bash
 version=$(curl https://api.github.com/repos/argoproj/argo-workflows/releases/latest | jq -r .tag_name)
-curl -LO https://github.com/argoproj/argo-workflows/releases/download/$version/install.yaml
-kubectl apply -n argo -f install.yaml
+kubectl apply -n argo https://github.com/argoproj/argo-workflows/releases/download/$version/install.yaml
 ```
 
 ```bash
