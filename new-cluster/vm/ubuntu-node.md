@@ -62,6 +62,12 @@ sudo systemctl restart containerd
 sudo crictl config --list
 ```
 
+Disable firewall
+
+```bash
+sudo systemctl disable --now ufw
+```
+
 Disable apparmor
 
 ```bash

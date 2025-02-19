@@ -39,7 +39,7 @@ Cluster initialize
 
 ```bash
 cidr=192.168.128.0/17 # 192.168.0.0/16 # calico
-control_plan_ip="192.168.56.2"
+control_plane_ip="192.168.56.2"
 load_balancer="192.168.56.101"
 control_plane_endpoint="${load_balancer}:6443"
 

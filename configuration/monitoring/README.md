@@ -1,10 +1,9 @@
 # Monitoring
 
-## Complete Monitoring
-
 - [Kubernetes Dashboard](./dashboard/README.md)
 - [Grafana](./grafana/README.md)
 - [Opentelemetry and Grafana Stack](./opentel-grafana-stack/README.md)
+- [Metrics Server](./metrics-server.md)
 
 ## Helpers
 

@@ -42,7 +42,7 @@ Install calico
 
 ```bash
 version=$(curl https://api.github.com/repos/projectcalico/calico/releases/latest | jq -r .tag_name)
-kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/tigera-operator.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/tigera-operator.yaml
 ```
 
 ```bash
@@ -52,7 +52,7 @@ curl -O https://raw.githubusercontent.com/projectcalico/calico/$version/manifest
 Custom CIDR
 
 ```bash
-cidr=172.16.0.0
+cidr=10.244.0.0
 sed -i "s/192.168.0.0/$cidr/" custom-resources.yaml
 kubectl apply -f custom-resources.yaml
 ```

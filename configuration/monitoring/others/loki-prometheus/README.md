@@ -5,27 +5,6 @@
 - [Log Management and Distributed Tracing using Grafana Loki and Tempo](https://blog.cloudtechner.com/log-management-and-distributed-tracing-using-grafana-loki-and-tempo-b9c56392bae7)
 - [Kubernetes Observability Using Loki, Cortex, Tempo and Grafana](https://invisibl.io/kubernetes-observability-loki-cortex-tempo-prometheus-grafana/?amp=1)
 
-## Setup Matrics server
-
-Install metrics server
-
-```bash
-helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
-helm repo update
-```
-
-```bash
-helm show values metrics-server/metrics-server > values.metrics-server.yaml
-# helm upgrade --install metrics-server metrics-server/metrics-server -n kube-system
-helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server -n kube-system
-```
-
-Uninstall metrics server
-
-```bash
-helm uninstall metrics-server -n kube-system
-```
-
 ## Install Loki stack
 
 ```bash
