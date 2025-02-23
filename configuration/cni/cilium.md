@@ -31,6 +31,16 @@ Uninstall
 cilium uninstall
 ```
 
+## Update
+
+```bash
+cilium version
+```
+
+```bash
+cilium upgrade --version v1.x.x
+```
+
 ## Hubble
 
 ```bash
@@ -45,4 +55,10 @@ Hubble ui
 
 ```bash
 cilium hubble ui
+```
+
+## Connectivity Test
+
+```bash
+cilium connectivity test
 ```
