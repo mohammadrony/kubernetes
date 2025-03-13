@@ -41,6 +41,12 @@ cilium version
 cilium upgrade --version v1.x.x
 ```
 
+## Ingress Controller
+
+```bash
+cilium install --set ingressController.enabled=true
+```
+
 ## Hubble
 
 ```bash
@@ -55,6 +61,18 @@ Hubble ui
 
 ```bash
 cilium hubble ui
+```
+
+CLI
+
+```bash
+version=$(curl https://api.github.com/repos/cilium/hubble/releases/latest | jq -r .tag_name)
+HUBBLE_ARCH=amd64
+if [ "$(uname -m)" = "aarch64" ]; then HUBBLE_ARCH=arm64; fi
+curl -L --remote-name-all https://github.com/cilium/hubble/releases/download/$version/hubble-linux-$HUBBLE_ARCH.tar.gz{,.sha256sum}
+sha256sum --check hubble-linux-$HUBBLE_ARCH.tar.gz.sha256sum
+sudo tar -C /usr/local/bin -xzvf hubble-linux-$HUBBLE_ARCH.tar.gz
+rm hubble-linux-$HUBBLE_ARCH.tar.gz{,.sha256sum}
 ```
 
 ## Connectivity Test
