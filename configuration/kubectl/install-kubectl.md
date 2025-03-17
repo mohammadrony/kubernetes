@@ -51,7 +51,8 @@ echo 'alias k="kubectl"' >> ~/.bash_aliases
 Auto completion
 
 ```bash
-echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc
+echo 'source <(kubectl completion bash)' >> ~/.bashrc
+# echo 'source <(kubectl completion zsh)' >> ~/.zshrc
 ```
 
 Reload

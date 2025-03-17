@@ -41,13 +41,19 @@ cilium version
 cilium upgrade --version v1.x.x
 ```
 
-## Ingress Controller
+### Replace Kube Proxy
+
+```bash
+cilium install --set kubeProxyReplacement=true
+```
+
+### Ingress Controller
 
 ```bash
 cilium install --set ingressController.enabled=true
 ```
 
-## Hubble
+### Hubble
 
 ```bash
 cilium hubble enable
