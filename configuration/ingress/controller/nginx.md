@@ -1,8 +1,6 @@
-# Ingress Controller
+# Nginx Ingress Controller
 
-## Ingress Nginx
-
-### Baremetal cluster controller
+## Baremetal cluster controller
 
 YAML install
 
@@ -40,7 +38,7 @@ kubectl patch svc ingress-nginx-controller -n ingress-nginx --type='merge' -p '
 kubectl get services -o wide --all-namespaces | grep -E 'LoadBalancer|NAMESPACE'
 ```
 
-### Kind cluster controller
+## Kind cluster controller
 
 YAML install
 
@@ -53,7 +51,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/$ver
 kubectl get pods -n ingress-nginx
 ```
 
-### Nginx chart
+## Nginx chart
 
 ```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx

@@ -23,7 +23,7 @@
 - [Core Components](./configuration/core-components/README.md)
 - [DNS](./configuration/dns/README.md)
 - [Helm](./configuration/helm/README.md)
-- [Ingress and Ingress Controller](./configuration/ingress/README.md)
+- [Ingress](./configuration/ingress/README.md)
 - [Istio](./configuration/istio/README.md)
 - [Keycloak](./configuration/keycloak/README.md)
 - [Kubeconfig](./configuration/kubeconfig/README.md)

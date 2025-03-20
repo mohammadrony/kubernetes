@@ -1,4 +1,10 @@
-# Ingress and Ingress Controller
+# Ingress
 
-- [Ingress Controller](./ingress-controller.md)
-- [Ingress](./ingress.md)
+Ingress Controller
+
+- [Haproxy](./controller/haproxy.md)
+- [Nginx](./controller/nginx.md)
+
+Others
+
+- [Template](./template.md)

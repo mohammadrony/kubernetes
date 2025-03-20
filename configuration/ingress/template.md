@@ -1,4 +1,4 @@
-# Ingress
+# Template
 
 Redirect URL
 
