@@ -2,35 +2,49 @@
 
 ## Installation
 
+- [Github - projectcalico/calico](https://github.com/projectcalico/calico/)
+- [Calico - manifest](https://docs.projectcalico.org/manifests/calico.yaml)
+- [Install Calico](https://docs.tigera.io/calico/latest/getting-started/)
+
 Initialize cluster
 
 ```bash
-control_node=192.168.x.x
-cidr=192.168.128.0/17 # 192.168.0.0/16 # calico
+control_node=10.x.x.x
+cidr=192.168.0.0/16 # default
 sudo kubeadm init --pod-network-cidr=$cidr --apiserver-advertise-address=$control_node --v=5
 ```
 
-Manifests
-
-- [projectcalico.org](https://docs.projectcalico.org/manifests/calico.yaml)
-- [github.com](https://raw.githubusercontent.com/projectcalico/calico/v3.29.1/manifests/calico.yaml)
-
-Install calico
+Download manifest
 
 ```bash
 version=$(curl https://api.github.com/repos/projectcalico/calico/releases/latest | jq -r .tag_name)
-kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/calico.yaml
+curl -O https://raw.githubusercontent.com/projectcalico/calico/$version/manifests/calico.yaml
 ```
 
-## Custom Configuration
+CIDR
+
+```bash
+cidr=192.168.0.0 # default
+sed -i "s/# \(.*CALICO_IPV4POOL_CIDR\)/\1/" calico.yaml
+sed -i "s/# \(.*\)192.168.0.0/\1$cidr/" calico.yaml
+grep -A1 "CALICO_IPV4POOL_CIDR" calico.yaml
+```
+
+Apply manifest
+
+```bash
+kubectl apply -f calico.yaml
+```
+
+## Tigera Operator
 
 [Documentation](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart)
 
 Initialize cluster
 
 ```bash
-control_node=192.168.x.x
-cidr=172.16.0.0/16
+control_node=10.x.x.x
+cidr=192.168.0.0/16 # default
 sudo kubeadm init --pod-network-cidr=$cidr --apiserver-advertise-address=$control_node --v=5
 ```
 
@@ -48,9 +62,16 @@ curl -O https://raw.githubusercontent.com/projectcalico/calico/$version/manifest
 Custom CIDR
 
 ```bash
-cidr=10.244.0.0
+cidr=192.168.0.0 # default
 sed -i "s/192.168.0.0/$cidr/" custom-resources.yaml
 kubectl apply -f custom-resources.yaml
+```
+
+Check CIDR
+
+```bash
+kubectl get installations.operator.tigera.io default \
+  -o jsonpath='{.spec.calicoNetwork.ipPools[*].cidr}'
 ```
 
 ## Troubleshoot
