@@ -8,13 +8,13 @@ Preparation
 
 ```bash
 kubectl get installations.operator.tigera.io default \
-  -o jsonpath='{.spec.calicoNetwork.ipPools[*].cidr}'
+  -o jsonpath='{.spec.calicoNetwork.ipPools[*].cidr}{"\n"}'
 # 192.168.0.0/16
 ```
 
 ```bash
 kubectl get installations.operator.tigera.io default \
-  -o jsonpath='{.spec.calicoNetwork.ipPools[*].encapsulation}'
+  -o jsonpath='{.spec.calicoNetwork.ipPools[*].encapsulation}{"\n"}'
 # VXLANCrossSubnet
 ```
 
@@ -34,7 +34,7 @@ Prevent calico from using cilium interface
 
 ```bash
 kubectl get installations.operator.tigera.io default \
-  -o jsonpath='{.spec.calicoNetwork.nodeAddressAutodetectionV4}'
+  -o jsonpath='{.spec.calicoNetwork.nodeAddressAutodetectionV4}{"\n"}'
 # {"firstFound":true}
 ```
 
@@ -45,7 +45,7 @@ kubectl patch installations.operator.tigera.io default --type=merge \
 
 ```bash
 kubectl get installations.operator.tigera.io default \
-  -o jsonpath='{.spec.calicoNetwork.nodeAddressAutodetectionV4}'
+  -o jsonpath='{.spec.calicoNetwork.nodeAddressAutodetectionV4}{"\n"}'
 # {"firstFound":false,"kubernetes":"NodeInternalIP"}
 ```
 
@@ -57,6 +57,40 @@ helm upgrade --install cilium cilium/cilium --namespace kube-system \
   --values values-initial.yaml
 ```
 
+Check CNI configuration
+
 ```bash
-ls /etc/cni/net.d/
+sudo ls /etc/cni/net.d/
+```
+
+```bash
+kubectl apply --server-side -f ciliumnodeconfig.yaml
+```
+
+Currently nodes doesn't have `io.cilium.migration/cilium-default: "true"` condition
+
+```bash
+kubectl get no --show-labels
+```
+
+### Start Migrating
+
+Cordon and drain node
+
+```bash
+NODE="worker"
+kubectl cordon $NODE
+kubectl drain $NODE --ignore-daemonsets
+kubectl get pods -o wide --field-selector spec.nodeName=$NODE
+```
+
+Label and restart
+
+```bash
+kubectl label node $NODE --overwrite "io.cilium.migration/cilium-default=true"
+```
+
+```bash
+kubectl -n kube-system delete pod --field-selector spec.nodeName=$NODE -l k8s-app=cilium
+kubectl -n kube-system rollout status ds/cilium -w
 ```

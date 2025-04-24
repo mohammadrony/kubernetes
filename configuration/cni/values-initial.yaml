@@ -1,7 +1,7 @@
 bpf:
   hostLegacyRouting: true
 cluster:
-  name: dsi-cluster
+  name: my-cluster
 cni:
   customConf: true
   uninstall: false
