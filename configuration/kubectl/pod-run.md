@@ -29,19 +29,19 @@ kubectl run POD --image=IMAGE:TAG --restart Never
 ## Useful Apps
 
 ```bash
-kubectl run -it busybox --image=busybox --rm -- sh
+kubectl run -it busybox --image=busybox -n default --rm -- sh
 ```
 
 ```bash
-kubectl run -it shell --image giantswarm/tiny-tools --rm -- sh
+kubectl run -it shell --image giantswarm/tiny-tools -n default --rm -- sh
 ```
 
 Netshoot
 
 ```bash
-kubectl run -it netshoot --image=nicolaka/netshoot --rm -- sh
+kubectl run -it netshoot --image=nicolaka/netshoot -n default --rm -- sh
 ```
 
 ```bash
-kubectl run netshoot --image=nicolaka/netshoot -- sleep infinity
+kubectl run netshoot --image=nicolaka/netshoot -n default -- sleep infinity
 ```
