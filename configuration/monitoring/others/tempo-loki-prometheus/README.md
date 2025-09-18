@@ -22,7 +22,7 @@ https://raw.githubusercontent.com/brainupgrade-in/kubernetes/main/observability/
 ```
 
 ```bash
-helm upgrade --install loki grafana/loki --values 01-loki-helm-values.yaml
+helm upgrade --install loki grafana/loki -f 01-loki-helm-values.yaml
 helm upgrade --install tempo grafana/tempo --values 02-tempo-helm-values.yaml
 helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack --values 03-grafana-helm-values.yaml
 ```

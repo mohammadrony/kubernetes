@@ -86,24 +86,24 @@ Install kubeadm kubelet
 sudo tee -a /etc/yum.repos.d/kubernetes.repo << EOF
 [kubernetes]
 name=Kubernetes
-baseurl=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.34/rpm/
 enabled=1
 gpgcheck=1
-gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.34/rpm/repodata/repomd.xml.key
 exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
 EOF
 ```
 
 ```bash
 sudo yum install -y kubeadm kubelet --disableexcludes=kubernetes
-# sudo yum install -y kubeadm-'1.32.*' kubelet-'1.32.*' --disableexcludes=kubernetes
+# sudo yum install -y kubeadm-'1.34.*' kubelet-'1.34.*' --disableexcludes=kubernetes
 ```
 
 Install kubectl
 
 ```bash
 sudo yum install -y kubectl --disableexcludes=kubernetes
-# sudo yum install -y kubectl-'1.32.*' --disableexcludes=kubernetes
+# sudo yum install -y kubectl-'1.34.*' --disableexcludes=kubernetes
 ```
 
 Alias

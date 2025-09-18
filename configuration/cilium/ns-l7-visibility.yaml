@@ -1,0 +1,23 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: allow-all-http-traffic
+  namespace: cilium-monitoring
+spec:
+  endpointSelector: {}
+  ingress:
+    - toPorts:
+        - ports:
+            - port: "0"
+              protocol: TCP
+          rules:
+            http:
+              - {}
+  egress:
+    - toPorts:
+        - ports:
+            - port: "0"
+              protocol: TCP
+          rules:
+            http:
+              - {}
