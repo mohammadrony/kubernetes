@@ -58,8 +58,22 @@ kind --version
 
 ## Create Cluster
 
+Multinode cluster
+
 ```bash
-kind create cluster --config=config.yaml
+kind create cluster --config 1-config.multinode.yaml
+```
+
+Mapping http port
+
+```bash
+kind create cluster --config 2-config.portmap.yaml
+```
+
+Install for custom CNI
+
+```bash
+kind create cluster --config 3-config.cni.yaml
 ```
 
 ```bash

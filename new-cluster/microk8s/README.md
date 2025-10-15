@@ -4,6 +4,8 @@
 
 ## Installation
 
+Minimal kubernetes cluster
+
 ```bash
 sudo snap install microk8s --classic
 ```
@@ -66,10 +68,13 @@ Enable services
 microk8s enable --help
 ```
 
+Addons
+
 ```bash
-microk8s enable community
-microk8s enable dashboard
 microk8s enable dns
+microk8s enable ingress
+microk8s enable dashboard
+microk8s enable community
 microk8s enable registry
 microk8s enable istio
 ```
@@ -81,9 +86,10 @@ microk8s disable --help
 ```
 
 ```bash
-microk8s disable community
-microk8s disable dashboard
 microk8s disable dns
+microk8s disable ingress
+microk8s disable dashboard
+microk8s disable community
 microk8s disable registry
 microk8s disable istio
 ```
