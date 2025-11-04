@@ -39,7 +39,7 @@ config:
       include_file_path: true
       include_file_name: false
       operators:
-        # Find out which format is used by kubernetes
+        # Format is used by kubernetes
         - type: router
           id: get-format
           routes:
@@ -97,9 +97,6 @@ config:
         - type: move
           from: attributes.pod_name
           to: resource["pod"]
-        - type: add
-          field: resource["cluster"]
-          value: "cluster-1" # REPLACE ME
 
   processors:
     resource:
@@ -117,20 +114,6 @@ config:
     batch:
       send_batch_size: 10000
       timeout: 10s
-    # k8sattributes:
-    #   extract:
-    #     labels:
-    #       - key: app
-    #       - key: release
-    #       - from: pod
-    #         key: service.namespace
-    #         tag_name: service.namespace
-    #     metadata:
-    #       - k8s.pod.name
-    #       - k8s.node.name
-    #       - k8s.namespace.name
-    #       - k8s.deployment.name
-    #       - k8s.pod.start_time
     resourcedetection:
       detectors: ["env", "system"]
       override: false
@@ -179,11 +162,11 @@ config:
     debug:
       verbosity: detailed
     otlp:
-      endpoint: tempo.grafana.svc:4317
+      endpoint: tempo.monitoring.svc:4317
       tls:
         insecure: true
     loki:
-      endpoint: http://loki-gateway.grafana.svc/loki/api/v1/push
+      endpoint: http://loki-gateway.monitoring.svc/loki/api/v1/push
       tls:
         insecure: true
   service:
@@ -207,9 +190,9 @@ config:
         exporters: [debug, otlp]
       logs:
         receivers: [filelog]
-        processors: [
+        processors:
+          [
             resource,
-            # k8sattributes,
             memory_limiter,
             resourcedetection,
             transform/drop_unneeded_resource_attributes,
@@ -224,4 +207,4 @@ service:
 resources:
   limits:
     cpu: 1
-    memory: 1Gi
+    memory: 2Gi

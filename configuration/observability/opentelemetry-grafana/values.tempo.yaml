@@ -1,0 +1,7 @@
+replicas: 1
+
+tempo:
+  ingester:
+    trace_idle_period: 10s
+    max_block_bytes: 1000000
+    max_block_duration: 1m

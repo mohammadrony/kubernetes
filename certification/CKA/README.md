@@ -2,7 +2,7 @@
 
 Curriculum
 
-- [Certified Kubernetes Administrator (CKA) Exam Curriculum](./CKA_Curriculum_v1.30.pdf)
+- [Certified Kubernetes Administrator (CKA) Curriculum](https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/)
 
 Resources
 

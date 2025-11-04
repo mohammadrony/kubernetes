@@ -1,4 +1,9 @@
-# Charts
+# Grafana
+
+- [Alloy](./alloy.md)
+- [Loki Grafana Tempo Mimir](./lgtm.md)
+
+Charts
 
 - grafana/alloy
 - grafana/lgtm-distributed

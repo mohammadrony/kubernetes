@@ -4,14 +4,13 @@
 
 - [CKA](./certification/CKA/README.md)
 
-## Cluster Setup
-
-### New Cluster
+## Setup New Cluster
 
 - [EC2](./new-cluster/ec2/README.md)
 - [K3s](./new-cluster/k3s/README.md)
 - [Kind](./new-cluster/kind/README.md)
 - [MicroK8s](./new-cluster/microk8s/README.md)
+- [Minikube](./new-cluster/minikube/README.md)
 - [Virtual Machine](./new-cluster/vm/README.md)
 
 ## Configuration
@@ -33,6 +32,8 @@
 - [MetalLB Load Balancer](./configuration/metallb/README.md)
 - [Minio](./configuration/minio/README.md)
 - [Monitoring](./configuration/monitoring/README.md)
+- [Observability](./configuration/observability/README.md)
+- [Persistent Volume](./configuration/persistent-volume/README.md)
 - [RabbitMQ](./configuration/rabbitmq/README.md)
 - [Storage](./configuration/storage/README.md)
 
