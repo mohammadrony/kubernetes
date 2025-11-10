@@ -6,16 +6,16 @@
 
 Linux x86-64 architecture
 
-```bash
+```sh
 version=$(curl https://api.github.com/repos/kubernetes-sigs/krew/releases/latest | jq -r .tag_name)
 wget https://github.com/kubernetes-sigs/krew/releases/download/$version/krew-linux_amd64.tar.gz
 ```
 
-```bash
+```sh
 tar zxvf krew-linux_amd64.tar.gz ./krew-linux_amd64
 ```
 
-```bash
+```sh
 ./krew-linux_amd64 install krew
 
 rm -f krew-linux_amd64*
@@ -23,12 +23,12 @@ rm -f krew-linux_amd64*
 
 Environment update
 
-```bash
-Update ~/.bashrc and ~/.zshrc file
+```sh
+# Update ~/.bashrc and ~/.zshrc file
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 ```
 
-```bash
+```sh
 source ~/.bashrc
 ```
 
