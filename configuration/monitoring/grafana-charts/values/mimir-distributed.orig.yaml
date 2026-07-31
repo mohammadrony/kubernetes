@@ -3975,4 +3975,3 @@ continuous_test:
 #   data: |
 #     extra.yml: "does-my-install-need-extra-info: true"
 extraObjects: []
-

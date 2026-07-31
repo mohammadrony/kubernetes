@@ -494,4 +494,3 @@ configMaps:
 #   - name: es-certs
 #     mountPath: /certs
 #     readOnly: true
-

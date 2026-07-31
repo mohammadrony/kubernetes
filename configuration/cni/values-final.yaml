@@ -18,4 +18,3 @@ policyEnforcementMode: default
 routingMode: tunnel
 tunnelPort: 8473
 tunnelProtocol: vxlan
-

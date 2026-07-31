@@ -106,4 +106,3 @@ tempo:
   enabled: true
   ingester:
     replicas: 1
-
