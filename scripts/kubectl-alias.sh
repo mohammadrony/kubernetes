@@ -24,7 +24,7 @@ kl () {
 kd () {
   [ $# -eq 0 ] && x=pods || x=$1
   local obj=($(kubectl get $x --all-namespaces -owide | fzf | awk '{print $1, $2}'))
-  
+
   echo kubectl describe $x --namespace $obj[1] $obj[2]
   kubectl describe $x --namespace $obj[1] $obj[2] | most
 }

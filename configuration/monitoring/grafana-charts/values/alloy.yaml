@@ -71,7 +71,7 @@ alloy:
           action = "replace"
           target_label = "app"
         }
-        
+
         // Label creation -  "deployment_name" field from "__meta_kubernetes_namespace", "__meta_kubernetes_pod_label_app_kubernetes_io_name" and "__meta_kubernetes_pod_container_name"
         rule {
           source_labels = ["__meta_kubernetes_namespace", "__meta_kubernetes_pod_label_app_kubernetes_io_name", "__meta_kubernetes_pod_container_name"]

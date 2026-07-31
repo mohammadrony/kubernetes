@@ -467,7 +467,7 @@ controller:
   ##
   tlsMinVersion: ""
   ## @param controller.tlsCipherSuites Comma separated list of TLS cipher suites for the controller
-  ##  
+  ##
   tlsCipherSuites: ""
   ## @param controller.webhookMode Controller webhook mode
   ## Allowed values: enabled, disabled or only webhook if we want the controller to act as webhook endpoint only
@@ -971,4 +971,3 @@ speaker:
       ## @param speaker.metrics.serviceMonitor.honorLabels honorLabels chooses the metric's labels on collisions with target labels
       ##
       honorLabels: false
-

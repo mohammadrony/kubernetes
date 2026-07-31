@@ -34,11 +34,11 @@ kubectl logs POD -f --since 1h
 Specify pods container name
 
 ```bash
-kubectl logs pod/POD -c CONTAINER 
+kubectl logs pod/POD -c CONTAINER
 ```
 
 ```bash
-kubectl logs deploy/DEPLOYMENT -c CONTAINER 
+kubectl logs deploy/DEPLOYMENT -c CONTAINER
 ```
 
 Previous instance logs

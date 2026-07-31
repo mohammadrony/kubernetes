@@ -94,7 +94,7 @@ spec:
       hostPath:
         path: /host/
         type: DirectoryOrCreate
-  
+
   containerLogMaxSize: 10Mi
   containerLogMaxFiles: 7
 

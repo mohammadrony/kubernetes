@@ -34,7 +34,7 @@ spec:
 Pod affinity
 
 ```yaml
-# Pod will be scheduled in a node having 'app=frontend' labeled pod 
+# Pod will be scheduled in a node having 'app=frontend' labeled pod
 spec:
   affinity:
     podAffinity:
@@ -51,7 +51,7 @@ spec:
 ```
 
 ```yaml
-# Pod will try to schedule in a node having 'app=backend' labeled pod 
+# Pod will try to schedule in a node having 'app=backend' labeled pod
 spec:
   affinity:
     podAffinity:
@@ -72,7 +72,7 @@ spec:
 Pod anti-affinity
 
 ```yaml
-# Pod won't be scheduled in a node having 'app=frontend' labeled pod 
+# Pod won't be scheduled in a node having 'app=frontend' labeled pod
 spec:
   affinity:
     podAntiAffinity:
@@ -89,7 +89,7 @@ spec:
 ```
 
 ```yaml
-# Pod will try not to schedule in a node having 'app=backend' labeled pod 
+# Pod will try not to schedule in a node having 'app=backend' labeled pod
 spec:
   affinity:
     podAntiAffinity:

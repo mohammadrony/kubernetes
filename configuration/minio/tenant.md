@@ -55,7 +55,7 @@ kubectl apply -f minio-ingress.yaml
 ### Helm Chart Installation
 
 ```bash
-helm show values minio/tenant > values.tenant.yaml 
+helm show values minio/tenant > values.tenant.yaml
 ```
 
 Custom values
