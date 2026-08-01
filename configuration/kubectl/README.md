@@ -1,5 +1,7 @@
 # Kubectl
 
+kubectl command reference plus ready-to-use manifests for common Kubernetes objects.
+
 ## Commands
 
 - [Config Commands](./config.md)
